@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './Layout.css';
+import styles from './Layout.less';
 import NavMenu from './NavMenu';
+import Header from './Header';
 
 const Layout = (props) => {
   return (
@@ -10,7 +11,7 @@ const Layout = (props) => {
       </aside>
       <div className={styles.content}>
         <div className={styles.header}>
-          <h5 className={styles.title}>你的兴趣可以谋生吗？</h5>
+          <Header />
         </div>
         <div className={styles.playground}>
           {props.children}

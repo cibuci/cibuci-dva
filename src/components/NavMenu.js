@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'dva/router';
-import styles from './NavMenu.css';
+import styles from './NavMenu.less';
 import logo from '../assets/logo.png';
 
 const NavMenu = () => {
