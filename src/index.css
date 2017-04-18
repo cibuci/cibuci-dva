@@ -1,5 +1,24 @@
 
 html, body, :global(#root) {
   height: 100%;
+  margin: 0;
+  overflow: hidden;
 }
 
+ul :global {
+  list-style: none;
+}
+
+:global .scroller::-webkit-scrollbar {
+  width: 9px;
+}
+:global .scroller::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(100,100,100,.2);
+  margin-right: 1px;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+}
+:global .scroller::-webkit-scrollbar-track {
+  background-color: transparent;
+}
