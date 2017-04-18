@@ -1,20 +1,12 @@
 import React from 'react';
 import styles from './Layout.css';
-import { Link } from 'dva/router';
-import { MenuList } from 're-bulma';
-import logo from '../assets/logo.png';
+import NavMenu from './NavMenu';
 
 const Layout = (props) => {
   return (
     <div className={styles.container}>
       <aside className={styles.aside}>
-        <img alt="logo" className={styles.logo} src={logo} />
-        {props.location}
-        <MenuList>
-          <li><Link to="/" activeClassName={styles.active}>PK</Link></li>
-          <li><Link to="/topic" activeClassName={styles.active}>话题</Link></li>
-          <li><Link to="/article" activeClassName={styles.active}>文章</Link></li>
-        </MenuList>
+        <NavMenu />
       </aside>
       <div className={styles.content}>
         <div className={styles.header}>

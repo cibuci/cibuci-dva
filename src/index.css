@@ -3,6 +3,7 @@ html, body, :global(#root) {
   height: 100%;
   margin: 0;
   overflow: hidden;
+  font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
 }
 
 ul :global {

@@ -10,7 +10,7 @@ function IndexPage() {
     <Layout>
       <div className={styles.container}>
         <div className={styles.sidebar}>
-          <div>
+          <div style={{margin: '1.5rem'}}>
           <Message header="Hello World">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Pellentesque risus mi, tempus quis placerat ut, porta nec
