@@ -1,12 +1,20 @@
-import { Button } from 'antd';
 import React from 'react';
 import styles from './Header.less';
+import DropMenu from './DropMenu';
 
 const Header = () => {
   return (
-    <div className={styles.test}>
-      Example
-      <Button type="primary">Primary</Button>
+    <div className={styles.container}>
+      <ul>
+        <li>
+          <span className={styles.title}>你的兴趣能谋生吗？</span>
+        </li>
+        <li style={{ float: 'right' }}>
+          <span className={styles.mine}>
+            <DropMenu />
+          </span>
+        </li>
+      </ul>
     </div>
   );
 };

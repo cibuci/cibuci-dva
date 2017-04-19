@@ -15,6 +15,7 @@
     "dva": "^1.2.1",
     "re-bulma": "^0.4.0",
     "react": "^15.4.0",
+    "react-blocks": "^1.1.4",
     "react-dom": "^15.4.0"
   },
   "devDependencies": {

@@ -7,7 +7,7 @@ import Comment from '../components/Comment';
 
 function AboutPage() {
   return (
-    <Layout>
+    <Layout noheader>
     </Layout>
   );
 }

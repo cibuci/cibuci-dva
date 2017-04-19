@@ -8,7 +8,7 @@ const NavMenu = () => {
     <div>
       <div className={styles.logo}>
         <Link to="/">
-          <img alt="logo" className={styles.logo} src={logo} />
+          <img role="presentation" alt="logo" className={styles.logo} src={logo} />
         </Link>
       </div>
       <ul className={styles.list}>
