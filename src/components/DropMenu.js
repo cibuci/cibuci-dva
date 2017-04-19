@@ -19,7 +19,7 @@ const menu = (
 
 const DropMenu = () => {
   return (
-    <Dropdown style={{ cursor: 'pointer' }} overlay={menu}>
+    <Dropdown overlay={menu}>
       <span>
         <Avatar /> <Icon type="down" />
       </span>

@@ -7,7 +7,6 @@ import Spacer from './Spacer';
 const PkPanel = () => {
   return (
     <div className={styles.container}>
-      <PkBar a={33} b={44} />
       <Spacer>
         <Block layout horizontal justifyBetween>
           <Block className={styles.a}>
@@ -20,6 +19,7 @@ const PkPanel = () => {
           </Block>
         </Block>
       </Spacer>
+      <PkBar a={33} b={44} />
     </div>
   );
 };

@@ -9,7 +9,7 @@ const Header = () => {
         <li>
           <span className={styles.title}>你的兴趣能谋生吗？</span>
         </li>
-        <li style={{ float: 'right' }}>
+        <li style={{ float: 'right', cursor: 'pointer' }}>
           <span className={styles.mine}>
             <DropMenu />
           </span>
