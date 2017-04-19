@@ -1,7 +1,83 @@
 .container {
-  margin-bottom: .2em;
+  padding-bottom: .2em;
+
+  .action {
+    display: none;
+  }
 
   &:hover {
-    background-color: rgba(240,240,240,.3);
+    background-color: rgba(240,240,240,.5);
+  }
+}
+
+.item {
+  margin-top: .4em;
+  margin-bottom: .2em;
+  clear: both;
+
+  .aside {
+    float: left;
+    margin-top: 4px;
+  }
+
+  .action {
+    float: right;
+    text-align: right;
+    width: 40px;
+    margin-top: 2px;
+  }
+
+  .content {
+    vertical-align: top;
+    min-height: 1.5em;
+    margin-left: 3rem;
+    margin-right: 3rem;
+
+    .detail {
+      font-size: .9rem;
+      line-height: 1.4;
+
+      .from {
+        vertical-align: middle;
+        display: inline;
+        cursor: pointer;
+        margin-top: 2px;
+        opacity: .7;
+        margin-right: 2px;
+      }
+
+      .username {
+        vertical-align: middle;
+        display: inline;
+        cursor: pointer;
+        margin-top: 2px;
+        opacity: .5;
+      }
+
+      .time {
+        vertical-align: middle;
+        display: inline;
+        float: right;
+        margin-top: 2px;
+        color: rgba(170,170,170,.7);
+      }
+    }
+
+    .side-a {
+      border-left: 4px solid #ed6c63;
+    }
+
+    .side-b {
+      border-left: 4px solid #1f99d3;
+    }
+
+    .text {
+      padding-left: 4px;
+      word-wrap: break-word;
+      line-height: 1.4;
+      font-size: .9rem;
+      user-select: text;
+      color: #000;
+    }
   }
 }

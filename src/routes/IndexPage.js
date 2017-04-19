@@ -7,7 +7,7 @@ import Comment from '../components/Comment';
 import PkPanel from '../components/PkPanel';
 import PkCommentList from '../components/PkCommentList';
 
-function IndexPage() {
+function IndexPage({ comments }) {
   return (
     <Layout>
       <div className={styles.container}>
@@ -19,7 +19,7 @@ function IndexPage() {
             <PkPanel />
           </div>
           <div className={`${styles.up} scroller`}>
-            <PkCommentList />
+            <PkCommentList comments={comments} />
           </div>
           <div className={styles.down}>
             <Group>
@@ -36,4 +36,10 @@ function IndexPage() {
 IndexPage.propTypes = {
 };
 
-export default connect()(IndexPage);
+function mapStateToProps(state) {
+  return {
+    comments: state.comment.list,
+  };
+}
+
+export default connect(mapStateToProps)(IndexPage);

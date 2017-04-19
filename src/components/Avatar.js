@@ -3,10 +3,11 @@ import React from 'react';
 const styles = {
   avatar: {
     border: '1px solid #f5f5f5',
-    borderRadius: 5,
-    width: '2rem',
-    height: '2rem',
+    borderRadius: 4,
+    width: '1.9rem',
+    height: '1.9rem',
     verticalAlign: 'middle',
+    backgroundColor: '#eee',
   },
 };
 

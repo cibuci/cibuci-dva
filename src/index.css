@@ -2,8 +2,9 @@
 html, body, :global(#root) {
   height: 100%;
   margin: 0;
+  color: #333;
   overflow: hidden;
-  font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
 }
 
 ul :global {

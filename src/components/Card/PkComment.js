@@ -1,24 +1,39 @@
 import React from 'react';
-import Block from 'react-blocks';
 import styles from './PkComment.less';
 import Spacer from '../Spacer';
 import Avatar from '../Avatar';
 
-const PkComment = () => {
+const PkComment = (props) => {
+  const comment = props.comment || {};
+  const user = comment.user || {};
+  const { time, text } = comment;
+  const sideClassName = `side-${(comment.side === 0 ? 'a' : 'b')}`;
+
   return (
     <div className={styles.container}>
       <Spacer onlylr>
-        <Block layout horizontal>
-          <Block>
-            <Avatar />
-          </Block>
-          <Block flex>
-            <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-          </Block>
-        </Block>
+        <div className={styles.item}>
+          <div className={styles.aside}>
+            <Avatar avatar={user.avatar} />
+          </div>
+          <div className={styles.action}>
+            123
+          </div>
+          <div className={styles.content}>
+            <div className={styles.detail}>
+              <div className={styles.from}>
+                {user.displayname}
+              </div>
+              <div className={styles.username}>
+                @{user.username}
+              </div>
+              <span className={styles.time}>{time}</span>
+            </div>
+            <div className={`${styles.text} ${styles[sideClassName]}`}>
+              <p>{text}</p>
+            </div>
+          </div>
+        </div>
       </Spacer>
     </div>
   );
