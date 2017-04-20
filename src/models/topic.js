@@ -4,6 +4,7 @@ export default {
   namespace: 'topic',
 
   state: {
+    type: 'the select',
     list: [
       {
         id: 0,
