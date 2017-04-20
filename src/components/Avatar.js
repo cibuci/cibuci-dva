@@ -9,12 +9,21 @@ const styles = {
     verticalAlign: 'middle',
     backgroundColor: '#eee',
   },
+  large: {
+    border: '1px solid #f5f5f5',
+    borderRadius: 4,
+    width: '2.9rem',
+    height: '2.9rem',
+    verticalAlign: 'middle',
+    backgroundColor: '#eee',
+  },
 };
 
 const Avatar = (props) => {
   const src = props.avatar || 'https://avatars1.githubusercontent.com/u/7099792?v=3&s=40';
+  const style = (props.size === 'large' ? styles.large : styles.avatar);
   return (
-    <img style={styles.avatar} src={src} alt="avatar" />
+    <img style={style} src={src} alt="avatar" />
   );
 };
 

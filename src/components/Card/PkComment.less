@@ -1,3 +1,26 @@
+@color-a: #ed6c63;
+@color-b: #1f99d3;
+
+.side-a {
+  .text {
+    border-left: 4px solid @color-a;
+  }
+
+  &:hover {
+    background-color: lighten(@color-a, 30%);
+  }
+}
+
+.side-b {
+  .text {
+    border-left: 4px solid @color-b;
+  }
+
+  &:hover {
+    background-color: lighten(@color-b, 45%);
+  }
+}
+
 .container {
   padding-bottom: .2em;
 
@@ -6,7 +29,9 @@
   }
 
   &:hover {
-    background-color: rgba(240,240,240,.5);
+    .action {
+      display: inherit;
+    }
   }
 }
 
@@ -61,14 +86,6 @@
         margin-top: 2px;
         color: rgba(170,170,170,.7);
       }
-    }
-
-    .side-a {
-      border-left: 4px solid #ed6c63;
-    }
-
-    .side-b {
-      border-left: 4px solid #1f99d3;
     }
 
     .text {

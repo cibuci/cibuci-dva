@@ -9,6 +9,7 @@ const app = dva();
 
 // 3. Model
 app.model(require('./models/comment'));
+app.model(require('./models/topic'));
 
 // 4. Router
 app.router(require('./router'));
