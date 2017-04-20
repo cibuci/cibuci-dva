@@ -1,7 +1,7 @@
 
 .normal {
   background-color: #fff;
-  padding: 20px 30px 20px 80px;
+  padding: 1.2rem;
   border-bottom: 1px solid #f5f5f5;
   position: relative;
   line-height: 20px;
@@ -12,22 +12,55 @@
   }
 }
 
-.score {
-  position: absolute;
-  left: 1rem;
-  margin-top: -3px;
-}
+.media {
+  overflow: hidden;
 
-.meta, .host {
-  font-size: .85em;
-  color: #999;
+  .left {
+    display: table-cell;
+    padding-right: .8rem;
+  }
 
-  a {
-    color: #999;
-    text-decoration: underline;
+  .body {
+    display: table-cell;
+    vertical-align: top;
+    width: 10000px;
+    zoom: 1;
+    overflow: hidden;
+  }
 
-    &:hover {
-      color: #ff6600;
+  .right {
+    display: table-cell;
+  }
+
+  .middle {
+    vertical-align: middle;
+  }
+
+  .heading {
+    font-size: 1rem;
+    line-height: 1.4;
+
+    a {
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
+
+  .meta {
+    font-size: .7rem;
+    margin-top: .2rem;
+
+    a {
+      margin: 0 .2rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.badge {
+  padding-left: .8rem;
 }

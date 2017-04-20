@@ -3,7 +3,6 @@ import React from 'react';
 import { connect } from 'dva';
 import styles from './IndexPage.less';
 import Layout from '../components/Layout';
-import Comment from '../components/Comment';
 import PkPanel from '../components/PkPanel';
 import PkCommentList from '../components/PkCommentList';
 
