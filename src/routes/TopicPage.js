@@ -1,9 +1,10 @@
-import { Pagination } from 'antd';
+import { Pagination, Button } from 'antd';
 import React from 'react';
 import { connect } from 'dva';
-import styles from './TopicPage.css';
+import styles from './TopicPage.less';
 import Layout from '../components/Layout';
 import TopicList from '../components/TopicList';
+import HotTopicList from '../components/HotTopicList';
 
 function TopicPage({ topics }) {
   return (
@@ -11,7 +12,8 @@ function TopicPage({ topics }) {
       <div className={styles.container}>
         <div className={styles.sidebar}>
           <div className={styles.sidebarlist}>
-            123
+            <Button type="primary" size="large">发表新话题</Button>
+            <HotTopicList title="热门话题" list={topics} />
           </div>
         </div>
         <div className={styles.content}>
