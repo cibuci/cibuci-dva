@@ -28,8 +28,20 @@ const GlobalBoard = (props, context) => {
       </div>
     );
   }
-  if (router.isActive('/topic/0')) {
-    result = (<span className={styles.title}>你的兴趣能谋生吗？</span>);
+  if (router.isActive('/article')) {
+    result = (
+      <div>
+        <Menu
+          mode="horizontal"
+          defaultSelectedKeys={['2']}
+          style={{ lineHeight: '3.4rem' }}
+        >
+          <Menu.Item key="{topic.type}">全部</Menu.Item>
+          <Menu.Item key="2">精华</Menu.Item>
+          <Menu.Item key="3">问答</Menu.Item>
+        </Menu>
+      </div>
+    );
   }
   return result;
 };

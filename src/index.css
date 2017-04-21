@@ -11,9 +11,19 @@ ul :global {
   list-style: none;
 }
 
+:global img.e-scale {
+  transition: all 0.5s ease;
+}
+
+:global img.e-scale:hover {
+  transform: scale(1.1);
+  transition: all 0.5s ease;
+}
+
 :global .scroller::-webkit-scrollbar {
   width: 9px;
 }
+
 :global .scroller::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: rgba(100,100,100,.2);
@@ -21,6 +31,7 @@ ul :global {
   -webkit-transition: opacity 300ms ease-in-out;
   transition: opacity 300ms ease-in-out;
 }
+
 :global .scroller::-webkit-scrollbar-track {
   background-color: transparent;
 }
