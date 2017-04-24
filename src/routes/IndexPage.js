@@ -1,4 +1,4 @@
-import { Progress, Level, LevelItem, Heading, Title, Group, Input, Button, Message } from 're-bulma';
+import { Group, Input, Button } from 're-bulma';
 import React from 'react';
 import { connect } from 'dva';
 import styles from './IndexPage.less';

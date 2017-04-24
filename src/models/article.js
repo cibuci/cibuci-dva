@@ -4,6 +4,21 @@ export default {
   namespace: 'article',
 
   state: {
+    current: {
+      id: 0,
+      title: '听说你很想成为自由职业者',
+      cover: 'http://placehold.it/700x180',
+      date: {
+        published: '1小时前',
+      },
+      statistics: {
+        stars: 100,
+        reads: 223,
+        like: 23,
+      },
+      summary: '',
+      content: '',
+    },
     list: [
       {
         id: 0,

@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className={styles.container}>
       <ul>
-        <li>
+        <li className={styles.left}>
           <GlobalBoard />
         </li>
         <li style={{ float: 'right', cursor: 'pointer' }}>
