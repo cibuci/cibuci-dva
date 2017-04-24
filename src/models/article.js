@@ -7,7 +7,7 @@ export default {
     list: [
       {
         id: 0,
-        title: 'PMCAFF热榜 第37期：支付产品如何设计账户体系',
+        title: '听说你很想成为自由职业者',
         cover: 'http://placehold.it/700x180',
         date: {
           published: '1小时前',
