@@ -20,7 +20,13 @@ const GlobalBoard = (props, context) => {
     }
   }
   if (router.isActive('/article')) {
-    result = (<Boards.ArticleList />);
+    const info = new UrlPattern('/article(/:id)').match(location.pathname);
+
+    if (info.id) {
+      result = (<Boards.ArticleDetail />);
+    } else {
+      result = (<Boards.ArticleList />);
+    }
   }
   return result;
 };
