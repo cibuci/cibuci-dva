@@ -1,8 +1,9 @@
 import React from 'react';
+import UrlPattern from 'url-pattern';
 import * as Boards from './Board/';
 
 const GlobalBoard = (props, context) => {
-  const { router } = context;
+  const { router, location } = context;
 
   let result = null;
 
@@ -10,7 +11,9 @@ const GlobalBoard = (props, context) => {
     result = (<Boards.Pk />);
   }
   if (router.isActive('/topic')) {
-    if (router.isActive('/topic/0')) {
+    const info = new UrlPattern('/topic(/:id)').match(location.pathname);
+
+    if (info.id) {
       result = (<Boards.TopicDetail />);
     } else {
       result = (<Boards.TopicList />);

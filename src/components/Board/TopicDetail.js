@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Icon } from 'antd';
 import { connect } from 'dva';
 
 const styles = {
@@ -20,7 +20,7 @@ const TopicDetail = (props, context) => {
 
   return (
     <p style={styles.title}>
-      <Button icon="left" onClick={context.router.goBack} />
+      <a onClick={context.router.goBack} ><Icon type="left" />返回 </a>
       {title}
     </p>
   );
