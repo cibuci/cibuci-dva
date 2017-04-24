@@ -5,6 +5,25 @@ export default {
 
   state: {
     type: 'the select',
+    current: {
+      id: 0,
+      author: {
+        avatar: 'https://avatars1.githubusercontent.com/u/7099792?v=3&s=40',
+        displayname: 'Wayne',
+        username: 'wayne',
+      },
+      date: {
+        published: '7小时前',
+        updated: '',
+        created: '',
+      },
+      title: '超职场时代真的会来临吗？超职场时代真的会来临吗？超职场时代真的会来临吗？超职场时代真的会来临吗？超职场时代真的会来临吗？',
+      statistics: {
+        reads: 200,
+        stars: 49,
+        comments: 12,
+      },
+    },
     list: [
       {
         id: 0,
