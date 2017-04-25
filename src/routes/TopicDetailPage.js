@@ -1,8 +1,10 @@
-import { Pagination, Button } from 'antd';
+import { Button } from 'antd';
 import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import styles from './TopicDetailPage.less';
+import TopicContent from '../components/TopicContent';
+import TopicAuthor from '../components/TopicAuthor';
 
 function TopicDetailPage({ topic }) {
   return (
@@ -14,10 +16,10 @@ function TopicDetailPage({ topic }) {
       </div>
       <div className={styles.content}>
         <div className={`${styles.up} scroller`}>
-          123
+          <TopicContent topic={topic} />
         </div>
         <div className={styles.footer}>
-          <Pagination defaultCurrent={2} total={500} />
+          <TopicAuthor topic={topic} />
         </div>
       </div>
     </div>
