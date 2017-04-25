@@ -11,14 +11,14 @@ const badgeStyle = {
 };
 
 const TopicItem = ({ topic }) => {
-  const { id, author, date, title, statistics } = topic;
+  const { id, author, create_at, title, reply_count } = topic;
 
   return (
     <div className={styles.normal}>
 
       <div className={styles.media}>
         <div className={`${styles.left} ${styles.middle}`}>
-          <Avatar avatar={author.avatar} size="large" />
+          <Avatar avatar={author.avatar_url} size="large" />
         </div>
         <div className={styles.body}>
           <div className={styles.heading}>
@@ -26,11 +26,11 @@ const TopicItem = ({ topic }) => {
           </div>
           <div className={styles.meta}>
             <Link to="/topic?params=jh">精华</Link>&nbsp;•&nbsp;<Link to={`/user/${author.username}`}>{author.displayname}</Link>
-            发表于 {date.published}
+            发表于 {create_at}
           </div>
         </div>
         <div className={`${styles.right} ${styles.middle}`}>
-          <Badge count={statistics.comments} className={styles.badge} style={badgeStyle} />
+          <Badge count={reply_count} className={styles.badge} style={badgeStyle} />
         </div>
       </div>
     </div>

@@ -1,28 +1,26 @@
 import React from 'react';
-import UrlPattern from 'url-pattern';
+import pathToRegexp from 'path-to-regexp';
 import * as Boards from './Board/';
 
 const GlobalBoard = (props, context) => {
   const { router, location } = context;
-
   let result = null;
 
   if (router.isActive('/')) {
     result = (<Boards.Pk />);
   }
   if (router.isActive('/topic')) {
-    const info = new UrlPattern('/topic(/:id)').match(location.pathname);
-
-    if (info.id) {
+    const id = pathToRegexp('/topic/:id?').exec(location.pathname)[1];
+    if (id) {
       result = (<Boards.TopicDetail />);
     } else {
       result = (<Boards.TopicList />);
     }
   }
   if (router.isActive('/article')) {
-    const info = new UrlPattern('/article(/:id)').match(location.pathname);
+    const id = pathToRegexp('/article/:id?').exec(location.pathname)[1];
 
-    if (info.id) {
+    if (id) {
       result = (<Boards.ArticleDetail />);
     } else {
       result = (<Boards.ArticleList />);
