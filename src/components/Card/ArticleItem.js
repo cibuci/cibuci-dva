@@ -10,7 +10,7 @@ const ArticleItem = ({ article }) => {
     <div className={styles.wrapper}>
 
       <div className={styles.cover}>
-        <img className="e-scale" src={cover} alt="cover" />
+        <img src={cover} alt="cover" />
       </div>
 
       <div className={styles.body}>

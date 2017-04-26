@@ -25,7 +25,7 @@ const TopicItem = ({ topic }) => {
             <Link to={`/topic/${id}`}>{title}</Link>
           </div>
           <div className={styles.meta}>
-            <Link to="/topic?params=jh">精华</Link>&nbsp;•&nbsp;<Link to={`/user/${author.username}`}>{author.displayname}</Link>
+            <Link to="/topic?params=jh">精华</Link>&nbsp;•&nbsp;<Link to={`/user/${author.username}`}>{author.loginname}</Link>
             发表于 {create_at}
           </div>
         </div>

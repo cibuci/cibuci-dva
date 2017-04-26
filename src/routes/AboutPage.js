@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'dva';
 import styles from './IndexPage.less';
 import Layout from '../components/Layout';
-import { Progress, Level, LevelItem, Heading, Title, Group, Input, Button, Message } from 're-bulma';
-import Comment from '../components/Comment';
 import LogoGather from '../components/LogoGather';
 
 function AboutPage() {

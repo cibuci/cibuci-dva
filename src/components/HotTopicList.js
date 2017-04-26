@@ -8,7 +8,7 @@ const HotTopicList = (props) => {
     <div className={styles.group}>
       <h5 className={styles.title}>{title}</h5>
       <ul>
-        { list.map(item => <li><Link to="/topic/{item.id}">{item.title}</Link></li>) }
+        { list.map(item => <li><Link to={`/topic/${item.id}`}>{item.title}</Link></li>) }
       </ul>
     </div>
   );

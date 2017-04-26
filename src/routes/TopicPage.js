@@ -22,7 +22,7 @@ function TopicPage({ topics, children }) {
           </div>
         </div>
         <div className={styles.content}>
-          <div className={`${styles.up} scroller`}>
+          <div className={`${styles.up}`}>
             <TopicList topics={topics} />
           </div>
           <div className={styles.footer}>

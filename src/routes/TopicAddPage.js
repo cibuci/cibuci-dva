@@ -1,14 +1,10 @@
 import { Pagination, Button } from 'antd';
 import React from 'react';
 import { connect } from 'dva';
-import styles from './TopicPage.less';
-import Layout from '../components/Layout';
-import TopicEditor from '../components/TopicEditor';
 
 function TopicAddPage({ topic }) {
   return (
     <div>
-      <TopicEditor />
     </div>
   );
 }
