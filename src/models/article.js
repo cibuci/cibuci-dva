@@ -1,4 +1,6 @@
 
+import { fetchArticles } from '../services/cibuci';
+
 export default {
 
   namespace: 'article',

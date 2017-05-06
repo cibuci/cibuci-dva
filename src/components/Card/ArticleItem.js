@@ -4,7 +4,7 @@ import styles from './ArticleItem.less';
 
 const ArticleItem = ({ article }) => {
   if (!article) return null;
-  const { id, date, title, statistics, cover } = article;
+  const { id, createdAt, title, summary, cover } = article;
 
   return (
     <div className={styles.wrapper}>
@@ -19,7 +19,7 @@ const ArticleItem = ({ article }) => {
         </div>
         <div className={styles.meta}>
           <Link to="/article?params=jh">精华</Link>&nbsp;•&nbsp;
-          发表于 {date.published}
+          发表于 {createdAt}
         </div>
       </div>
     </div>
