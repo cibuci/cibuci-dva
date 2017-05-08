@@ -1,12 +1,27 @@
-import { Pagination, Button } from 'antd';
 import React from 'react';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
-import styles from './TopicDetailPage.less';
+import ArticleContent from '../components/ArticleContent';
 
-function ArticleDetailPage({ detail }) {
+const styles = {
+  wrapper: {
+    overflow: 'auto',
+    height: '100%',
+  },
+  container: {
+    maxWidth: 750,
+    margin: '0 auto',
+  },
+};
+
+function ArticleDetailPage({ article }) {
+  if (!article) return null;
+
   return (
-    <p>{detail.title}</p>
+    <div style={styles.wrapper}>
+      <div style={styles.container}>
+        <ArticleContent article={article} />
+      </div>
+    </div>
   );
 }
 
@@ -15,7 +30,7 @@ ArticleDetailPage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    detail: state.article.current,
+    article: state.article.current,
   };
 }
 

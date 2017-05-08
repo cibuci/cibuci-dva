@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'dva/router';
 import styles from './NavMenu.less';
-import logo from '../assets/logo.png';
 
 const NavMenu = () => {
   return (
     <div>
       <div className={styles.logo}>
         <Link to="/">
-          <img role="presentation" alt="logo" className={styles.logo} src={logo} />
+          <img role="presentation" alt="logo" className={styles.logo} src="http://cdn-qn0.cibuci.com/static/community/logo.png" />
         </Link>
       </div>
       <ul className={styles.list}>

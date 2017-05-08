@@ -1,11 +1,26 @@
-import { fetcher, config } from '../utils/loopback/';
-//
-// // set base url for calling cibuci api.
-config.set('baseUrl', 'https://api.cibuci.com/api');
-config.set('access_token', 'OZ4g3s88rp4HBcFDNuCcnUC6nIllX6nrCSpWkBjrdQmtiJBq71YEEU7SzUZP6VcT');
+import loopbackRestClient from 'aor-loopback';
 
-export function fetchArticles() {
-  return fetcher({
-    endpoint: 'articles',
-  });
+const restClient = loopbackRestClient('https://api.cibuci.com/api');
+
+export function fetchArticles(type, page) {
+  const params = {
+    pagination: {
+      page,
+      perPage: 3,
+    },
+    sort: {
+      field: 'createdAt',
+      order: 'DESC',
+    },
+    filter: {
+    },
+  };
+  return restClient('GET_LIST', 'articles', params);
+}
+
+export function fetchArticle(id) {
+  const params = {
+    id,
+  };
+  return restClient('GET_ONE', 'articles', params);
 }

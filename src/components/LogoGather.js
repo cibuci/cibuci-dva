@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
 import ticker from 'rc-tween-one/lib/ticker';
 import styles from './LogoGather.less';
-import logo from '../assets/logo.svg';
 
 class LogoGather extends Component {
   static propTypes = {
@@ -15,7 +14,7 @@ class LogoGather extends Component {
   };
 
   static defaultProps = {
-    image: logo,
+    image: 'http://cdn-qn0.cibuci.com/static/community/logo.svg',
     className: 'logo-gather-demo',
     w: 300,
     h: 300,

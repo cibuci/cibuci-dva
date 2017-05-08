@@ -12,14 +12,14 @@ function RouterConfig({ history }) {
   return (
     <Router history={history}>
       <Route path="/" component={IndexPage} />
-      <Route path="topic" component={TopicPage}>
+      <Route path="/topic" component={TopicPage}>
         <Route path="add" component={TopicAddPage} />
         <Route path=":id" component={TopicDetailPage} />
       </Route>
-      <Route path="article" component={ArticlePage}>
+      <Route path="/article" component={ArticlePage}>
         <Route path=":id" component={ArticleDetailPage} />
       </Route>
-      <Route path="about" component={AboutPage} />
+      <Route path="/about" component={AboutPage} />
     </Router>
   );
 }

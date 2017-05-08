@@ -1,5 +1,5 @@
 import pathToRegexp from 'path-to-regexp';
-import { fetchArticles } from '../../services/cibuci';
+import { fetchArticles, fetchArticle } from '../../services/cibuci';
 
 export default {
 
@@ -30,15 +30,15 @@ export default {
       });
     },
 
-    // item({ dispatch, history }) {
-    //   return history.listen(({ pathname }) => {
-    //     const match = pathToRegexp('/topic/:itemId').exec(pathname);
-    //     if (match) {
-    //       const id = match[1];
-    //       dispatch({ type: 'fetchItem', payload: { id } });
-    //     }
-    //   });
-    // },
+    item({ dispatch, history }) {
+      return history.listen(({ pathname }) => {
+        const match = pathToRegexp('/article/:itemId').exec(pathname);
+        if (match) {
+          const id = match[1];
+          dispatch({ type: 'fetchItem', payload: { id } });
+        }
+      });
+    },
   },
 
   effects: {
@@ -52,11 +52,11 @@ export default {
       yield put({ type: 'saveList', payload: list.data });
     },
 
-    // * fetchItem({ payload }, { put, call }) {
-    //   const { id } = payload;
-    //   const item = yield call(fetchTopic, id);
-    //   yield put({ type: 'saveItem', payload: item.data.data });
-    // },
+    * fetchItem({ payload }, { put, call }) {
+      const { id } = payload;
+      const item = yield call(fetchArticle, id);
+      yield put({ type: 'saveItem', payload: item.data });
+    },
   },
 
   reducers: {
