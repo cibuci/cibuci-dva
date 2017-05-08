@@ -3,6 +3,7 @@ import Block from 'react-blocks';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import SimpleLayout from '../components/Layout/Simple';
+import SignupForm from '../components/Form/SignupForm';
 import styles from './SignPage.less';
 
 function SignupPage() {
@@ -15,6 +16,7 @@ function SignupPage() {
               <img role="presentation" alt="logo" className={styles.logo} src="http://cdn-qn0.cibuci.com/static/community/logo.png" />
             </Link>
           </div>
+          <SignupForm />
         </div>
       </Block>
     </SimpleLayout>

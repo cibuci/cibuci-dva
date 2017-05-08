@@ -10,7 +10,7 @@ export function fetchArticles(type, page) {
   const params = {
     pagination: {
       page,
-      perPage: 3,
+      perPage: 20,
     },
     sort: {
       field: 'createdAt',

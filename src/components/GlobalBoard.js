@@ -5,7 +5,8 @@ import * as Boards from './Board/';
 const GlobalBoard = (props, context) => {
   const { router, location } = context;
   let result = null;
-
+  console.log(location.pathname);
+  console.log(location);
   if (router.isActive('/')) {
     result = (<Boards.Pk />);
   }

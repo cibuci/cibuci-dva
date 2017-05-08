@@ -43,6 +43,10 @@ export default {
       yield put(routerRedux.push('/'));
     },
 
+    * register({ payload }, { call, put }) { // eslint-disable-line
+      const { params } = payload;
+    },
+
     * logout({ payload }, { call, put }) {  // eslint-disable-line
       yield put({ type: 'save', payload: { user: null, authorized: false } });
       storage.remove('lbtoken');

@@ -3,7 +3,7 @@ import Block from 'react-blocks';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import SimpleLayout from '../components/Layout/Simple';
-import NormalSigninForm from '../components/Form/NormalSigninForm';
+import SigninForm from '../components/Form/SigninForm';
 import styles from './SignPage.less';
 
 function SigninPage() {
@@ -16,7 +16,7 @@ function SigninPage() {
               <img role="presentation" alt="logo" className={styles.logo} src="http://cdn-qn0.cibuci.com/static/community/logo.png" />
             </Link>
           </div>
-          <NormalSigninForm />
+          <SigninForm />
         </div>
       </Block>
     </SimpleLayout>
