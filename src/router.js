@@ -7,6 +7,8 @@ import TopicAddPage from './routes/TopicAddPage';
 import ArticlePage from './routes/ArticlePage';
 import ArticleDetailPage from './routes/ArticleDetailPage';
 import AboutPage from './routes/AboutPage';
+import SigninPage from './routes/SigninPage';
+import SignupPage from './routes/SignupPage';
 
 function RouterConfig({ history }) {
   return (
@@ -20,6 +22,8 @@ function RouterConfig({ history }) {
         <Route path=":id" component={ArticleDetailPage} />
       </Route>
       <Route path="/about" component={AboutPage} />
+      <Route path="/signin" component={SigninPage} />
+      <Route path="/signup" component={SignupPage} />
     </Router>
   );
 }

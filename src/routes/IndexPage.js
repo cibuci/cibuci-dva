@@ -10,7 +10,7 @@ function IndexPage({ comments }) {
     <Layout>
       <div className={styles.container}>
         <div className={styles.sidebar}>
-          <a href="#">lsdfsdf</a>
+          111
         </div>
         <div className={styles.content}>
           <div>
@@ -20,7 +20,7 @@ function IndexPage({ comments }) {
             <PkCommentList comments={comments} />
           </div>
           <div className={styles.down}>
-            <a href="#">lsdfsdf</a>
+            222
           </div>
         </div>
       </div>

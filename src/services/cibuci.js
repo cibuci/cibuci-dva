@@ -2,6 +2,10 @@ import loopbackRestClient from 'aor-loopback';
 
 const restClient = loopbackRestClient('https://api.cibuci.com/api');
 
+export function fetchUser(id) {
+  return restClient('GET_ONE', 'users', { id });
+}
+
 export function fetchArticles(type, page) {
   const params = {
     pagination: {
@@ -19,8 +23,5 @@ export function fetchArticles(type, page) {
 }
 
 export function fetchArticle(id) {
-  const params = {
-    id,
-  };
-  return restClient('GET_ONE', 'articles', params);
+  return restClient('GET_ONE', 'articles', { id });
 }

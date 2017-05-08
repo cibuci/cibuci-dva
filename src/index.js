@@ -7,7 +7,7 @@ const ERROR_MSG_DURATION = 3; // 3 秒
 
 // 1. Initialize
 const app = dva({
-  // history: browserHistory,
+  history: browserHistory,
   onError(e) {
     message.error(e.message, ERROR_MSG_DURATION);
   },
@@ -17,6 +17,7 @@ const app = dva({
 // app.use({});
 
 // 3. Model
+app.model(require('./models/app'));
 app.model(require('./models/comment'));
 app.model(require('./models/topic/'));
 app.model(require('./models/article/'));
