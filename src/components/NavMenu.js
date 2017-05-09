@@ -13,10 +13,10 @@ const NavMenu = () => {
       <ul className={styles.list}>
         <li className={styles.item}><Link to="/" activeClassName={styles.active} >P·K</Link></li>
         <li className={styles.item}><Link to="/topic" activeClassName={styles.active} >话题</Link></li>
-        <li className={styles.item}><Link to="/article" activeClassName={styles.active} >文章</Link></li>
+        <li className={styles.item}><Link to="/article" activeClassName={styles.active} >精选</Link></li>
       </ul>
       <div className={styles.footer}>
-        <Link to="/about" >关于</Link> · <Link to="/feedback" >反馈</Link>
+        <Link to="/about" >关于我们</Link>
       </div>
     </div>
   );

@@ -1,7 +1,11 @@
 import dva from 'dva';
 import { browserHistory } from 'dva/router';
+import createLoading from 'dva-loading';
 import { message } from 'antd';
+import moment from 'moment';
 import './index.css';
+
+moment.locale('zh-cn');
 
 const ERROR_MSG_DURATION = 3; // 3 秒
 
@@ -12,6 +16,7 @@ const app = dva({
     message.error(e.message, ERROR_MSG_DURATION);
   },
 });
+app.use(createLoading());
 
 // 2. Plugins
 // app.use({});

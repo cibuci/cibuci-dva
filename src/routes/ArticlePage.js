@@ -1,10 +1,11 @@
 import React from 'react';
-import { connect } from 'dva';
 import Layout from '../components/Layout';
 import ArticleList from '../components/ArticleList';
 import styles from './ArticlePage.less';
 
-function ArticlePage({ articles, children }) {
+function ArticlePage(props) {
+  const { children } = props;
+
   let content = null;
 
   if (children) {
@@ -13,11 +14,12 @@ function ArticlePage({ articles, children }) {
     content = (
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          <ArticleList list={articles} />
+          <ArticleList />
         </div>
       </div>
     );
   }
+
   return (
     <Layout>
       {content}
@@ -28,11 +30,4 @@ function ArticlePage({ articles, children }) {
 ArticlePage.propTypes = {
 };
 
-function mapStateToProps(state, ownProps) {
-  return {
-    articles: state.article.list,
-    children: ownProps.children,
-  };
-}
-
-export default connect(mapStateToProps)(ArticlePage);
+export default ArticlePage;

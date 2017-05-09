@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'dva/router';
+import moment from 'moment';
 import styles from './ArticleItem.less';
 
 const ArticleItem = ({ article }) => {
@@ -19,7 +20,7 @@ const ArticleItem = ({ article }) => {
         </div>
         <div className={styles.meta}>
           <Link to="/article?params=jh">精华</Link>&nbsp;•&nbsp;
-          发表于 {createdAt}
+          发表于 {moment(createdAt).fromNow()}
         </div>
       </div>
     </div>

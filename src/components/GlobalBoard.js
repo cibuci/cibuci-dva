@@ -1,41 +1,41 @@
 import React from 'react';
-import pathToRegexp from 'path-to-regexp';
+import { connect } from 'dva';
 import * as Boards from './Board/';
 
-const GlobalBoard = (props, context) => {
-  const { router, location } = context;
-  let result = null;
-  console.log(location.pathname);
-  console.log(location);
-  if (router.isActive('/')) {
-    result = (<Boards.Pk />);
-  }
-  if (router.isActive('/topic')) {
-    const id = pathToRegexp('/topic/:id?').exec(location.pathname)[1];
-    if (id) {
-      result = (<Boards.TopicDetail />);
-    } else {
-      result = (<Boards.TopicList />);
-    }
-  }
-  if (router.isActive('/article')) {
-    const id = pathToRegexp('/article/:id?').exec(location.pathname)[1];
+const GlobalBoard = (props) => {
+  const { board } = props;
 
-    if (id) {
-      result = (<Boards.ArticleDetail />);
-    } else {
+  let result = null;
+  switch (board) {
+    case 'PK_HOME':
+      result = (<Boards.Pk />);
+      break;
+    case 'TOPIC_HOME':
+      result = (<Boards.TopicList />);
+      break;
+    case 'TOPIC_ONE':
+      result = (<Boards.TopicDetail />);
+      break;
+    case 'ARTICLE_HOME':
       result = (<Boards.ArticleList />);
-    }
+      break;
+    case 'ARTICLE_ONE':
+      result = (<Boards.ArticleDetail />);
+      break;
+    default:
+      break;
   }
+
   return result;
 };
 
 GlobalBoard.propTypes = {
 };
 
-GlobalBoard.contextTypes = {
-  location: React.PropTypes.object,
-  router: React.PropTypes.object,
-};
+function mapStateToProps(state) {
+  return {
+    board: state.app.board,
+  };
+}
 
-export default GlobalBoard;
+export default connect(mapStateToProps)(GlobalBoard);

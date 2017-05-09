@@ -8,6 +8,9 @@ export default {
   state: {
     current: null,
     list: [],
+    total: 0,
+    page: 1,
+    perPage: 20,
   },
 
   subscriptions: {
@@ -17,9 +20,9 @@ export default {
     list({ dispatch, history }) {
       let page = null;
 
-      function fetchList(type, _page = 1) {
+      function fetchList(_page = 1) {
         page = _page;
-        dispatch({ type: 'fetchList', payload: { type, page } });
+        dispatch({ type: 'fetchList', payload: { page } });
       }
 
       return history.listen(({ pathname }) => {
@@ -42,14 +45,20 @@ export default {
   },
 
   effects: {
-    *fetch({ payload }, { call, put }) {  // eslint-disable-line
+    * fetch({ payload }, { call, put }) {  // eslint-disable-line
       yield put({ type: 'save' });
     },
 
     * fetchList({ payload }, { put, call }) {
-      // const { type, page } = payload;
-      const list = yield call(fetchArticles);
-      yield put({ type: 'saveList', payload: list.data });
+      const { page } = payload;
+      const list = yield call(fetchArticles, page);
+      yield put({ type: 'saveList', payload: { ...list, page } });
+    },
+
+    * appendList({ payload }, { put, call }) {
+      const { page } = payload;
+      const list = yield call(fetchArticles, page);
+      yield put({ type: 'append', payload: { ...list, page } });
     },
 
     * fetchItem({ payload }, { put, call }) {
@@ -64,8 +73,15 @@ export default {
       return { ...state, ...action.payload };
     },
 
-    saveList(state, { payload: items }) {
-      return { ...state, list: items };
+    saveList(state, { payload }) {
+      const { data, total, page } = payload;
+      return { ...state, list: data, total, page };
+    },
+
+    append(state, { payload }) {
+      const { data, total, page } = payload;
+      const list = state.list.concat(data);
+      return { ...state, list, total, page };
     },
 
     saveItem(state, { payload: item }) {

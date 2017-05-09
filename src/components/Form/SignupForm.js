@@ -62,17 +62,6 @@ class SignupForm extends React.Component {
           )}
         </FormItem>
         <FormItem>
-          {getFieldDecorator('re-password', {
-            rules: [{ required: true, message: '再次输入密码!' }],
-          })(
-            <Input
-              prefix={<Icon type="lock" style={{ fontSize: 13 }} />}
-              type="password"
-              placeholder="重复密码"
-            />,
-          )}
-        </FormItem>
-        <FormItem>
           <Button type="primary" htmlType="submit" style={styles.button}>
             注册
           </Button>

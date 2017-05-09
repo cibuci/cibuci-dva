@@ -30,3 +30,20 @@ export function login(params) {
     .then(data => data)
     .catch(err => ({ err }));
 }
+
+export function register(params) {
+  const url = 'https://api.cibuci.com/api/users';
+  const { username, email, password } = params;
+  const options = {
+    method: 'POST',
+    body: JSON.stringify({ username, email, password }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  return fetch(url, options)
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(data => data)
+    .catch(err => ({ err }));
+}

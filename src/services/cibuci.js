@@ -6,7 +6,18 @@ export function fetchUser(id) {
   return restClient('GET_ONE', 'users', { id });
 }
 
-export function fetchArticles(type, page) {
+export function fetchPk() {
+  const params = {
+    pagination: {
+      page: 1,
+      perPage: 1, // limit.
+    },
+  };
+
+  return restClient('GET_LIST', 'argues', params);
+}
+
+export function fetchTopics(page) {
   const params = {
     pagination: {
       page,
@@ -19,6 +30,28 @@ export function fetchArticles(type, page) {
     filter: {
     },
   };
+
+  return restClient('GET_LIST', 'topics', params);
+}
+
+export function fetchTopic(id) {
+  return restClient('GET_ONE', 'topics', { id });
+}
+
+export function fetchArticles(page) {
+  const params = {
+    pagination: {
+      page,
+      perPage: 3,
+    },
+    sort: {
+      field: 'createdAt',
+      order: 'DESC',
+    },
+    filter: {
+    },
+  };
+
   return restClient('GET_LIST', 'articles', params);
 }
 
