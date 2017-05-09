@@ -1,11 +1,16 @@
 import React from 'react';
+import { Spin } from 'antd';
+import { connect } from 'dva';
 import { TopicItem } from './Card/';
 import Spacer from './Spacer';
 
-const TopicList = ({ topics }) => {
+const TopicList = (props) => {
+  const { loading, list } = props;
   return (
     <Spacer>
-      { topics.map(topic => <TopicItem key={topic.id} topic={topic} />) }
+      <Spin spinning={loading}>
+        { list.map(item => <TopicItem key={item.id} topic={item} />) }
+      </Spin>
     </Spacer>
   );
 };
@@ -13,4 +18,11 @@ const TopicList = ({ topics }) => {
 TopicList.propTypes = {
 };
 
-export default TopicList;
+function mapStateToProps(state) {
+  return {
+    loading: state.loading.models.topic,
+    list: state.topic.list,
+  };
+}
+
+export default connect(mapStateToProps)(TopicList);

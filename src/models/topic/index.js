@@ -1,14 +1,17 @@
 import pathToRegexp from 'path-to-regexp';
-import { fetchTopics, fetchTopic } from '../../services/cnode';
+import { fetchTopics, fetchTopic, fetchHotTopics } from '../../services/cibuci';
 
 export default {
 
   namespace: 'topic',
 
   state: {
-    type: 'the select',
+    type: 'all',
     current: null,
     list: [],
+    total: 0,
+    page: 1,
+    hot: [],
   },
 
   subscriptions: {
@@ -27,6 +30,7 @@ export default {
         const match = pathToRegexp('/topic').exec(pathname);
         if (match) {
           fetchList();
+          dispatch({ type: 'fetchHot' });
         }
       });
     },
@@ -48,15 +52,20 @@ export default {
     },
 
     * fetchList({ payload }, { put, call }) {
-      // const { type, page } = payload;
-      const list = yield call(fetchTopics);
-      yield put({ type: 'saveList', payload: list.data.data });
+      const { type, page } = payload;
+      const list = yield call(fetchTopics, type, page);
+      yield put({ type: 'saveList', payload: { ...list, page } });
+    },
+
+    * fetchHot({ payload }, { put, call }) {  // eslint-disable-line
+      const list = yield call(fetchHotTopics);
+      yield put({ type: 'saveHot', payload: list });
     },
 
     * fetchItem({ payload }, { put, call }) {
       const { id } = payload;
       const item = yield call(fetchTopic, id);
-      yield put({ type: 'saveItem', payload: item.data.data });
+      yield put({ type: 'saveItem', payload: item.data });
     },
   },
 
@@ -65,8 +74,14 @@ export default {
       return { ...state, ...action.payload };
     },
 
-    saveList(state, { payload: items }) {
-      return { ...state, list: items };
+    saveHot(state, { payload }) {
+      const { data } = payload;
+      return { ...state, hot: data };
+    },
+
+    saveList(state, { payload }) {
+      const { data, total, page } = payload;
+      return { ...state, list: data, total, page };
     },
 
     saveItem(state, { payload: item }) {

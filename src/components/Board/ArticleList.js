@@ -1,20 +1,28 @@
 import React from 'react';
-import { Menu } from 'antd';
 import { connect } from 'dva';
+import { Tag } from 'antd';
 
-const ArticleList = ({ articles }) => {
-  if (!articles) return null;
+const styles = {
+  saying: {
+    display: 'inline-block',
+  },
+};
+
+const ArticleList = (props) => {
+  const { saying } = props;
 
   return (
-    <Menu
-      mode="horizontal"
-      defaultSelectedKeys={['2']}
-      style={{ lineHeight: '3.4rem' }}
-    >
-      <Menu.Item key="1">所有</Menu.Item>
-      <Menu.Item key="2">精华</Menu.Item>
-      <Menu.Item key="3">问答</Menu.Item>
-    </Menu>
+    <div>
+      { saying ? (
+        <div>
+          <Tag color="blue">装逼小句子</Tag>
+          <div style={styles.saying}>
+            <p>{saying}</p>
+          </div>
+        </div>
+      ) : null }
+
+    </div>
   );
 };
 
@@ -23,7 +31,7 @@ ArticleList.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    articles: state.article.list,
+    saying: state.app.saying,
   };
 }
 

@@ -20,6 +20,13 @@ export default {
     user: null,
     authorized: false,
     board: BoardTypes.PK_HOME,
+    sayings: [
+      `What would you do if you weren't afraid?`,
+      `苟活一生 or 偏执一世 ?`,
+      `放下你的不开心.....`,
+      `享受，工作`,
+    ],
+    saying: '',
   },
 
   subscriptions: {
@@ -30,6 +37,12 @@ export default {
         const user = storage.load('lbuser');
         dispatch({ type: 'fetch', payload: { user } });
       }
+
+      // random saying.
+      dispatch({ type: 'randomSaying' });
+      setInterval(() => {
+        dispatch({ type: 'randomSaying' });
+      }, 5000);
     },
 
     board({ dispatch, history }) {
@@ -108,6 +121,11 @@ export default {
     },
     saveBoard(state, { payload: { board } }) {
       return { ...state, board };
+    },
+    randomSaying(state) {
+      const index = parseInt(Math.random() * state.sayings.length, 10);
+      const saying = state.sayings[index];
+      return { ...state, saying };
     },
   },
 

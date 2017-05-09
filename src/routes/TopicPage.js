@@ -7,7 +7,13 @@ import Layout from '../components/Layout';
 import TopicList from '../components/TopicList';
 import HotTopicList from '../components/HotTopicList';
 
-function TopicPage({ topics, children }) {
+function TopicPage(props) {
+  const { children, page, total, hot } = props;
+
+  function pageChange() {
+    props.dispatch({ type: 'topic/fetchList' });
+  }
+
   let content = null;
   // /topic/0 or /topic/new
   if (children) {
@@ -18,15 +24,20 @@ function TopicPage({ topics, children }) {
         <div className={styles.sidebar}>
           <div className={styles.sidebarlist}>
             <Link to="/topic/add"><Button type="primary" size="large">发表新话题</Button></Link>
-            <HotTopicList title="热门话题" list={topics} />
+            <HotTopicList title="热门话题" list={hot} />
           </div>
         </div>
         <div className={styles.content}>
           <div className={`${styles.up}`}>
-            <TopicList topics={topics} />
+            <TopicList />
           </div>
           <div className={styles.footer}>
-            <Pagination defaultCurrent={2} total={500} />
+            <Pagination
+              onChange={pageChange}
+              defaultPageSize={20}
+              defaultCurrent={page}
+              total={total}
+            />
           </div>
         </div>
       </div>
@@ -45,8 +56,10 @@ TopicPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    topics: state.topic.list,
     children: ownProps.children,
+    page: state.topic.page,
+    total: state.topic.total,
+    hot: state.topic.hot,
   };
 }
 

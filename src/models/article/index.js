@@ -10,7 +10,6 @@ export default {
     list: [],
     total: 0,
     page: 1,
-    perPage: 20,
   },
 
   subscriptions: {

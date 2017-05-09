@@ -4,6 +4,7 @@ import styles from './HotTopicList.less';
 
 const HotTopicList = (props) => {
   const { title, list } = props;
+
   return (
     <div className={styles.group}>
       <h5 className={styles.title}>{title}</h5>
