@@ -10,6 +10,7 @@ const BoardTypes = {
   ARTICLE_HOME: 'ARTICLE_HOME',
   TOPIC_ONE: 'TOPIC_ONE',
   ARTICLE_ONE: 'ARTICLE_ONE',
+  TOPIC_ADD: 'TOPIC_ADD',
 };
 
 export default {
@@ -58,7 +59,11 @@ export default {
 
           if (resource === 'topic') {
             if (item) {
-              dispatch({ type: 'board', payload: { board: BoardTypes.TOPIC_ONE } });
+              if (item === 'add') {
+                dispatch({ type: 'board', payload: { board: BoardTypes.TOPIC_ADD } });
+              } else {
+                dispatch({ type: 'board', payload: { board: BoardTypes.TOPIC_ONE } });
+              }
             } else {
               dispatch({ type: 'board', payload: { board: BoardTypes.TOPIC_HOME } });
             }

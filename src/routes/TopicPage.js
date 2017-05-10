@@ -61,7 +61,7 @@ TopicPage.propTypes = {
 };
 
 TopicPage.contextTypes = {
-  router: PropTypes.func.isRequired,
+  router: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {

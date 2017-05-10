@@ -75,6 +75,10 @@ export function fetchTopic(id) {
   return restClient('GET_ONE', 'topics', { id });
 }
 
+export function addTopic(item) {
+  return restClient('CREATE', 'topics', { data: item });
+}
+
 export function fetchArticles(page) {
   const params = {
     pagination: {

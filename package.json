@@ -4,7 +4,6 @@
     "start": "roadhog server",
     "build": "roadhog build",
     "lint": "eslint --ext .js src test",
-    "precommit": "npm run lint"
   },
   "engines": {
     "install-node": "6.9.2"
@@ -23,7 +22,7 @@
     "react": "^15.4.0",
     "react-blocks": "^1.1.4",
     "react-dom": "^15.4.0",
-    "react-lz-editor": "^0.10.13"
+    "react-quill": "^1.0.0-rc.2"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

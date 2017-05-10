@@ -22,6 +22,9 @@ const GlobalBoard = (props) => {
     case 'ARTICLE_ONE':
       result = (<Boards.ArticleDetail />);
       break;
+    case 'TOPIC_ADD':
+      result = (<Boards.NormalTitle title="发表新话题" />);
+      break;
     default:
       break;
   }

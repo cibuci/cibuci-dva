@@ -3,3 +3,4 @@ export { default as TopicList } from './TopicList';
 export { default as TopicDetail } from './TopicDetail';
 export { default as ArticleList } from './ArticleList';
 export { default as ArticleDetail } from './ArticleDetail';
+export { default as NormalTitle } from './NormalTitle';
