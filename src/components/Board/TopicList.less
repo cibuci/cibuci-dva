@@ -1,0 +1,28 @@
+
+.tabs {
+  li {
+    margin: 0 .4rem;
+
+    a {
+      color: #888;
+      padding: .3rem .8rem;
+      border-radius: 4px;
+      text-decoration: none;
+
+      &:hover {
+        color: #222;
+      }
+    }
+  }
+
+  .active :global {
+    a {
+      color: white;
+      background-color: #AA6708;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}

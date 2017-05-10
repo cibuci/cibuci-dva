@@ -1,5 +1,6 @@
 import { Pagination, Button } from 'antd';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import styles from './TopicPage.less';
@@ -7,11 +8,13 @@ import Layout from '../components/Layout';
 import TopicList from '../components/TopicList';
 import HotTopicList from '../components/HotTopicList';
 
-function TopicPage(props) {
-  const { children, page, total, hot } = props;
+function TopicPage(props, context) {
+  const { children, page, total, hot, currentTabId } = props;
+  const { router } = context;
 
-  function pageChange() {
-    props.dispatch({ type: 'topic/fetchList' });
+  function pageChange(nextPage) {
+    const path = `/topic?tab=${currentTabId}&page=${nextPage}`;
+    router.push(path);
   }
 
   let content = null;
@@ -35,7 +38,8 @@ function TopicPage(props) {
             <Pagination
               onChange={pageChange}
               defaultPageSize={20}
-              defaultCurrent={page}
+              defaultCurrent={1}
+              current={page}
               total={total}
             />
           </div>
@@ -54,12 +58,17 @@ function TopicPage(props) {
 TopicPage.propTypes = {
 };
 
+TopicPage.contextTypes = {
+  router: PropTypes.func.isRequired,
+};
+
 function mapStateToProps(state, ownProps) {
   return {
     children: ownProps.children,
     page: state.topic.page,
     total: state.topic.total,
     hot: state.topic.hot,
+    currentTabId: state.topic.currentTabId,
   };
 }
 

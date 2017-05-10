@@ -17,7 +17,7 @@ export function fetchPk() {
   return restClient('GET_LIST', 'argues', params);
 }
 
-export function fetchTopics(page) {
+export function fetchTopics(tab, page) {
   const params = {
     pagination: {
       page,
@@ -27,9 +27,13 @@ export function fetchTopics(page) {
       field: 'createdAt',
       order: 'DESC',
     },
-    filter: {
-    },
   };
+
+  if (tab !== 'all') {
+    params.filter = {
+      tab,
+    };
+  }
 
   return restClient('GET_LIST', 'topics', params);
 }

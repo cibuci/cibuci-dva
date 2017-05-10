@@ -12,6 +12,14 @@ export default {
     total: 0,
     page: 1,
     hot: [],
+    currentTabId: 'all',
+    tabs: [
+      { id: 'all', name: '全部' },
+      { id: 'good', name: '精华' },
+      { id: 'share', name: '分享' },
+      { id: 'ask', name: '问答' },
+      { id: 'job', name: '招聘' },
+    ],
   },
 
   subscriptions: {
@@ -19,17 +27,13 @@ export default {
     },
 
     list({ dispatch, history }) {
-      let page = null;
+      return history.listen(({ pathname, query }) => {
+        const tab = query.tab || 'all';
+        const page = parseInt(query.page, 10) || 1;
 
-      function fetchList(type, _page = 1) {
-        page = _page;
-        dispatch({ type: 'fetchList', payload: { type, page } });
-      }
-
-      return history.listen(({ pathname }) => {
         const match = pathToRegexp('/topic').exec(pathname);
         if (match) {
-          fetchList();
+          dispatch({ type: 'fetchList', payload: { tab, page } });
           dispatch({ type: 'fetchHot' });
         }
       });
@@ -52,9 +56,9 @@ export default {
     },
 
     * fetchList({ payload }, { put, call }) {
-      const { type, page } = payload;
-      const list = yield call(fetchTopics, type, page);
-      yield put({ type: 'saveList', payload: { ...list, page } });
+      const { tab, page } = payload;
+      const list = yield call(fetchTopics, tab, page);
+      yield put({ type: 'saveList', payload: { ...list, tab, page } });
     },
 
     * fetchHot({ payload }, { put, call }) {  // eslint-disable-line
@@ -80,8 +84,8 @@ export default {
     },
 
     saveList(state, { payload }) {
-      const { data, total, page } = payload;
-      return { ...state, list: data, total, page };
+      const { data, total, tab, page } = payload;
+      return { ...state, list: data, total, currentTabId: tab, page };
     },
 
     saveItem(state, { payload: item }) {

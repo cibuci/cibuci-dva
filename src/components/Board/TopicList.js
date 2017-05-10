@@ -1,20 +1,26 @@
 import React from 'react';
-import { Menu } from 'antd';
 import { connect } from 'dva';
+import { Link } from 'dva/router';
 
-const TopicList = ({ topics }) => {
-  if (!topics) return null;
+import styles from './TopicList.less';
+
+const TopicList = (props) => {
+  const { currentTabId, tabs } = props;
+
+  function generateLink(id) {
+    return `/topic?tab=${id}&page=1`;
+  }
 
   return (
-    <Menu
-      mode="horizontal"
-      defaultSelectedKeys={['2']}
-      style={{ lineHeight: '3.4rem' }}
-    >
-      <Menu.Item key="{topic.type}">全部</Menu.Item>
-      <Menu.Item key="2">精华</Menu.Item>
-      <Menu.Item key="3">问答</Menu.Item>
-    </Menu>
+    <div>
+      <ul className={styles.tabs}>
+        { tabs.map(tab => (
+          <li key={tab.id} className={tab.id === currentTabId ? styles.active : ''}>
+            <Link to={generateLink(tab.id)}>{tab.name}</Link>
+          </li>
+        )) }
+      </ul>
+    </div>
   );
 };
 
@@ -23,7 +29,8 @@ TopicList.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    topics: state.topic.list,
+    currentTabId: state.topic.currentTabId,
+    tabs: state.topic.tabs,
   };
 }
 
