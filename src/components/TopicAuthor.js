@@ -7,15 +7,17 @@ import Spacer from './Spacer';
 const TopicAuthor = ({ topic }) => {
   if (!topic) return null;
 
-  const { id, author, date, title, statistics } = topic;
+  const { id } = topic;
 
   return (
-    <Block layout horizontal centered className={styles.wrapper}>
-      <Block flex>
-        <Avatar avatar={author.avatar_url} size="large" />
+    <Spacer onlylr>
+      <Block layout horizontal centered className={styles.wrapper}>
+        <Block flex>
+          <Avatar size="large" />
+        </Block>
+        <Block>123</Block>
       </Block>
-      <Block>123</Block>
-    </Block>
+    </Spacer>
   );
 };
 

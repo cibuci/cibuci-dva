@@ -4,11 +4,14 @@ import { connect } from 'dva';
 
 const styles = {
   title: {
-    fontSize: '1.2rem',
+    fontSize: '1rem',
     lineHeight: '3.5rem',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
+  },
+  back: {
+    marginRight: '1.65rem',
   },
 };
 
@@ -20,7 +23,7 @@ const TopicDetail = (props, context) => {
 
   return (
     <p style={styles.title}>
-      <a onClick={context.router.goBack} ><Icon type="left" />返回 </a>
+      <a style={styles.back} onClick={context.router.goBack} ><Icon type="left" />返回</a>
       {title}
     </p>
   );
