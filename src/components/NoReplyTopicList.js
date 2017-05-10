@@ -3,10 +3,10 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import styles from './HotTopicList.less';
 
-class HotTopicList extends React.Component {
+class NoReplyTopicList extends React.Component {
 
   componentDidMount() {
-    this.props.dispatch({ type: 'topic/fetchHot' });
+    this.props.dispatch({ type: 'topic/fetchNoReply' });
   }
 
   render() {
@@ -14,7 +14,7 @@ class HotTopicList extends React.Component {
 
     return (
       <div className={styles.group}>
-        <h5 className={styles.title}>热门话题</h5>
+        <h5 className={styles.title}>无人回复的话题</h5>
         <ul>
           { list.map(item => <li key={item.id}><Link to={`/topic/${item.id}`}>{item.title}</Link></li>) }
         </ul>
@@ -23,13 +23,13 @@ class HotTopicList extends React.Component {
   }
 }
 
-HotTopicList.propTypes = {
+NoReplyTopicList.propTypes = {
 };
 
 function mapStateToProps(state) {
   return {
-    list: state.topic.hot,
+    list: state.topic.noreply,
   };
 }
 
-export default connect(mapStateToProps)(HotTopicList);
+export default connect(mapStateToProps)(NoReplyTopicList);

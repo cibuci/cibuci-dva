@@ -7,9 +7,10 @@ import styles from './TopicPage.less';
 import Layout from '../components/Layout';
 import TopicList from '../components/TopicList';
 import HotTopicList from '../components/HotTopicList';
+import NoReplyTopicList from '../components/NoReplyTopicList';
 
 function TopicPage(props, context) {
-  const { children, page, total, hot, currentTabId } = props;
+  const { children, page, total, currentTabId } = props;
   const { router } = context;
 
   function pageChange(nextPage) {
@@ -27,7 +28,8 @@ function TopicPage(props, context) {
         <div className={styles.sidebar}>
           <div className={styles.sidebarlist}>
             <Link to="/topic/add"><Button type="primary" size="large">发表新话题</Button></Link>
-            <HotTopicList title="热门话题" list={hot} />
+            <HotTopicList />
+            <NoReplyTopicList />
           </div>
         </div>
         <div className={styles.content}>
@@ -67,7 +69,6 @@ function mapStateToProps(state, ownProps) {
     children: ownProps.children,
     page: state.topic.page,
     total: state.topic.total,
-    hot: state.topic.hot,
     currentTabId: state.topic.currentTabId,
   };
 }

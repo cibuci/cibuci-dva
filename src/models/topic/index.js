@@ -1,5 +1,10 @@
 import pathToRegexp from 'path-to-regexp';
-import { fetchTopics, fetchTopic, fetchHotTopics } from '../../services/cibuci';
+import {
+  fetchTopics,
+  fetchTopic,
+  fetchHotTopics,
+  fetchNoReplyTopics,
+} from '../../services/cibuci';
 
 export default {
 
@@ -12,6 +17,7 @@ export default {
     total: 0,
     page: 1,
     hot: [],
+    noreply: [],
     currentTabId: 'all',
     tabs: [
       { id: 'all', name: '全部' },
@@ -63,7 +69,12 @@ export default {
 
     * fetchHot({ payload }, { put, call }) {  // eslint-disable-line
       const list = yield call(fetchHotTopics);
-      yield put({ type: 'saveHot', payload: list });
+      yield put({ type: 'save', payload: { hot: list.data } });
+    },
+
+    * fetchNoReply({ payload }, { put, call }) {
+      const list = yield call(fetchNoReplyTopics);
+      yield put({ type: 'save', payload: { noreply: list.data } });
     },
 
     * fetchItem({ payload }, { put, call }) {
@@ -76,11 +87,6 @@ export default {
   reducers: {
     save(state, action) {
       return { ...state, ...action.payload };
-    },
-
-    saveHot(state, { payload }) {
-      const { data } = payload;
-      return { ...state, hot: data };
     },
 
     saveList(state, { payload }) {

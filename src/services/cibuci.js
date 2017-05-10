@@ -53,6 +53,24 @@ export function fetchHotTopics() {
   return restClient('GET_LIST', 'topics', params);
 }
 
+export function fetchNoReplyTopics() {
+  const params = {
+    pagination: {
+      page: 1,
+      perPage: 5,
+    },
+    sort: {
+      field: 'createdAt',
+      order: 'DESC',
+    },
+    filter: {
+      commentsCount: 0,
+    },
+  };
+
+  return restClient('GET_LIST', 'topics', params);
+}
+
 export function fetchTopic(id) {
   return restClient('GET_ONE', 'topics', { id });
 }
@@ -66,8 +84,6 @@ export function fetchArticles(page) {
     sort: {
       field: 'createdAt',
       order: 'DESC',
-    },
-    filter: {
     },
   };
 

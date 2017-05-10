@@ -42,7 +42,7 @@ export default {
       dispatch({ type: 'randomSaying' });
       setInterval(() => {
         dispatch({ type: 'randomSaying' });
-      }, 5000);
+      }, 8000);
     },
 
     board({ dispatch, history }) {
