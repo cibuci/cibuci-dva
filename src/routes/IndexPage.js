@@ -4,23 +4,24 @@ import styles from './IndexPage.less';
 import Layout from '../components/Layout';
 import PkPanel from '../components/PkPanel';
 import PkCommentList from '../components/PkCommentList';
+import NewPkComment from '../components/Editor/NewPkComment';
 
-function IndexPage({ comments }) {
+function IndexPage({ current }) {
   return (
     <Layout>
       <div className={styles.container}>
         <div className={styles.sidebar}>
-          111
+          PK 有价值的东西
         </div>
         <div className={styles.content}>
           <div>
-            <PkPanel />
+            <PkPanel pk={current} />
           </div>
           <div className={`${styles.up}`}>
-            <PkCommentList comments={comments} />
+            <PkCommentList />
           </div>
           <div className={styles.down}>
-            222
+            <NewPkComment />
           </div>
         </div>
       </div>
@@ -33,7 +34,7 @@ IndexPage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    comments: state.comment.list,
+    current: state.pk.current,
   };
 }
 

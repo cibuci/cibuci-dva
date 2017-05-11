@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'dva';
+import { Tag } from 'antd';
 
 const styles = {
   title: {
-    fontSize: '1.2rem',
+    fontSize: '1rem',
     lineHeight: '3.5rem',
   },
 };
@@ -13,7 +14,10 @@ const Pk = ({ pk }) => {
   const { title } = pk;
 
   return (
-    <span style={styles.title}>{title}</span>
+    <div>
+      <Tag color="blue">PK 主题</Tag>
+      <span style={styles.title}>{title}</span>
+    </div>
   );
 };
 

@@ -9,7 +9,6 @@
 
 .aside {
   position: relative;
-  z-index: 101;
   width: @side-width;
   height: 100%;
   border-right: 1px solid @border-color;
@@ -17,6 +16,7 @@
 
 .content {
   position: absolute;
+  z-index: 101;
   right: 0;
   height: 100%;
   width: calc(~"100% - @{side-width}");

@@ -5,6 +5,7 @@ import { message } from 'antd';
 import moment from 'moment';
 import './index.css';
 import 'react-quill/dist/quill.snow.css';
+import 'react-quill/dist/quill.bubble.css';
 
 moment.locale('zh-cn');
 
@@ -28,6 +29,7 @@ app.model(require('./models/comment'));
 app.model(require('./models/topic/'));
 app.model(require('./models/article/'));
 app.model(require('./models/pk'));
+app.model(require('./models/pk-comment/'));
 
 // 4. Router
 app.router(require('./router'));

@@ -7,7 +7,7 @@ import Avatar from '../Avatar';
 const TopicComment = ({ comment }) => {
   if (!comment) return null;
 
-  const { content, createdAt } = comment;
+  const { content, createdAt, author } = comment;
 
   return (
     <div className={styles.container}>
@@ -22,10 +22,10 @@ const TopicComment = ({ comment }) => {
           <div className={styles.content}>
             <div className={styles.detail}>
               <div className={styles.from}>
-                bella
+                {author.username}
               </div>
               <div className={styles.username}>
-                @bella
+                @{author.username}
               </div>
               <span className={styles.time}>{moment(createdAt).fromNow()}</span>
             </div>

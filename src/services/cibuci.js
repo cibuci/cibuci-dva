@@ -1,4 +1,4 @@
-import loopbackRestClient from 'aor-loopback';
+import loopbackRestClient from '../utils/loopback/';
 
 const restClient = loopbackRestClient('https://api.cibuci.com/api');
 
@@ -27,6 +27,9 @@ export function fetchTopics(tab, page) {
       field: 'createdAt',
       order: 'DESC',
     },
+    include: [
+      'author',
+    ],
   };
 
   if (tab !== 'all') {
@@ -88,6 +91,9 @@ export function fetchTopicComments(id) {
     filter: {
       topicId: id,
     },
+    include: [
+      'author',
+    ],
   };
   return restClient('GET_LIST', 'topiccomments', params);
 }
@@ -101,10 +107,57 @@ export function addTopicComment({ content, current }) {
     data: {
       content,
       topicId: current.id,
-      createdAt: new Date(),
     },
   };
   return restClient('CREATE', 'topiccomments', params);
+}
+
+export function fetchPks() {
+  const params = {
+    pagination: {
+      page: 1,
+      perPage: 1,
+    },
+    sort: {
+      field: 'createdAt',
+      order: 'DESC',
+    },
+  };
+
+  return restClient('GET_LIST', 'argues', params);
+}
+
+export function fetchPkComments(pkId, page = 1) {
+  const params = {
+    id: pkId,
+    target: 'argueId',
+    pagination: {
+      page,
+      perPage: 20,
+    },
+    sort: {
+      field: 'createdAt',
+      order: 'DESC',
+    },
+    include: [
+      'author',
+    ],
+  };
+
+  return restClient('GET_MANY_REFERENCE', 'arguecomments', params);
+}
+
+export function addPkComment({ content, point, current }) {
+  const params = {
+    data: {
+      content,
+      point,
+      argueId: current.id,
+      createdAt: new Date(),
+    },
+  };
+
+  return restClient('CREATE', 'arguecomments', params);
 }
 
 export function fetchArticles(page) {
@@ -117,6 +170,17 @@ export function fetchArticles(page) {
       field: 'createdAt',
       order: 'DESC',
     },
+    fields: {
+      title: true,
+      summary: true,
+      id: true,
+      createdAt: true,
+      cover: true,
+      authorId: true,
+    },
+    include: [
+      'author',
+    ],
   };
 
   return restClient('GET_LIST', 'articles', params);
@@ -124,4 +188,8 @@ export function fetchArticles(page) {
 
 export function fetchArticle(id) {
   return restClient('GET_ONE', 'articles', { id });
+}
+
+export function fetchUsers(ids) {
+  return restClient('GET_MANY', 'users', { ids });
 }

@@ -1,13 +1,21 @@
 import React from 'react';
+import moment from 'moment';
 import styles from './PkComment.less';
 import Spacer from '../Spacer';
 import Avatar from '../Avatar';
 
-const PkComment = (props) => {
-  const comment = props.comment || {};
-  const user = comment.user || {};
-  const { time, text } = comment;
-  const sideClassName = `side-${(comment.side === 0 ? 'a' : 'b')}`;
+const PkComment = ({ comment }) => {
+
+  const {
+    content,
+    createdAt,
+    point,
+    rank,
+    authorId,
+    author,
+  } = comment;
+
+  const sideClassName = `side-${(point === 'positive' ? 'a' : 'b')}`;
 
   return (
     <div className={styles[sideClassName]}>
@@ -15,23 +23,23 @@ const PkComment = (props) => {
         <Spacer onlylr>
           <div className={styles.item}>
             <div className={styles.aside}>
-              <Avatar avatar={user.avatar} />
+              <Avatar />
             </div>
             <div className={styles.action}>
-              123
+              action
             </div>
             <div className={styles.content}>
               <div className={styles.detail}>
                 <div className={styles.from}>
-                  {user.displayname}
+                  {author.username}
                 </div>
                 <div className={styles.username}>
-                  @{user.username}
+                  @{author.username}
                 </div>
-                <span className={styles.time}>{time}</span>
+                <span className={styles.time}>{moment(createdAt).fromNow()}</span>
               </div>
               <div className={styles.text}>
-                <p>{text}</p>
+                <div dangerouslySetInnerHTML={{ __html: content }} />
               </div>
             </div>
           </div>

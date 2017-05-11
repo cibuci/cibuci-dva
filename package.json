@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "antd": "^2.9.1",
-    "aor-loopback": "^1.2.2",
     "babel-runtime": "^6.9.2",
     "classnames": "^2.2.5",
     "dva": "^1.2.1",

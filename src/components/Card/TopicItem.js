@@ -12,7 +12,7 @@ const badgeStyle = {
 };
 
 const TopicItem = ({ topic }) => {
-  const { id, authorId, createdAt, title } = topic;
+  const { id, author, authorId, createdAt, title } = topic;
   const commentsCount = topic.commentsCount || 0;
 
   return (
@@ -27,7 +27,7 @@ const TopicItem = ({ topic }) => {
             <Link to={`/topic/${id}`}>{title}</Link>
           </div>
           <div className={styles.meta}>
-            <Link to="/topic?params=jh">精华</Link>&nbsp;•&nbsp;<Link to={`/user/${authorId}`}>bella</Link>
+            <Link to="/topic?params=jh">精华</Link>&nbsp;•&nbsp;<Link to={`/user/${authorId}`}>{author.username}</Link>
             发表于 {moment(createdAt).fromNow()}
           </div>
         </div>
