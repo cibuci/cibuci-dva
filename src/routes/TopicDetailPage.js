@@ -6,8 +6,9 @@ import styles from './TopicDetailPage.less';
 import TopicContent from '../components/TopicContent';
 import TopicCommentList from '../components/TopicCommentList';
 import TopicAuthor from '../components/TopicAuthor';
+import NewTopicComment from '../components/Editor/NewTopicComment';
 
-function TopicDetailPage({ topic }) {
+function TopicDetailPage({ topic, comments }) {
   if (!topic) return null;
 
   return (
@@ -18,9 +19,10 @@ function TopicDetailPage({ topic }) {
         </div>
       </div>
       <div className={styles.content}>
-        <div className={`${styles.up}`}>
+        <div className={styles.up}>
           <TopicContent topic={topic} />
-          <TopicCommentList list={topic.replies} />
+          <TopicCommentList list={comments} />
+          <NewTopicComment />
         </div>
         <div className={styles.footer}>
           <TopicAuthor topic={topic} />
@@ -36,6 +38,7 @@ TopicDetailPage.propTypes = {
 function mapStateToProps(state) {
   return {
     topic: state.topic.current,
+    comments: state.topic.comments,
   };
 }
 

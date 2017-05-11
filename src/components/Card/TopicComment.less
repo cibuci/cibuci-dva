@@ -1,66 +1,84 @@
 
-.normal {
-  background-color: #fff;
-  padding: 1.2rem;
+.container {
+  padding: .5rem 0;
   border-bottom: 1px solid #f5f5f5;
-  position: relative;
-  line-height: 20px;
-  font-size: 1rem;
 
   &:hover {
-    background-color: #fdfdfd;
+    background-color: #f2f2f2;
+  }
+
+  .action {
+    display: none;
+  }
+
+  &:hover {
+    .action {
+      display: inherit;
+    }
   }
 }
 
-.media {
-  overflow: hidden;
+.item {
+  margin-top: .4em;
+  margin-bottom: .2em;
+  clear: both;
 
-  .left {
-    display: table-cell;
-    padding-right: .8rem;
+  .aside {
+    float: left;
+    margin-top: 4px;
   }
 
-  .body {
-    display: table-cell;
+  .action {
+    float: right;
+    text-align: right;
+    width: 40px;
+    margin-top: 2px;
+  }
+
+  .content {
     vertical-align: top;
-    width: 10000px;
-    zoom: 1;
-    overflow: hidden;
-  }
+    min-height: 1.5em;
+    margin-left: 3rem;
+    margin-right: 3rem;
 
-  .right {
-    display: table-cell;
-  }
+    .detail {
+      font-size: .85rem;
+      line-height: 1.4;
+      margin-bottom: .3rem;
 
-  .middle {
-    vertical-align: middle;
-  }
+      .from {
+        vertical-align: middle;
+        display: inline;
+        cursor: pointer;
+        margin-top: 2px;
+        opacity: .7;
+        margin-right: 2px;
+      }
 
-  .heading {
-    font-size: 1rem;
-    line-height: 1.4;
+      .username {
+        vertical-align: middle;
+        display: inline;
+        cursor: pointer;
+        margin-top: 2px;
+        opacity: .5;
+      }
 
-    a {
-      &:hover {
-        text-decoration: underline;
+      .time {
+        vertical-align: middle;
+        display: inline;
+        float: right;
+        margin-top: 2px;
+        color: #999;
+        font-size: .8rem;
       }
     }
-  }
 
-  .meta {
-    font-size: .7rem;
-    margin-top: .2rem;
-
-    a {
-      margin: 0 .2rem;
-
-      &:hover {
-        text-decoration: underline;
-      }
+    .text {
+      word-wrap: break-word;
+      line-height: 1.4;
+      font-size: .9rem;
+      user-select: text;
+      color: #000;
     }
   }
-}
-
-.badge {
-  padding-left: .8rem;
 }

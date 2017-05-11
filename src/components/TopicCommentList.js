@@ -8,6 +8,9 @@ const TopicCommentList = ({ list }) => {
 
   return (
     <Spacer>
+      <div className={styles.title}>
+        {list.length} 回复
+      </div>
       <div className={styles.wrapper}>
         { list.map(item => <TopicComment comment={item} />) }
       </div>

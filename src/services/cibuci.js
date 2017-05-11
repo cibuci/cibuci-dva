@@ -75,8 +75,36 @@ export function fetchTopic(id) {
   return restClient('GET_ONE', 'topics', { id });
 }
 
+export function fetchTopicComments(id) {
+  const params = {
+    pagination: {
+      page: 1,
+      perPage: 20,
+    },
+    sort: {
+      field: 'createdAt',
+      order: 'DESC',
+    },
+    filter: {
+      topicId: id,
+    },
+  };
+  return restClient('GET_LIST', 'topiccomments', params);
+}
+
 export function addTopic(item) {
   return restClient('CREATE', 'topics', { data: item });
+}
+
+export function addTopicComment({ content, current }) {
+  const params = {
+    data: {
+      content,
+      topicId: current.id,
+      createdAt: new Date(),
+    },
+  };
+  return restClient('CREATE', 'topiccomments', params);
 }
 
 export function fetchArticles(page) {

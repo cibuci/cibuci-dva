@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import styles from './TopicComment.less';
 import Spacer from '../Spacer';
 import Avatar from '../Avatar';
@@ -6,37 +7,34 @@ import Avatar from '../Avatar';
 const TopicComment = ({ comment }) => {
   if (!comment) return null;
 
-  const { author, content } = comment;
-  const sideClassName = `side-${(comment.side === 0 ? 'a' : 'b')}`;
+  const { content, createdAt } = comment;
 
   return (
-    <div className={styles[sideClassName]}>
-      <div className={styles.container}>
-        <Spacer onlylr>
-          <div className={styles.item}>
-            <div className={styles.aside}>
-              <Avatar avatar={author.avatar_url} />
-            </div>
-            <div className={styles.action}>
-              123
-            </div>
-            <div className={styles.content}>
-              <div className={styles.detail}>
-                <div className={styles.from}>
-                  {author.loginname}
-                </div>
-                <div className={styles.username}>
-                  @{author.loginname}
-                </div>
-                <span className={styles.time}>123</span>
+    <div className={styles.container}>
+      <Spacer onlylr>
+        <div className={styles.item}>
+          <div className={styles.aside}>
+            <Avatar />
+          </div>
+          <div className={styles.action}>
+            action
+          </div>
+          <div className={styles.content}>
+            <div className={styles.detail}>
+              <div className={styles.from}>
+                bella
               </div>
-              <div className={styles.text}>
-                <div dangerouslySetInnerHTML={{ __html: content }}></div>
+              <div className={styles.username}>
+                @bella
               </div>
+              <span className={styles.time}>{moment(createdAt).fromNow()}</span>
+            </div>
+            <div className={styles.text}>
+              <div dangerouslySetInnerHTML={{ __html: content }} />
             </div>
           </div>
-        </Spacer>
-      </div>
+        </div>
+      </Spacer>
     </div>
   );
 };

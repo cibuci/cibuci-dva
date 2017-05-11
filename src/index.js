@@ -4,6 +4,7 @@ import createLoading from 'dva-loading';
 import { message } from 'antd';
 import moment from 'moment';
 import './index.css';
+import 'react-quill/dist/quill.snow.css';
 
 moment.locale('zh-cn');
 

@@ -4,7 +4,6 @@ import { Input, Select, Button } from 'antd';
 import ReactQuill from 'react-quill';
 import Spacer from '../Spacer';
 import styles from './NewTopic.less';
-import 'react-quill/dist/quill.snow.css';
 
 const Option = Select.Option;
 
@@ -141,9 +140,4 @@ NewTopic.formats = [
 NewTopic.propTypes = {
 };
 
-function mapStateToProps(state) {
-  return {
-  };
-}
-
-export default connect(mapStateToProps)(NewTopic);
+export default connect()(NewTopic);

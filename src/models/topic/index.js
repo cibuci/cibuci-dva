@@ -7,6 +7,8 @@ import {
   fetchHotTopics,
   fetchNoReplyTopics,
   addTopic,
+  fetchTopicComments,
+  addTopicComment,
 } from '../../services/cibuci';
 
 export default {
@@ -16,6 +18,7 @@ export default {
   state: {
     type: 'all',
     current: null,
+    comments: [],
     list: [],
     total: 0,
     page: 1,
@@ -55,6 +58,7 @@ export default {
           const id = match[1];
           if (id !== 'add') {
             dispatch({ type: 'fetchItem', payload: { id } });
+            dispatch({ type: 'fetchComments', payload: { id } });
           }
         }
       });
@@ -91,6 +95,17 @@ export default {
     * addItem({ payload }, { put, call }) {  // eslint-disable-line
       yield call(addTopic, payload);
       yield put(routerRedux.push('/topic'));
+    },
+
+    * fetchComments({ payload }, { put, call }) {  // eslint-disable-line
+      const { id } = payload;
+      const result = yield call(fetchTopicComments, id);
+      yield put({ type: 'save', payload: { comments: result.data } });
+    },
+
+    * addComment({ payload }, { put, call }) {  // eslint-disable-line
+      yield call(addTopicComment, payload);
+      yield put({ type: 'fetchComments', payload: { id: payload.current.id } });
     },
   },
 
