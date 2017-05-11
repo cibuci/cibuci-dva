@@ -19,11 +19,11 @@ const PkPanel = ({ pk }) => {
         <Block layout horizontal justifyBetween>
           <Block className={styles.a}>
             <h4 className={styles.title}>{positivePiont}</h4>
-            <p>正方</p>
+            <p>正方 {positiveCount}</p>
           </Block>
           <Block className={styles.b}>
             <h4 className={styles.title}>{negativePiont}</h4>
-            <p>反方</p>
+            <p>{negativeCount} 反方</p>
           </Block>
         </Block>
       </Spacer>
