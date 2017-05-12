@@ -20,7 +20,13 @@ const styles = {
 };
 
 const Avatar = (props) => {
-  const src = props.avatar || 'https://avatars1.githubusercontent.com/u/7099792?v=3&s=40';
+  let src = 'http://cdn-qn0.cibuci.com/static/example/avatar.png';
+
+  const { user } = props;
+  if (user && user.avatarUrl) {
+    src = user.avatarUrl;
+  }
+
   const style = (props.size === 'large' ? styles.large : styles.avatar);
   return (
     <img style={style} src={src} alt="avatar" />
