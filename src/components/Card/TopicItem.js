@@ -20,7 +20,7 @@ const TopicItem = ({ topic }) => {
 
       <div className={styles.media}>
         <div className={`${styles.left} ${styles.middle}`}>
-          <Avatar size="large" />
+          <Avatar size="large" user={author} />
         </div>
         <div className={styles.body}>
           <div className={styles.heading}>

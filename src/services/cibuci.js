@@ -75,7 +75,13 @@ export function fetchNoReplyTopics() {
 }
 
 export function fetchTopic(id) {
-  return restClient('GET_ONE', 'topics', { id });
+  const params = {
+    id,
+    include: [
+      'author',
+    ],
+  };
+  return restClient('GET_ONE', 'topics', params);
 }
 
 export function fetchTopicComments(id) {
@@ -187,7 +193,13 @@ export function fetchArticles(page) {
 }
 
 export function fetchArticle(id) {
-  return restClient('GET_ONE', 'articles', { id });
+  const params = {
+    id,
+    include: [
+      'author',
+    ],
+  };
+  return restClient('GET_ONE', 'articles', params);
 }
 
 export function fetchUsers(ids) {

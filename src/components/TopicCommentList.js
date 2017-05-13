@@ -12,7 +12,7 @@ const TopicCommentList = ({ list }) => {
         {list.length} 回复
       </div>
       <div className={styles.wrapper}>
-        { list.map(item => <TopicComment comment={item} />) }
+        { list.map(item => <TopicComment key={item.id} comment={item} />) }
       </div>
     </Spacer>
   );

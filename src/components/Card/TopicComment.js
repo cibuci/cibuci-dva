@@ -14,7 +14,7 @@ const TopicComment = ({ comment }) => {
       <Spacer onlylr>
         <div className={styles.item}>
           <div className={styles.aside}>
-            <Avatar />
+            <Avatar user={author} />
           </div>
           <div className={styles.action}>
             action

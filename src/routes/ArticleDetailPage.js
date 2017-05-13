@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { connect } from 'dva';
 import ArticleContent from '../components/ArticleContent';
 
@@ -18,6 +19,9 @@ function ArticleDetailPage({ article }) {
 
   return (
     <div style={styles.wrapper}>
+      <Helmet>
+        <title>{`${article.title} - 辞不辞`}</title>
+      </Helmet>
       <div style={styles.container}>
         <ArticleContent article={article} />
       </div>

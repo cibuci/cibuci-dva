@@ -7,13 +7,13 @@ import Spacer from './Spacer';
 const TopicAuthor = ({ topic }) => {
   if (!topic) return null;
 
-  const { id } = topic;
+  const { author } = topic;
 
   return (
     <Spacer onlylr>
       <Block layout horizontal centered className={styles.wrapper}>
         <Block flex>
-          <Avatar size="large" />
+          <Avatar size="large" user={author} />
         </Block>
         <Block>123</Block>
       </Block>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { hash } from '../utils/tools';
 
 const styles = {
   avatar: {
@@ -20,9 +21,10 @@ const styles = {
 };
 
 const Avatar = (props) => {
-  let src = 'http://cdn-qn0.cibuci.com/static/example/avatar.png';
-
   const { user } = props;
+
+  let src = 'https://secure.gravatar.com/avatar/';
+  if (user) src += hash(user.email);
   if (user && user.avatarUrl) {
     src = user.avatarUrl;
   }

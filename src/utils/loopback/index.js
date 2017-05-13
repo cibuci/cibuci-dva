@@ -50,9 +50,12 @@ export default (apiUrl, httpClient = fetchJson) => {
                 url = `${apiUrl}/${resource}?${queryParameters({filter: JSON.stringify(query)})}`;
                 break;
             }
-            case GET_ONE:
-                url = `${apiUrl}/${resource}/${params.id}`;
+            case GET_ONE: {
+                const query = {};
+                if (params.include) query['include'] = params.include;
+                url = `${apiUrl}/${resource}/${params.id}?${queryParameters({filter: JSON.stringify(query)})}`;
                 break;
+            }
             case GET_MANY: {
                 const listId = params.ids.map(id => {
                     return {'id': id};

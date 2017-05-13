@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
+import { Helmet } from 'react-helmet';
 import styles from './TopicPage.less';
 import Layout from '../components/Layout';
 import TopicList from '../components/TopicList';
@@ -52,6 +53,9 @@ function TopicPage(props, context) {
 
   return (
     <Layout>
+      <Helmet>
+        <title>话题 - 辞不辞</title>
+      </Helmet>
       {content}
     </Layout>
   );

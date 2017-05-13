@@ -11,6 +11,8 @@ class DropMenu extends React.Component {
   }
 
   render() {
+    const { user } = this.props;
+
     const menu = (
       <Menu>
         <Menu.Item>
@@ -28,7 +30,7 @@ class DropMenu extends React.Component {
     return (
       <Dropdown overlay={menu}>
         <span>
-          <Avatar /> <Icon type="down" />
+          <Avatar user={user} /> <Icon type="down" />
         </span>
       </Dropdown>
     );
@@ -38,4 +40,10 @@ class DropMenu extends React.Component {
 DropMenu.propTypes = {
 };
 
-export default connect()(DropMenu);
+function mapStateToProps(state) {
+  return {
+    user: state.app.user
+  };
+}
+
+export default connect(mapStateToProps)(DropMenu);
