@@ -13,7 +13,7 @@ const badgeStyle = {
 };
 
 const TopicItem = ({ topic, tabs }) => {
-  const { id, author, authorId, createdAt, title, tab } = topic;
+  const { id, author, authorId, title, tab, lastReplyAt } = topic;
   const commentsCount = topic.commentsCount || 0;
 
   function tabName() {
@@ -38,8 +38,13 @@ const TopicItem = ({ topic, tabs }) => {
             <Link to={`/topic/${id}`}>{title}</Link>
           </div>
           <div className={styles.meta}>
-            <Link to={`/topic?tab=${tab}&page=1`}>{tabName()}</Link>&nbsp;•&nbsp;<Link to={`/user/${authorId}`}>{author.username}</Link>
-            发表于 {moment(createdAt).fromNow()}
+            <Link to={`/user/${authorId}`}>{author.username}</Link>
+            ·
+            <Link to={`/topic?tab=${tab}&page=1`}>{tabName()}</Link>
+            ·
+            最后由
+            <Link to={`/user/${authorId}`}>{author.username}</Link>
+            回复于 {moment(lastReplyAt).fromNow()}
           </div>
         </div>
         <div className={`${styles.right} ${styles.middle}`}>

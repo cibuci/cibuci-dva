@@ -41,6 +41,7 @@ export default (apiUrl, httpClient = fetchJson) => {
                 if (params.include) query['include'] = params.include;
                 if (params.fields) query['fields'] = {...params.fields};
                 if (field) query['order'] = [field + ' ' + order];
+                if (params.order) query['order'] = params.order;
                 if (perPage > 0) {
                     query['limit'] = perPage;
                     if (page >= 0) {
@@ -75,6 +76,7 @@ export default (apiUrl, httpClient = fetchJson) => {
                 if (params.include) query['include'] = params.include;
                 if (params.fields) query['fields'] = {...params.fields};
                 if (field) query['order'] = [field + ' ' + order];
+                if (params.order) query['order'] = params.order;
                 if (perPage > 0) {
                     query['limit'] = perPage;
                     if (page >= 0) {

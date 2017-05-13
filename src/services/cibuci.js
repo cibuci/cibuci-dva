@@ -6,27 +6,14 @@ export function fetchUser(id) {
   return restClient('GET_ONE', 'users', { id });
 }
 
-export function fetchPk() {
-  const params = {
-    pagination: {
-      page: 1,
-      perPage: 1, // limit.
-    },
-  };
-
-  return restClient('GET_LIST', 'argues', params);
-}
-
 export function fetchTopics(tab, page) {
   const params = {
     pagination: {
       page,
       perPage: 20,
     },
-    sort: {
-      field: 'createdAt',
-      order: 'DESC',
-    },
+    sort: {},
+    order: ['lastReplyAt DESC', 'createdAt DESC'],
     include: [
       'author',
     ],
