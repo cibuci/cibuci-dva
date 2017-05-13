@@ -1,5 +1,6 @@
 import React from 'react';
 import { Badge } from 'antd';
+import { connect } from 'dva';
 import { Link } from 'dva/router';
 import moment from 'moment';
 import styles from './TopicItem.less';
@@ -11,9 +12,19 @@ const badgeStyle = {
   boxShadow: '0 0 0 1px #d9d9d9 inset',
 };
 
-const TopicItem = ({ topic }) => {
-  const { id, author, authorId, createdAt, title } = topic;
+const TopicItem = ({ topic, tabs }) => {
+  const { id, author, authorId, createdAt, title, tab } = topic;
   const commentsCount = topic.commentsCount || 0;
+
+  function tabName() {
+    for (let i = 0; i < tabs.length; i++) {
+      if (tabs[i].id === tab) {
+        return tabs[i].name;
+      }
+    }
+
+    return tab;
+  }
 
   return (
     <div className={styles.normal}>
@@ -27,7 +38,7 @@ const TopicItem = ({ topic }) => {
             <Link to={`/topic/${id}`}>{title}</Link>
           </div>
           <div className={styles.meta}>
-            <Link to="/topic?params=jh">精华</Link>&nbsp;•&nbsp;<Link to={`/user/${authorId}`}>{author.username}</Link>
+            <Link to={`/topic?tab=${tab}&page=1`}>{tabName()}</Link>&nbsp;•&nbsp;<Link to={`/user/${authorId}`}>{author.username}</Link>
             发表于 {moment(createdAt).fromNow()}
           </div>
         </div>
@@ -42,4 +53,10 @@ const TopicItem = ({ topic }) => {
 TopicItem.propTypes = {
 };
 
-export default TopicItem;
+function mapStateToProps(state) {
+  return {
+    tabs: state.topic.tabs,
+  };
+}
+
+export default connect(mapStateToProps)(TopicItem);
