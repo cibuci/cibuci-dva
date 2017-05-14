@@ -9,6 +9,7 @@ import ArticleDetailPage from './routes/ArticleDetailPage';
 import AboutPage from './routes/AboutPage';
 import SigninPage from './routes/SigninPage';
 import SignupPage from './routes/SignupPage';
+import ProfilePage from './routes/ProfilePage';
 
 function RouterConfig({ history }) {
   return (
@@ -24,6 +25,7 @@ function RouterConfig({ history }) {
       <Route path="/about" component={AboutPage} />
       <Route path="/signin" component={SigninPage} />
       <Route path="/signup" component={SignupPage} />
+      <Route path="/profile" component={ProfilePage} />
     </Router>
   );
 }

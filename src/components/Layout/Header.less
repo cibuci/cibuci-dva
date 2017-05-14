@@ -1,0 +1,59 @@
+
+.wrapper {
+  height: 3rem;
+  position: relative;
+  clear: both;
+  overflow: hidden;
+}
+
+.logo {
+  background-image: url(http://cdn-qn0.cibuci.com/static/community/logo-horizontal.png);
+  width: 4rem;
+  height: 1.2rem;
+  float: left;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: .9rem .6rem .9rem 0;
+}
+
+.nav {
+  display: inline-block;
+  clear: both;
+  overflow: hidden;
+}
+
+.item {
+  float: left;
+  font-size: .8rem;
+
+  a {
+    display: inline-block;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 1rem;
+    text-align: center;
+    color: @gray-darker;
+    text-decoration: none;
+    transition: all 0.5s ease;
+    border-bottom: 2px solid transparent;
+
+    &:hover {
+      border-bottom: 2px solid @primary-color;
+      color: @primary-color;
+      transition: all 0.5s ease;
+    }
+  }
+
+  .active {
+    border-bottom: 2px solid @primary-color;
+    color: @primary-color;
+    transition: all 0.5s ease;
+  }
+}
+
+.user {
+  display: inline-block;
+  clear: both;
+  overflow: hidden;
+}

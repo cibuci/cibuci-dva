@@ -3,13 +3,14 @@ import { connect } from 'dva';
 import { Helmet } from 'react-helmet';
 import styles from './IndexPage.less';
 import Layout from '../components/Layout';
+import Base from '../components/Layout/Base';
 import PkPanel from '../components/PkPanel';
 import PkCommentList from '../components/PkCommentList';
 import NewPkComment from '../components/Editor/NewPkComment';
 
 function IndexPage({ current }) {
   return (
-    <Layout>
+    <Base>
       <Helmet>
         <title>辞不辞 - 辞掉不开心 (๑•̀ㅂ•́)و✧</title>
       </Helmet>
@@ -30,7 +31,7 @@ function IndexPage({ current }) {
           </div>
         </div>
       </div>
-    </Layout>
+    </Base>
   );
 }
 

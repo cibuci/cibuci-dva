@@ -3,7 +3,7 @@ html, body, :global(#root) {
   height: 100%;
   margin: 0;
   color: #222;
-  overflow: hidden;
+  letter-spacing: .03em;
 }
 
 ul :global {
