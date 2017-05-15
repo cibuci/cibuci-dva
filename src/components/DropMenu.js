@@ -28,7 +28,7 @@ class DropMenu extends React.Component {
     );
 
     return (
-      <Dropdown overlay={menu}>
+      <Dropdown overlay={menu} trigger={['click']}>
         <span>
           <Avatar user={user} /> <Icon type="down" />
         </span>

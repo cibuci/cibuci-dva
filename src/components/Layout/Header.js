@@ -18,11 +18,9 @@ const HeaderA = (props) => {
         <li className={styles.item}><Link to="/topic" activeClassName={styles.active} >话题</Link></li>
         <li className={styles.item}><Link to="/article" activeClassName={styles.active} >精选</Link></li>
         <li className={styles.item}><Link to="/profile" activeClassName={styles.active} >精选</Link></li>
-      </ul>
-      <ul className={styles.user}>
         { authorized ? (
-          <li style={{ float: 'right', cursor: 'pointer' }}>
-            <span className={styles.mine}>
+          <li className={styles.user}>
+            <span>
               <DropMenu />
             </span>
           </li>

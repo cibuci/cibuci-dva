@@ -1,0 +1,62 @@
+
+.wrapper {
+  color: @light-font-color;
+  padding-top: 1rem;
+}
+
+.title {
+  position: relative;
+  color: @title-font-color;
+  font-size: .85rem;
+  line-height: 1;
+
+  .icon {
+    position: absolute;
+    left: -1.4rem;
+    color: @light-font-color;
+    font-weight: lighter;
+  }
+}
+
+.list {
+  li {
+    a {
+      color: @light-font-color;
+
+      &:hover {
+        text-decoration: underline;
+        color: @title-font-color;
+      }
+    }
+  }
+}
+
+.qrcode {
+  width: 8rem;
+  height: 8rem;
+}
+
+.buttons {
+  font-size: 1rem;
+  margin-top: .6rem;
+
+  .icon {
+    cursor: pointer;
+    display: inline-block;
+    width: 1.8em;
+    height: 1.8em;
+    border: 1px solid currentColor;
+    text-align: center;
+    line-height: 1.65em;
+    border-radius: 1em;
+    margin-right: .4em;
+  }
+
+  .iconinner {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+}

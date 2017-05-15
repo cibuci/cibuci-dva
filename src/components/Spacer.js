@@ -2,12 +2,12 @@ import React from 'react';
 
 const Spacer = (props) => {
   const styles = {
-    margin: '1.2rem',
+    margin: '1rem',
   };
   if (props.onlytb) {
-    styles.margin = '1.2rem 0';
+    styles.margin = '1rem 0';
   } else if (props.onlylr) {
-    styles.margin = '0 1.2rem';
+    styles.margin = '0 1rem';
   }
   return (
     <div style={styles} {...props}>
