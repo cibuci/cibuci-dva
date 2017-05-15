@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import { Button } from 'antd';
 import DropMenu from '../DropMenu';
 import styles from './Header.less';
 
@@ -24,10 +23,10 @@ const HeaderA = (props) => {
             </span>
           </li>
         ) : (
-          <li style={{ float: 'right' }}>
+          <li className={styles.sign}>
             <span className={styles.right}>
               <Link style={{ marginRight: '1rem' }} to="/signin">登录</Link>
-              <Button type="primary"><Link to="/signup">注册</Link></Button>
+              <Link to="/signup">注册</Link>
             </span>
           </li>
         ) }

@@ -1,22 +1,21 @@
-@a-color: #ed6c63;
-@b-color: #1f99d3;
 
 .outer {
-  height: 0.5rem;
+  height: 2.8rem;
   overflow: hidden;
   clear: both;
 }
 
-.a {
+.a, .b {
   float: left;
   height: 100%;
-  background-color: @a-color;
-  cursor: pointer;
+  opacity: .2;
+  transition: all 0.5s ease;
+}
+
+.a {
+  background-color: @pk-side-a;
 }
 
 .b {
-  float: left;
-  height: 100%;
-  background-color: @b-color;
-  cursor: pointer;
+  background-color: @pk-side-b;
 }

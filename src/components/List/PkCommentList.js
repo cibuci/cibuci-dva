@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Spin, Button } from 'antd';
-import { PkComment } from './Card/';
-import { listSelector } from '../models/pk-comment/selector';
-import Spacer from './Spacer';
+import { PkComment } from './../Card/';
+import { listSelector } from '../../models/pk-comment/selector';
+
+import styles from './PkCommentList.less';
 
 class PkCommentList extends React.Component {
 

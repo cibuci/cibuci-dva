@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tooltip } from 'antd';
 import styles from './PkBar.less';
 
 const PkBar = (props) => {
@@ -28,12 +27,8 @@ const PkBar = (props) => {
 
   return (
     <div className={styles.outer}>
-      <Tooltip placement="top" title={`${left}%`}>
-        <div className={styles.a} style={pkstyles.left} />
-      </Tooltip>
-      <Tooltip placement="top" title={`${right}%`}>
-        <div className={styles.b} style={pkstyles.right} />
-      </Tooltip>
+      <div className={styles.a} style={pkstyles.left} />
+      <div className={styles.b} style={pkstyles.right} />
     </div>
   );
 };

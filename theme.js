@@ -9,5 +9,7 @@ module.exports = () => {
     '@gray-darker': '#222',
     '@light-font-color': '#999',
     '@title-font-color': '#333',
+    '@pk-side-a': '#ed6c63',
+    '@pk-side-b': '#1f99d3',
   };
 };

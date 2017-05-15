@@ -40,10 +40,10 @@ export default {
       }
 
       // random saying.
-      dispatch({ type: 'randomSaying' });
-      setInterval(() => {
-        dispatch({ type: 'randomSaying' });
-      }, 8000);
+      // dispatch({ type: 'randomSaying' });
+      // setInterval(() => {
+      //   dispatch({ type: 'randomSaying' });
+      // }, 8000);
     },
 
     board({ dispatch, history }) {
