@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link } from 'dva/router';
 import { Row, Col, Icon, Popover } from 'antd';
 import Spacer from '../Spacer';
 import styles from './Footer.less';
 
-const Footer = (props) => {
-
+const Footer = () => {
   const content = (
     <div>
       <img className={styles.qrcode} src="http://cdn-qn0.cibuci.com/static/example/qrcode.jpg" alt="qrcode" />
@@ -28,7 +28,7 @@ const Footer = (props) => {
           <Spacer onlytb>
             <ul className={styles.list}>
               <li><a href="">目标</a></li>
-              <li><a href="/about">关于我们</a></li>
+              <li><Link to="/about">关于我们</Link></li>
               <li><a href="">意见反馈</a></li>
             </ul>
           </Spacer>
@@ -38,23 +38,29 @@ const Footer = (props) => {
           <Spacer onlytb>
             <p>辞不辞，为年轻人真正做一次职业规划。</p>
             <div className={styles.buttons}>
-              <span className={styles.icon}>
-                <svg className={styles.iconinner}>
-                  <use xlinkHref="#cbc-weibo" />
-                </svg>
-              </span>
-              <Popover content={content} trigger="hover">
-                <span className={styles.icon}>
+              <a href="mailto://support@cibuci.com">
+                <span className={styles.icon} style={{ marginLeft: 0 }}>
                   <svg className={styles.iconinner}>
-                    <use xlinkHref="#cbc-wechat" />
+                    <use xlinkHref="#cbc-weibo" />
                   </svg>
                 </span>
+              </a>
+              <Popover content={content} trigger="hover">
+                <a>
+                  <span className={styles.icon}>
+                    <svg className={styles.iconinner}>
+                      <use xlinkHref="#cbc-wechat" />
+                    </svg>
+                  </span>
+                </a>
               </Popover>
-              <span className={styles.icon}>
-                <svg className={styles.iconinner}>
-                  <use xlinkHref="#cbc-envelope" />
-                </svg>
-              </span>
+              <a href="mailto://support@cibuci.com">
+                <span className={styles.icon}>
+                  <svg className={styles.iconinner}>
+                    <use xlinkHref="#cbc-envelope" />
+                  </svg>
+                </span>
+              </a>
             </div>
           </Spacer>
         </Col>

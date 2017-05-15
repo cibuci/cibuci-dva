@@ -17,7 +17,6 @@ const HeaderA = (props) => {
         <li className={styles.item}><Link to="/" activeClassName={styles.active} >P·K</Link></li>
         <li className={styles.item}><Link to="/topic" activeClassName={styles.active} >话题</Link></li>
         <li className={styles.item}><Link to="/article" activeClassName={styles.active} >精选</Link></li>
-        <li className={styles.item}><Link to="/profile" activeClassName={styles.active} >精选</Link></li>
         { authorized ? (
           <li className={styles.user}>
             <span>

@@ -2,6 +2,15 @@
 .wrapper {
   color: @light-font-color;
   padding-top: 1rem;
+
+  a {
+    color: @light-font-color;
+
+    &:hover {
+      text-decoration: underline;
+      color: @title-font-color;
+    }
+  }
 }
 
 .title {
@@ -18,19 +27,6 @@
   }
 }
 
-.list {
-  li {
-    a {
-      color: @light-font-color;
-
-      &:hover {
-        text-decoration: underline;
-        color: @title-font-color;
-      }
-    }
-  }
-}
-
 .qrcode {
   width: 8rem;
   height: 8rem;
@@ -41,7 +37,6 @@
   margin-top: .6rem;
 
   .icon {
-    cursor: pointer;
     display: inline-block;
     width: 1.8em;
     height: 1.8em;
@@ -49,7 +44,7 @@
     text-align: center;
     line-height: 1.65em;
     border-radius: 1em;
-    margin-right: .4em;
+    margin: 0 .2em;
   }
 
   .iconinner {

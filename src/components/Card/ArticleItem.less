@@ -1,19 +1,19 @@
 .wrapper {
-  padding: 1.2rem 0;
-  border-bottom: 1px solid #f5f5f5;
+  padding: 1rem 0;
+  border-bottom: 1px solid @gray-lighter;
   position: relative;
-  line-height: 20px;
+  line-height: 1.2;
   font-size: 1rem;
 
   .cover {
     overflow: hidden;
-    border-radius: 6px;
+    border-radius: @border-radius-base;
 
     img {
       width: 100%;
-      min-height: 100px;
-      background-color: #f7f8fa;
-      border-radius: 6px;
+      min-height: 6rem;
+      background-color: @gray-lighter;
+      border-radius: @border-radius-base;
       border-color: transparent;
     }
   }
@@ -35,14 +35,14 @@
     .summary {
       font-size: .85rem;
       line-height: 1.5;
-      color: #999;
+      color: @light-font-color;
       margin: .5rem 0;
     }
 
     .meta {
       font-size: .85rem;
       margin-top: .5rem;
-      color: #999;
+      color: @light-font-color;
 
       a {
         margin-right: .6rem;
@@ -55,7 +55,7 @@
 
     .counts {
       float: right;
-      color: #999;
+      color: @light-font-color;
     }
   }
 }
