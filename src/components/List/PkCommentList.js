@@ -44,7 +44,8 @@ class PkCommentList extends React.Component {
         <Spin spinning={loading}>
           { list.map(item => <PkComment key={item.id} comment={item} />) }
         </Spin>
-        <div style={{ width: '100%', textAlign: 'center' }}>
+
+        <div className={styles.next}>
           { remaining ? (
             <Button onClick={this.handleClick} size="large">查看更多</Button>
           ) : (

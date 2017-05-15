@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Row, Col } from 'antd';
+import { Row, Col, Icon } from 'antd';
 import { Helmet } from 'react-helmet';
 import Base from '../components/Layout/Base';
 import Container from '../components/Layout/Container';
@@ -19,7 +19,11 @@ function IndexPage({ current }) {
       </Helmet>
 
       <div className={styles.top}>
-        <PkSubTitle pk={current} />
+        { current ? (
+          <Container>
+            <h1><Icon type="coffee" />&nbsp;&nbsp;{current.title}</h1>
+          </Container>
+        ) : null }
       </div>
 
       <Container>
@@ -27,14 +31,14 @@ function IndexPage({ current }) {
           <Row gutter={16}>
             <Col xs={24} sm={24} md={18} lg={18} xl={18}>
               <div className={styles.left}>
+                <PkSubTitle pk={current} />
                 <PkCommentList />
-                <NewPkComment />
               </div>
             </Col>
             <Col xs={24} sm={24} md={6} lg={6} xl={6}>
               <div className={styles.right}>
-                <Panel title="精彩回复">
-                  123
+                <Panel title="参与 P·K">
+                  <NewPkComment />
                 </Panel>
               </div>
             </Col>

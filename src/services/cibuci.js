@@ -126,7 +126,7 @@ export function fetchPkComments(pkId, page = 1) {
     target: 'argueId',
     pagination: {
       page,
-      perPage: 4,
+      perPage: 30,
     },
     sort: {
       field: 'createdAt',
