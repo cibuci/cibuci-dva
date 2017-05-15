@@ -14,7 +14,6 @@ class NoReplyTopicList extends React.Component {
 
     return (
       <div className={styles.group}>
-        <h5 className={styles.title}>无人回复的话题</h5>
         <ul>
           { list.map(item => <li key={item.id}><Link to={`/topic/${item.id}`}>{item.title}</Link></li>) }
         </ul>

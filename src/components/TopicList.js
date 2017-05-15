@@ -2,16 +2,13 @@ import React from 'react';
 import { Spin } from 'antd';
 import { connect } from 'dva';
 import { TopicItem } from './Card/';
-import Spacer from './Spacer';
 
 const TopicList = (props) => {
   const { loading, list } = props;
   return (
-    <Spacer>
-      <Spin spinning={loading}>
-        { list.map(item => <TopicItem key={item.id} topic={item} />) }
-      </Spin>
-    </Spacer>
+    <Spin spinning={loading}>
+      { list.map(item => <TopicItem key={item.id} topic={item} />) }
+    </Spin>
   );
 };
 

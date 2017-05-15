@@ -13,7 +13,7 @@ const Footer = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Row>
+      <Row gutter={16}>
         <Col span={8}>
           <h2 className={styles.title}><Icon className={styles.icon} type="github" />GitHub</h2>
           <Spacer onlytb>
