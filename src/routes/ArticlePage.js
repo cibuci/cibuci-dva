@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Base from '../components/Layout/Base';
 import Container from '../components/Layout/Container';
-import ArticleList from '../components/ArticleList';
+import ArticleList from '../components/List/ArticleList';
 import styles from './ArticlePage.less';
 
 function ArticlePage(props) {

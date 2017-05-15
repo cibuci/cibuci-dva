@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from 'dva';
-import styles from './IndexPage.less';
-import Layout from '../components/Layout';
+import Base from '../components/Layout/Base';
 import LogoGather from '../components/LogoGather';
+
+import styles from './IndexPage.less';
 
 function AboutPage() {
   return (
-    <Layout noheader>
-      <div style={{ width: '100%', height: '100%'}}>
+    <Base>
+      <div style={{ width: '100%', height: '100%' }}>
         <LogoGather pixSize={20} pointSizeMin={10} />
       </div>
-    </Layout>
+    </Base>
   );
 }
 

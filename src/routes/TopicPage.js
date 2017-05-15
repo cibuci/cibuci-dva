@@ -9,9 +9,9 @@ import Base from '../components/Layout/Base';
 import Container from '../components/Layout/Container';
 import Panel from '../components/Common/Panel';
 import TopicSubMenu from '../components/TopicSubMenu';
-import TopicList from '../components/TopicList';
-import HotTopicList from '../components/HotTopicList';
-import NoReplyTopicList from '../components/NoReplyTopicList';
+import TopicList from '../components/List/TopicList';
+import HotTopicList from '../components/List/HotTopicList';
+import NoReplyTopicList from '../components/List/NoReplyTopicList';
 
 function TopicPage(props, context) {
   const { children, page, total, currentTabId } = props;

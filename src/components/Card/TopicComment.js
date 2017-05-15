@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import styles from './TopicComment.less';
-import Spacer from '../Spacer';
+import Spacer from '../Common/Spacer';
 import Avatar from '../Avatar';
 
 const TopicComment = ({ comment }) => {

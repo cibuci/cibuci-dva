@@ -5,7 +5,7 @@ import { Link } from 'dva/router';
 import { Helmet } from 'react-helmet';
 import styles from './TopicDetailPage.less';
 import TopicContent from '../components/TopicContent';
-import TopicCommentList from '../components/TopicCommentList';
+import TopicCommentList from '../components/List/TopicCommentList';
 import TopicAuthor from '../components/TopicAuthor';
 import NewTopicComment from '../components/Editor/NewTopicComment';
 

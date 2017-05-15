@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Spin } from 'antd';
 import { connect } from 'dva';
-import { ArticleItem } from './Card/';
-import { listSelector } from '../models/article/selector';
+import { ArticleItem } from '../Card/';
+import { listSelector } from '../../models/article/selector';
 import styles from './ArticleList.less';
 
 const ArticleList = (props) => {

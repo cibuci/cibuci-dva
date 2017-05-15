@@ -1,5 +1,5 @@
 import React from 'react';
-import Spacer from './Spacer';
+import Spacer from './Common/Spacer';
 import styles from './ArticleContent.less';
 
 const ArticleContent = ({ article }) => {

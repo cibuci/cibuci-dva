@@ -1,7 +1,7 @@
 import React from 'react';
 import { Spin } from 'antd';
 import { connect } from 'dva';
-import { TopicItem } from './Card/';
+import { TopicItem } from '../Card/';
 
 const TopicList = (props) => {
   const { loading, list } = props;

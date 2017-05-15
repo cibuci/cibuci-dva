@@ -1,6 +1,6 @@
 import React from 'react';
-import { TopicComment } from './Card/';
-import Spacer from './Spacer';
+import { TopicComment } from '../Card/';
+import Spacer from '../Common/Spacer';
 import styles from './TopicCommentList.less';
 
 const TopicCommentList = ({ list }) => {

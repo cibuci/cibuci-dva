@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'dva/router';
 import { Row, Col, Icon, Popover } from 'antd';
-import Spacer from '../Spacer';
+import Spacer from '../Common/Spacer';
 import styles from './Footer.less';
 
 const Footer = () => {

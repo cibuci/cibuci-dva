@@ -2,7 +2,7 @@ import React from 'react';
 import Block from 'react-blocks';
 import styles from './TopicAuthor.less';
 import Avatar from './Avatar';
-import Spacer from './Spacer';
+import Spacer from './Common/Spacer';
 
 const TopicAuthor = ({ topic }) => {
   if (!topic) return null;

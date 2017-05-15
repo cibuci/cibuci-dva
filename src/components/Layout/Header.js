@@ -4,7 +4,7 @@ import { Link } from 'dva/router';
 import DropMenu from '../DropMenu';
 import styles from './Header.less';
 
-const HeaderA = (props) => {
+const Header = (props) => {
   const { authorized } = props;
 
   return (
@@ -35,7 +35,7 @@ const HeaderA = (props) => {
   );
 };
 
-HeaderA.propTypes = {
+Header.propTypes = {
 };
 
 function mapStateToProps(state) {
@@ -44,4 +44,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(HeaderA);
+export default connect(mapStateToProps)(Header);
