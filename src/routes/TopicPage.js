@@ -6,7 +6,9 @@ import { Link } from 'dva/router';
 import { Helmet } from 'react-helmet';
 import styles from './TopicPage.less';
 import Base from '../components/Layout/Base';
+import Container from '../components/Layout/Container';
 import Panel from '../components/Common/Panel';
+import TopicSubMenu from '../components/TopicSubMenu';
 import TopicList from '../components/TopicList';
 import HotTopicList from '../components/HotTopicList';
 import NoReplyTopicList from '../components/NoReplyTopicList';
@@ -26,42 +28,47 @@ function TopicPage(props, context) {
     content = children;
   } else {
     content = (
-      <div className={styles.container}>
-        <Row gutter={16}>
-          <Col xs={24} sm={24} md={18} lg={18} xl={18}>
-            <div className={styles.left}>
-              <TopicList />
-              { total > 0 ? (
-                <div className={styles.page}>
-                  <Pagination
-                    onChange={pageChange}
-                    defaultPageSize={20}
-                    defaultCurrent={1}
-                    current={page}
-                    total={total}
-                  />
+      <div>
+        <TopicSubMenu />
+        <Container>
+          <div className={styles.container}>
+            <Row gutter={16}>
+              <Col xs={24} sm={24} md={18} lg={18} xl={18}>
+                <div className={styles.left}>
+                  <TopicList />
+                  { total > 0 ? (
+                    <div className={styles.page}>
+                      <Pagination
+                        onChange={pageChange}
+                        defaultPageSize={20}
+                        defaultCurrent={1}
+                        current={page}
+                        total={total}
+                      />
+                    </div>
+                  ) : null }
                 </div>
-              ) : null }
-            </div>
-          </Col>
-          <Col xs={24} sm={24} md={6} lg={6} xl={6}>
-            <div className={styles.right}>
-              <Panel>
-                <div className={styles.add}>
-                  <Link to="/topic/add"><Button type="primary" size="large">发表新话题</Button></Link>
+              </Col>
+              <Col xs={24} sm={24} md={6} lg={6} xl={6}>
+                <div className={styles.right}>
+                  <Panel>
+                    <div className={styles.add}>
+                      <Link to="/topic/add"><Button type="primary" size="large">发表新话题</Button></Link>
+                    </div>
+                  </Panel>
+
+                  <Panel title="热门话题">
+                    <HotTopicList />
+                  </Panel>
+
+                  <Panel title="无人问津的话题">
+                    <NoReplyTopicList />
+                  </Panel>
                 </div>
-              </Panel>
-
-              <Panel title="热门话题">
-                <HotTopicList />
-              </Panel>
-
-              <Panel title="无人问津的话题">
-                <NoReplyTopicList />
-              </Panel>
-            </div>
-          </Col>
-        </Row>
+              </Col>
+            </Row>
+          </div>
+        </Container>
       </div>
     );
   }

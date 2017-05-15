@@ -15,9 +15,7 @@ const Base = (props) => {
         </Container>
       </div>
       <div className={styles.content}>
-        <Container>
-          {props.children}
-        </Container>
+        {props.children}
       </div>
       <div className={styles.footer}>
         <Container>

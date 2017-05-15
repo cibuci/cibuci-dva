@@ -36,7 +36,7 @@ const Footer = () => {
         <Col span={8}>
           <h2 className={styles.title}><Icon className={styles.icon} type="copyright" />2017</h2>
           <Spacer onlytb>
-            <p>辞不辞，为年轻人真正做一次职业规划。</p>
+            <p>辞不辞，为你真正做一次职业规划。</p>
             <div className={styles.buttons}>
               <a href="mailto://support@cibuci.com">
                 <span className={styles.icon} style={{ marginLeft: 0 }}>

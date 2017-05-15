@@ -1,0 +1,33 @@
+
+.wrapper {
+  background-color: @gray-light;
+}
+
+.tabs {
+  padding: 0 .6rem;
+  clear: both;
+  overflow: hidden;
+
+  li {
+    float: left;
+    line-height: 3rem;
+    margin: 0 .4rem;
+
+    a {
+      color: #888;
+      padding: .4rem .6rem;
+      text-decoration: none;
+
+      &:hover {
+        color: #222;
+      }
+    }
+  }
+
+  .active :global {
+    a {
+      color: @gray-darker;
+      border-bottom: 2px dotted @gray-darker;
+    }
+  }
+}
