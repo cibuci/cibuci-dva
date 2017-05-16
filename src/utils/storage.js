@@ -22,5 +22,15 @@ export default {
     remove : function(key){
         if (typeof (Storage) == "undefined") { return false; }
         localStorage.removeItem(key);
+    },
+    saveRecordValue : function(key, value) {
+        if (typeof (Storage) == "undefined") { return false; }
+        var record = JSON.parse(localStorage.getItem(key));
+        if (!record) {
+            return false;
+        }
+        var newRecord = {value: value, timestamp: record.timestamp};
+        localStorage.setItem(key, JSON.stringify(newRecord));
+        return value;
     }
 };

@@ -11,11 +11,12 @@ const PkComment = ({ comment }) => {
     createdAt,
     point,
     rank,
-    authorId,
     author,
   } = comment;
 
   const sideClassName = `side-${(point === 'positive' ? 'a' : 'b')}`;
+
+  const displayName = author.nickName || author.username;
 
   return (
     <div className={styles[sideClassName]}>
@@ -31,7 +32,7 @@ const PkComment = ({ comment }) => {
             <div className={styles.content}>
               <div className={styles.detail}>
                 <div className={styles.from}>
-                  {author.username}
+                  {displayName}
                 </div>
                 <div className={styles.username}>
                   @{author.username}

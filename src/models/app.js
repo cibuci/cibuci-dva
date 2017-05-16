@@ -2,7 +2,7 @@ import pathToRegexp from 'path-to-regexp';
 import { routerRedux } from 'dva/router';
 import storage from '../utils/storage';
 import { login, register } from '../utils/auth';
-import { fetchUser } from '../services/cibuci';
+import { fetchUser, updateUser } from '../services/cibuci';
 
 const BoardTypes = {
   PK_HOME: 'PK_HOME',
@@ -118,11 +118,23 @@ export default {
       const { board } = payload;
       yield put({ type: 'saveBoard', payload: { board } });
     },
+
+    * usermodify({ payload }, { call, put, select }) {  // eslint-disable-line
+      const { params } = payload;
+      yield call(updateUser, params);
+      yield put({ type: 'saveUser', payload: params.data });
+      const user = yield select(state => state.app.user);
+      storage.saveRecordValue('lbuser', user);
+    },
   },
 
   reducers: {
     save(state, { payload: { user, authorized } }) {
       return { ...state, user, authorized };
+    },
+    saveUser(state, { payload }) {
+      const user = { ...state.user, ...payload };
+      return { ...state, user };
     },
     saveBoard(state, { payload: { board } }) {
       return { ...state, board };

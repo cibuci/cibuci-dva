@@ -10,6 +10,8 @@ import AboutPage from './routes/AboutPage';
 import SigninPage from './routes/SigninPage';
 import SignupPage from './routes/SignupPage';
 import ProfilePage from './routes/ProfilePage';
+import SettingPage from './routes/SettingPage';
+import SettingPasswordPage from './routes/SettingPasswordPage';
 
 function RouterConfig({ history }) {
   return (
@@ -26,6 +28,9 @@ function RouterConfig({ history }) {
       <Route path="/signin" component={SigninPage} />
       <Route path="/signup" component={SignupPage} />
       <Route path="/profile" component={ProfilePage} />
+      <Route path="/setting" component={SettingPage}>
+        <Route path="password" component={SettingPasswordPage} />
+      </Route>
     </Router>
   );
 }

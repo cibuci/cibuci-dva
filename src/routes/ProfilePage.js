@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'dva';
-import BaseLayout from '../components/Layout/Base';
+import Base from '../components/Layout/Base';
 import styles from './ProfilePage.less';
 
 function ProfilePage() {
   return (
-    <BaseLayout>
+    <Base>
       123
-    </BaseLayout>
+    </Base>
   );
 }
 

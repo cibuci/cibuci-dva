@@ -1,4 +1,5 @@
 import loopbackRestClient from '../utils/loopback/';
+import request from '../utils/request';
 
 const restClient = loopbackRestClient('https://api.cibuci.com/api');
 
@@ -191,4 +192,14 @@ export function fetchArticle(id) {
 
 export function fetchUsers(ids) {
   return restClient('GET_MANY', 'users', { ids });
+}
+
+export function updateUser(params) {
+  return restClient('UPDATE', 'users', params);
+}
+
+export function fetchUptoken(key) {
+  const url = `https://api.cibuci.com/util/qiniu/token?file_name=${key}`;
+
+  return request(url);
 }

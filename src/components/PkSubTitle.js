@@ -19,7 +19,7 @@ const PkSubTitle = ({ pk }) => {
         <div className={styles.points}>
           <div className={styles.pointa}>
             <strong>正方</strong>
-            <Badge count={positiveCount} style={{ backgroundColor: '#ed6c63' }} />
+            <Badge count={positiveCount} style={{ backgroundColor: '#d3360b' }} />
             <p className={styles.view}>{positivePiont}</p>
           </div>
           <div className={styles.pointb}>
