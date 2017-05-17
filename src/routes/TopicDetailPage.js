@@ -9,31 +9,39 @@ import TopicCommentList from '../components/List/TopicCommentList';
 import TopicAuthor from '../components/TopicAuthor';
 import NewTopicComment from '../components/Editor/NewTopicComment';
 
-function TopicDetailPage({ topic, comments }) {
-  if (!topic) return null;
+class TopicDetailPage extends React.Component {
 
-  return (
-    <div className={styles.container}>
-      <Helmet>
-        <title>{`${topic.title} - 辞不辞`}</title>
-      </Helmet>
-      <div className={styles.sidebar}>
-        <div className={styles.sidebarlist}>
-          <Link to="/topic/add"><Button type="primary" size="large">发表新话题</Button></Link>
+  componentWillUnmount() {
+    this.props.dispatch({ type: 'topic/save', payload: { current: null } });
+  }
+
+  render() {
+    const { topic, comments } = this.props;
+    if (!topic) return null;
+
+    return (
+      <div className={styles.container}>
+        <Helmet>
+          <title>{`${topic.title} - 辞不辞`}</title>
+        </Helmet>
+        <div className={styles.sidebar}>
+          <div className={styles.sidebarlist}>
+            <Link to="/topic/add"><Button type="primary" size="large">发表新话题</Button></Link>
+          </div>
+        </div>
+        <div className={styles.content}>
+          <div className={styles.up}>
+            <TopicContent topic={topic} />
+            <TopicCommentList list={comments} />
+            <NewTopicComment />
+          </div>
+          <div className={styles.footer}>
+            <TopicAuthor topic={topic} />
+          </div>
         </div>
       </div>
-      <div className={styles.content}>
-        <div className={styles.up}>
-          <TopicContent topic={topic} />
-          <TopicCommentList list={comments} />
-          <NewTopicComment />
-        </div>
-        <div className={styles.footer}>
-          <TopicAuthor topic={topic} />
-        </div>
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 TopicDetailPage.propTypes = {

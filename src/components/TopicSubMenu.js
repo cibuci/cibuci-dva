@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
+import { Icon } from 'antd';
 import { Link } from 'dva/router';
 import Container from './Layout/Container';
 
@@ -18,7 +19,12 @@ const TopicSubMenu = (props) => {
         <ul className={styles.tabs}>
           { tabs.map(tab => (
             <li key={tab.id} className={tab.id === currentTabId ? styles.active : ''}>
-              <Link to={generateLink(tab.id)}>{tab.name}</Link>
+              <Link to={generateLink(tab.id)}>
+                { tab.id === 'good' ? (
+                  <Icon className={styles.good} type="like-o" />
+                ) : null }
+                {tab.name}
+              </Link>
             </li>
           )) }
         </ul>

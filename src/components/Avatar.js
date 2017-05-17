@@ -10,6 +10,14 @@ const styles = {
     verticalAlign: 'middle',
     backgroundColor: '#eee',
   },
+  middle: {
+    border: '1px solid #f5f5f5',
+    borderRadius: 4,
+    width: '2.4rem',
+    height: '2.4rem',
+    verticalAlign: 'middle',
+    backgroundColor: '#eee',
+  },
   large: {
     border: '1px solid #f5f5f5',
     borderRadius: 4,
@@ -21,7 +29,7 @@ const styles = {
 };
 
 const Avatar = (props) => {
-  const { user } = props;
+  const { user, size } = props;
 
   let src = 'https://secure.gravatar.com/avatar/';
   if (user) src += hash(user.email);
@@ -29,7 +37,10 @@ const Avatar = (props) => {
     src = user.avatarUrl;
   }
 
-  const style = (props.size === 'large' ? styles.large : styles.avatar);
+  let style = styles.avatar;
+  if (size === 'large') style = styles.large;
+  if (size === 'middle') style = styles.middle;
+
   return (
     <img style={style} src={src} alt="avatar" />
   );

@@ -33,7 +33,7 @@ function TopicPage(props, context) {
         <Container>
           <div className={styles.container}>
             <Row gutter={16}>
-              <Col xs={24} sm={24} md={18} lg={18} xl={18}>
+              <Col xs={24} sm={24} md={17} lg={17} xl={17}>
                 <div className={styles.left}>
                   <TopicList />
                   { total > 0 ? (
@@ -49,7 +49,7 @@ function TopicPage(props, context) {
                   ) : null }
                 </div>
               </Col>
-              <Col xs={24} sm={24} md={6} lg={6} xl={6}>
+              <Col xs={24} sm={24} md={7} lg={7} xl={7}>
                 <div className={styles.right}>
                   <Panel>
                     <div className={styles.add}>

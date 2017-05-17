@@ -26,7 +26,7 @@ function RouterConfig({ history }) {
       <Route path="/about" component={AboutPage} />
       <Route path="/signin" component={SigninPage} />
       <Route path="/signup" component={SignupPage} />
-      <Route path="/@/:id" component={ProfilePage} />
+      <Route path="/@/:username" component={ProfilePage} />
       <Route path="/setting" component={SettingPage}>
         <Route path="password" component={SettingPasswordPage} />
       </Route>
