@@ -13,7 +13,7 @@ const Footer = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Row gutter={16}>
+      <Row gutter={24}>
         <Col span={8}>
           <h2 className={styles.title}><Icon className={styles.icon} type="github" />GitHub</h2>
           <Spacer onlytb>
@@ -34,9 +34,9 @@ const Footer = () => {
           </Spacer>
         </Col>
         <Col span={8}>
-          <h2 className={styles.title}><Icon className={styles.icon} type="copyright" />2017</h2>
+          <h2 className={styles.title}><Icon className={styles.icon} type="copyright" />2017 辞不辞</h2>
           <Spacer onlytb>
-            <p>辞不辞，来成为自由职业者。</p>
+            <p>自由职业，来不来嘛<strong className={styles.mark}>～</strong></p>
             <div className={styles.buttons}>
               <a href="mailto://support@cibuci.com">
                 <span className={styles.icon} style={{ marginLeft: 0 }}>

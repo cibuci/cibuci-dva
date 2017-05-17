@@ -9,9 +9,9 @@ import PkSubTitle from '../components/PkSubTitle';
 import PkCommentList from '../components/List/PkCommentList';
 import NewPkComment from '../components/Editor/NewPkComment';
 
-import styles from './IndexPage.less';
+import styles from './PkPage.less';
 
-function IndexPage({ current }) {
+function PkPage({ current }) {
   return (
     <Base>
       <Helmet>
@@ -49,7 +49,7 @@ function IndexPage({ current }) {
   );
 }
 
-IndexPage.propTypes = {
+PkPage.propTypes = {
 };
 
 function mapStateToProps(state) {
@@ -58,4 +58,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(IndexPage);
+export default connect(mapStateToProps)(PkPage);

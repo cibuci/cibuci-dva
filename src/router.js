@@ -1,6 +1,5 @@
 import React from 'react';
-import { Router, Route } from 'dva/router';
-import IndexPage from './routes/IndexPage';
+import { Router, Route, Redirect } from 'dva/router';
 import TopicPage from './routes/TopicPage';
 import TopicDetailPage from './routes/TopicDetailPage';
 import TopicAddPage from './routes/TopicAddPage';
@@ -16,7 +15,7 @@ import SettingPasswordPage from './routes/SettingPasswordPage';
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
-      <Route path="/" component={IndexPage} />
+      <Redirect from="/" to="/article" />
       <Route path="/topic" component={TopicPage}>
         <Route path="add" component={TopicAddPage} />
         <Route path=":id" component={TopicDetailPage} />
@@ -27,7 +26,7 @@ function RouterConfig({ history }) {
       <Route path="/about" component={AboutPage} />
       <Route path="/signin" component={SigninPage} />
       <Route path="/signup" component={SignupPage} />
-      <Route path="/profile" component={ProfilePage} />
+      <Route path="/@/:id" component={ProfilePage} />
       <Route path="/setting" component={SettingPage}>
         <Route path="password" component={SettingPasswordPage} />
       </Route>

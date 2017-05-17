@@ -16,7 +16,7 @@ class DropMenu extends React.Component {
     const menu = (
       <Menu>
         <Menu.Item>
-          <Link to="/profile">我的主页</Link>
+          <Link to={`/@/${user.username}`}>我的主页</Link>
         </Menu.Item>
         <Menu.Item>
           <Link to="/setting">设置</Link>
@@ -42,7 +42,7 @@ DropMenu.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    user: state.app.user
+    user: state.app.user,
   };
 }
 

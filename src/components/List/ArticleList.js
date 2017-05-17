@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Spin } from 'antd';
+import { Button, Spin, Row, Col } from 'antd';
 import { connect } from 'dva';
 import { ArticleItem } from '../Card/';
 import { listSelector } from '../../models/article/selector';
@@ -20,7 +20,13 @@ const ArticleList = (props) => {
   return (
     <div>
       <Spin spinning={loading}>
-        { list.map(item => <ArticleItem key={item.id} article={item} />) }
+        <Row gutter={24} type="flex" align="top">
+          { list.map(item => (
+            <Col key={item.id} xs={24} sm={24} md={12} lg={8} xl={8}>
+              <ArticleItem article={item} />
+            </Col>
+          )) }
+        </Row>
       </Spin>
 
       <div className={styles.next}>

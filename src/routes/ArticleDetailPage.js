@@ -14,19 +14,27 @@ const styles = {
   },
 };
 
-function ArticleDetailPage({ article }) {
-  if (!article) return null;
+class ArticleDetailPage extends React.Component {
 
-  return (
-    <div style={styles.wrapper}>
-      <Helmet>
-        <title>{`${article.title} - 辞不辞`}</title>
-      </Helmet>
-      <div style={styles.container}>
-        <ArticleContent article={article} />
+  componentWillUnmount() {
+    this.props.dispatch({ type: 'article/save', payload: { current: null } });
+  }
+
+  render() {
+    const { article } = this.props;
+    if (!article) return null;
+
+    return (
+      <div style={styles.wrapper}>
+        <Helmet>
+          <title>{`${article.title} - 辞不辞`}</title>
+        </Helmet>
+        <div style={styles.container}>
+          <ArticleContent article={article} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 ArticleDetailPage.propTypes = {

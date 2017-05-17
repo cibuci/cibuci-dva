@@ -12,7 +12,7 @@ const ArticleItem = ({ article }) => {
     <div className={styles.wrapper}>
 
       <div className={styles.cover}>
-        <img src={cover} alt="cover" />
+        <img src={`${cover}?imageView2/1/w/700/h/400/format/jpg/q/75|imageslim`} alt="cover" />
       </div>
 
       <div className={styles.body}>

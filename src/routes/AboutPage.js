@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import Base from '../components/Layout/Base';
 import LogoGather from '../components/LogoGather';
 
-import styles from './IndexPage.less';
+import styles from './AboutPage.less';
 
 function AboutPage() {
   return (

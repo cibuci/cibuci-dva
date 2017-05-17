@@ -13,9 +13,8 @@ const Header = (props) => {
         <div className={styles.logo} />
       </Link>
       <ul className={styles.nav}>
-        <li className={styles.item}><Link to="/" activeClassName={styles.active} >P·K</Link></li>
-        <li className={styles.item}><Link to="/topic" activeClassName={styles.active} >话题</Link></li>
         <li className={styles.item}><Link to="/article" activeClassName={styles.active} >精选</Link></li>
+        <li className={styles.item}><Link to="/topic" activeClassName={styles.active} >话题</Link></li>
         { authorized ? (
           <li className={styles.user}>
             <span>
