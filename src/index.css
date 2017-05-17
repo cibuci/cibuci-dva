@@ -7,8 +7,8 @@ html, body, :global(#root) {
 }
 
 p {
-  font-size: .9rem;
-  font-weight: 200;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 ul :global {

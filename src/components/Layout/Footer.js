@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <div className={styles.wrapper}>
       <Row gutter={16}>
-        <Col span={8}>
+        <Col xs={24} sm={8} md={8} lg={8} xl={8}>
           <h2 className={styles.title}><Icon className={styles.icon} type="github" />GitHub</h2>
           <Spacer onlytb>
             <ul className={styles.list}>
@@ -23,7 +23,7 @@ const Footer = () => {
             </ul>
           </Spacer>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={8} md={8} lg={8} xl={8}>
           <h2 className={styles.title}><Icon className={styles.icon} type="flag" />社区</h2>
           <Spacer onlytb>
             <ul className={styles.list}>
@@ -33,7 +33,7 @@ const Footer = () => {
             </ul>
           </Spacer>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={8} md={8} lg={8} xl={8}>
           <h2 className={styles.title}><Icon className={styles.icon} type="copyright" />2017 辞不辞</h2>
           <Spacer onlytb>
             <p>自由职业，来不来嘛<strong className={styles.mark}>～</strong></p>
