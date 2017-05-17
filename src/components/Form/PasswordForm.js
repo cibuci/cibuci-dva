@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
 import { Form, Input, Button, message } from 'antd';
 
 const FormItem = Form.Item;
@@ -43,7 +42,9 @@ class PasswordForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        this.props.dispatch({ type: 'app/passwordchange', payload: { params: values } });
+        if (values.newPassword === values.newPasswordRepeat) {
+          this.props.dispatch({ type: 'app/passwordchange', payload: { params: values } });
+        }
       }
     });
   }
@@ -67,7 +68,7 @@ class PasswordForm extends React.Component {
           label="密码"
         >
           {getFieldDecorator('newPassword', {
-            rules: [{ required: false, message: '请输入你的旧密码!' }],
+            rules: [{ required: false, message: '请输入新密码!' }],
           })(
             <Input type="password" />,
           )}
@@ -77,7 +78,7 @@ class PasswordForm extends React.Component {
           label="确认密码"
         >
           {getFieldDecorator('newPasswordRepeat', {
-            rules: [{ required: false, message: '请输入你的旧密码!' }],
+            rules: [{ required: false, message: '请重复输入新密码!' }],
           })(
             <Input type="password" />,
           )}

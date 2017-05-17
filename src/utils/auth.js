@@ -1,4 +1,5 @@
 import fetch from 'dva/fetch';
+import storage from './storage';
 
 function parseJSON(response) {
   return response.json();
@@ -37,6 +38,24 @@ export function register(params) {
   const options = {
     method: 'POST',
     body: JSON.stringify({ username, email, password }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  return fetch(url, options)
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(data => data)
+    .catch(err => ({ err }));
+}
+
+export function changePassword(params) {
+  const token = storage.load('lbtoken');
+  const url = `https://api.cibuci.com/api/users/change-password?access_token=${token}`;
+  const { oldPassword, newPassword } = params;
+  const options = {
+    method: 'POST',
+    body: JSON.stringify({ oldPassword, newPassword }),
     headers: {
       'Content-Type': 'application/json',
     },

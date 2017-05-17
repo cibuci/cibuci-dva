@@ -38,7 +38,7 @@ const TopicItem = ({ topic, tabs }) => {
             <Link to={`/topic/${id}`}>{title}</Link>
           </div>
           <div className={styles.meta}>
-            <Link to={`/user/${authorId}`}>{author.username}</Link>
+            <Link to={`/@/${author.username}`}>{author.username}</Link>
             ·
             <Link to={`/topic?tab=${tab}&page=1`}>{tabName()}</Link>
             ·

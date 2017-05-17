@@ -1,7 +1,7 @@
 import pathToRegexp from 'path-to-regexp';
 import { routerRedux } from 'dva/router';
 import storage from '../utils/storage';
-import { login, register } from '../utils/auth';
+import { login, register, changePassword } from '../utils/auth';
 import { fetchUser, updateUser } from '../services/cibuci';
 
 const BoardTypes = {
@@ -125,6 +125,13 @@ export default {
       yield put({ type: 'saveUser', payload: params.data });
       const user = yield select(state => state.app.user);
       storage.saveRecordValue('lbuser', user);
+    },
+
+    * passwordchange({ payload }, { call, put, select }) {  // eslint-disable-line
+      const { params } = payload;
+      yield call(changePassword, params);
+      yield put({ type: 'logout' });
+      yield put(routerRedux.push('/signin'));
     },
   },
 
