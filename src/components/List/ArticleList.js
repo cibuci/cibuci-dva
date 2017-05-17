@@ -20,13 +20,15 @@ const ArticleList = (props) => {
   return (
     <div>
       <Spin spinning={loading}>
-        <Row gutter={24} type="flex" align="top">
-          { list.map(item => (
-            <Col key={item.id} xs={24} sm={24} md={12} lg={8} xl={8}>
-              <ArticleItem article={item} />
-            </Col>
-          )) }
-        </Row>
+        <div className={styles.container}>
+          <Row gutter={24} type="flex" align="top">
+            { list.map(item => (
+              <Col key={item.id} xs={24} sm={24} md={12} lg={8} xl={8}>
+                <ArticleItem article={item} />
+              </Col>
+            )) }
+          </Row>
+        </div>
       </Spin>
 
       <div className={styles.next}>

@@ -1,5 +1,5 @@
 .wrapper {
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   border-bottom: 1px solid @gray-lighter;
   position: relative;
   line-height: 1.2;
@@ -18,31 +18,30 @@
     }
   }
 
-  .body {
+  .heading {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-top: .6rem;
 
-    .heading {
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-top: .6rem;
-
-      a {
-        &:hover {
-          text-decoration: underline;
-        }
+    a {
+      &:hover {
+        text-decoration: underline;
       }
     }
+  }
+
+  .body {
+    font-weight: 200;
+    font-size: .9rem;
+    color: @light-font-color;
 
     .summary {
-      font-size: .85rem;
-      line-height: 1.5;
-      color: @light-font-color;
+      line-height: 1.4;
       margin: .5rem 0;
     }
 
     .meta {
-      font-size: .85rem;
       margin-top: .5rem;
-      color: @light-font-color;
 
       a {
         margin-right: .6rem;

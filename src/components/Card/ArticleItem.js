@@ -15,10 +15,11 @@ const ArticleItem = ({ article }) => {
         <img src={`${cover}?imageView2/1/w/700/h/400/format/jpg/q/75|imageslim`} alt="cover" />
       </div>
 
+      <div className={styles.heading}>
+        <Link to={`/article/${id}`}>{title}</Link>
+      </div>
+
       <div className={styles.body}>
-        <div className={styles.heading}>
-          <Link to={`/article/${id}`}>{title}</Link>
-        </div>
         <div className={styles.summary}>
           <p>{summary}</p>
         </div>

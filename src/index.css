@@ -6,6 +6,11 @@ html, body, :global(#root) {
   letter-spacing: .03em;
 }
 
+p {
+  font-size: .9rem;
+  font-weight: 200;
+}
+
 ul :global {
   list-style: none;
 }
