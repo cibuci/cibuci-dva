@@ -22,9 +22,11 @@ export function fetchTopics(tab, page) {
   };
 
   if (tab !== 'all') {
-    params.filter = {
-      tab,
-    };
+    if (tab === 'good') {
+      params.filter = { mark: 'good' };
+    } else {
+      params.filter = { tab };
+    }
   }
 
   return restClient('GET_LIST', 'topics', params);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
+import { Icon } from 'antd';
 import { Link } from 'dva/router';
 import moment from 'moment';
 import styles from './TopicItem.less';
@@ -17,6 +18,8 @@ const TopicItem = ({ topic, tabs }) => {
     lastReplyer,
     commentsCount,
     createdAt,
+    mark,
+    rank,
   } = topic;
 
   function tabName() {
@@ -37,8 +40,10 @@ const TopicItem = ({ topic, tabs }) => {
         </div>
         <div className={styles.body}>
           <div className={styles.heading}>
+            { mark === 'good' ? <Link to="/topic?tab=good&page=1"><Icon className={styles.icon} type="like-o" /></Link> : null }
             <Link className={styles.tab} to={`/topic?tab=${tab}&page=1`}>{tabName()}</Link>
             <Link to={`/topic/${id}`}>{title}</Link>
+            { rank > 0 ? <Icon className={styles.icon} type="arrow-up" /> : null }
           </div>
           <div className={styles.meta}>
             <Link to={`/@/${author.username}`}>{author.nickName || author.username}</Link>
