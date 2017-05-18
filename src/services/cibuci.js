@@ -14,9 +14,10 @@ export function fetchTopics(tab, page) {
       perPage: 20,
     },
     sort: {},
-    order: ['lastReplyAt DESC', 'createdAt DESC'],
+    order: ['rank DESC', 'lastReplyAt DESC'],
     include: [
       'author',
+      'lastReplyer',
     ],
   };
 
@@ -171,6 +172,7 @@ export function fetchArticles(page) {
       createdAt: true,
       cover: true,
       authorId: true,
+      readCount: true,
     },
     include: [
       'author',

@@ -40,6 +40,16 @@
     font-size: 1rem;
     line-height: 1.4;
 
+    a.tab {
+      color: @light-font-color;
+      margin-right: .4rem;
+
+      &:hover {
+        color: @title-font-color;
+        text-decoration: none;
+      }
+    }
+
     a {
       &:hover {
         text-decoration: underline;
@@ -48,9 +58,9 @@
   }
 
   .meta {
-    font-size: .7rem;
+    font-size: 14px;
     margin-top: .2rem;
-    color: #999;
+    color: @light-font-color;
 
     a {
       margin: 0 .2rem;
@@ -63,5 +73,9 @@
 }
 
 .badge {
-  padding-left: .8rem;
+  font-size: 14px;
+  padding: 0 .6rem;
+  border-radius: 1rem;
+  color: @light-font-color;
+  border: 1px solid @light-font-color;
 }

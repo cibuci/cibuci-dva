@@ -5,8 +5,7 @@ import styles from './ArticleItem.less';
 
 const ArticleItem = ({ article }) => {
   if (!article) return null;
-  const { id, createdAt, title, summary, cover } = article;
-  const readCount = article.readCount || 0;
+  const { id, createdAt, title, summary, cover, readCount } = article;
 
   return (
     <div className={styles.wrapper}>

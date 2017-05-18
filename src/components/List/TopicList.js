@@ -7,7 +7,9 @@ const TopicList = (props) => {
   const { loading, list } = props;
   return (
     <Spin spinning={loading}>
-      { list.map(item => <TopicItem key={item.id} topic={item} />) }
+      <div style={{ minHeight: 40 }}>
+        { list.map(item => <TopicItem key={item.id} topic={item} />) }
+      </div>
     </Spin>
   );
 };
