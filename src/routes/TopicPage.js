@@ -32,7 +32,7 @@ function TopicPage(props, context) {
         <TopicSubMenu />
         <Container>
           <div className={styles.container}>
-            <Row gutter={16}>
+            <Row gutter={24}>
               <Col xs={24} sm={24} md={17} lg={17} xl={17}>
                 <div className={styles.left}>
                   <TopicList />
