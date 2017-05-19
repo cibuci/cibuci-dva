@@ -39,7 +39,6 @@ class CustomToolbar extends React.Component {
       name: 'file',
       showUploadList: false,
       action: 'https://up-z1.qbox.me',
-      style: { padding: '2rem' },
       beforeUpload(file) {
         const isLt2M = file.size / 1024 / 1024 < 2;
         if (!isLt2M) {
@@ -89,10 +88,18 @@ class CustomToolbar extends React.Component {
           onCancel={this.handleCancel}
         >
           <Dragger {...props}>
-            <p className="ant-upload-drag-icon">
-              <Icon type="inbox" />
-            </p>
-            <p className="ant-upload-text">点击或拖拽图片到此处上传。</p>
+            {
+              this.state.url ? (
+                <img src={this.state.url} alt="pic" style={{ maxHeight: '8rem' }} />
+              ) : (
+                <div style={{ padding: '2rem' }}>
+                  <p className="ant-upload-drag-icon">
+                    <Icon type="inbox" />
+                  </p>
+                  <p className="ant-upload-text">点击或拖拽图片到此处上传。</p>
+                </div>
+              )
+            }
           </Dragger>
         </Modal>
       </div>
