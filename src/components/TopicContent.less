@@ -1,6 +1,75 @@
 .wrapper {
+}
+
+.title {
+  background-color: @gray-light;
+  padding: .8rem 1rem;
+
+  .media {
+    overflow: hidden;
+
+    .left {
+      display: table-cell;
+      padding-right: .8rem;
+    }
+
+    .body {
+      display: table-cell;
+      vertical-align: top;
+      width: 10000px;
+      zoom: 1;
+      overflow: hidden;
+    }
+
+    .right {
+      display: table-cell;
+    }
+
+    .middle {
+      vertical-align: middle;
+    }
+
+    .heading {
+      font-size: 1rem;
+      line-height: 1.4;
+
+      a.tab {
+        color: @light-font-color;
+        margin-right: .4rem;
+
+        &:hover {
+          color: @title-font-color;
+          text-decoration: none;
+        }
+      }
+
+      a {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .meta {
+      font-size: 14px;
+      margin-top: .2rem;
+      color: @light-font-color;
+
+      a {
+        margin: 0 .2rem;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.article {
   background-color: white;
-  padding: 1.2rem;
+  padding: .8rem 1rem;
+  min-height: 10em;
 
   img {
     max-width: 100%;

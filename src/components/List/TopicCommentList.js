@@ -1,20 +1,18 @@
 import React from 'react';
 import { TopicComment } from '../Card/';
-import Spacer from '../Common/Spacer';
+import Panel from '../Common/Panel';
+
 import styles from './TopicCommentList.less';
 
 const TopicCommentList = ({ list }) => {
-  if (!list) return null;
+  if (!list || !list.length) return null;
 
   return (
-    <Spacer>
-      <div className={styles.title}>
-        {list.length} 回复
-      </div>
+    <Panel title={`共收到 ${list.length} 条回复`}>
       <div className={styles.wrapper}>
         { list.map(item => <TopicComment key={item.id} comment={item} />) }
       </div>
-    </Spacer>
+    </Panel>
   );
 };
 

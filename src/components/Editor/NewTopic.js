@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'dva';
 import { Input, Select, Button } from 'antd';
 import ReactQuill from 'react-quill';
-import Spacer from '../Common/Spacer';
 import styles from './NewTopic.less';
 
 const Option = Select.Option;

@@ -1,13 +1,16 @@
-import { Button } from 'antd';
 import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Helmet } from 'react-helmet';
-import styles from './TopicDetailPage.less';
+import { Row, Col, Button } from 'antd';
+import { Container } from '../components/Layout/';
+import Panel from '../components/Common/Panel';
 import TopicContent from '../components/TopicContent';
 import TopicCommentList from '../components/List/TopicCommentList';
 import TopicAuthor from '../components/TopicAuthor';
 import NewTopicComment from '../components/Editor/NewTopicComment';
+
+import styles from './TopicDetailPage.less';
 
 class TopicDetailPage extends React.Component {
 
@@ -24,21 +27,28 @@ class TopicDetailPage extends React.Component {
         <Helmet>
           <title>{`${topic.title} - 辞不辞`}</title>
         </Helmet>
-        <div className={styles.sidebar}>
-          <div className={styles.sidebarlist}>
-            <Link to="/topic/add"><Button type="primary" size="large">发表新话题</Button></Link>
-          </div>
-        </div>
-        <div className={styles.content}>
-          <div className={styles.up}>
-            <TopicContent topic={topic} />
-            <TopicCommentList list={comments} />
-            <NewTopicComment />
-          </div>
-          <div className={styles.footer}>
-            <TopicAuthor topic={topic} />
-          </div>
-        </div>
+        <Container>
+          <Row gutter={24}>
+            <Col xs={24} sm={24} md={17} lg={17} xl={17}>
+              <div className={styles.left}>
+                <TopicContent topic={topic} />
+                <TopicCommentList list={comments} />
+                <Panel title="添加回复">
+                  <NewTopicComment />
+                </Panel>
+              </div>
+            </Col>
+            <Col xs={24} sm={24} md={7} lg={7} xl={7}>
+              <div className={styles.right}>
+                <Panel>
+                  <div className={styles.add}>
+                    <Link to="/topic/add"><Button type="primary" size="large">发布新话题</Button></Link>
+                  </div>
+                </Panel>
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

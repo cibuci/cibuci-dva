@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'dva';
 import { Button } from 'antd';
 import ReactQuill from 'react-quill';
-import Spacer from '../Common/Spacer';
 import styles from './NewTopicComment.less';
 
 class NewTopicComment extends React.Component {
@@ -65,23 +64,44 @@ class NewTopicComment extends React.Component {
 
   render() {
     return (
-      <Spacer>
-        <div className={styles.wrapper}>
-          <div style={{ padding: '1rem' }}>
-            <ReactQuill
-              ref={(el) => { this.reactQuillRef = el; }}
-              theme={'snow'}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div style={{ padding: '0 1rem 1rem 1rem', textAlign: 'right' }}>
-            <Button onClick={this.handleClick} type="primary" size="large">提交</Button>
-          </div>
+      <div className={styles.wrapper}>
+        <div>
+          <ReactQuill
+            ref={(el) => { this.reactQuillRef = el; }}
+            theme={'snow'}
+            onChange={this.handleChange}
+            modules={NewTopicComment.modules}
+            formats={NewTopicComment.formats}
+          />
         </div>
-      </Spacer>
+        <div style={{ padding: '1.5rem', textAlign: 'right' }}>
+          <Button onClick={this.handleClick} type="primary" size="large">回复</Button>
+        </div>
+      </div>
     );
   }
 }
+
+/*
+ * Quill modules to attach to editor
+ * See http://quilljs.com/docs/modules/ for complete options
+ */
+NewTopicComment.modules = {};
+NewTopicComment.modules.toolbar = [
+  ['bold', 'italic'],
+  [{ list: 'ordered' }, { list: 'bullet' }, 'blockquote'],
+  [{ header: [1, 2, false] }],
+  ['link', 'image'],
+];
+
+/*
+ * Quill editor formats
+ * See http://quilljs.com/docs/formats/
+ */
+NewTopicComment.formats = [
+  'bold', 'italic', 'blockquote', 'header',
+  'list', 'direction', 'link', 'image',
+];
 
 NewTopicComment.propTypes = {
 };

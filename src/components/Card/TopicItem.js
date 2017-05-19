@@ -3,8 +3,9 @@ import { connect } from 'dva';
 import { Icon } from 'antd';
 import { Link } from 'dva/router';
 import moment from 'moment';
-import styles from './TopicItem.less';
 import Avatar from '../Avatar';
+
+import styles from './TopicItem.less';
 
 const TopicItem = ({ topic, tabs }) => {
   if (!topic) return null;

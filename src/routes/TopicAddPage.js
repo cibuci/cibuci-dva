@@ -8,7 +8,7 @@ import NewTopic from '../components/Editor/NewTopic';
 
 import styles from './TopicAddPage.less';
 
-function TopicAddPage(props) {
+function TopicAddPage() {
   return (
     <div className={styles.container}>
       <Helmet>
