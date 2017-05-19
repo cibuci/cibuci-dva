@@ -21,7 +21,12 @@ class ArticleDetailPage extends React.Component {
           <title>{`${article.title} - 辞不辞`}</title>
         </Helmet>
         <div className={styles.container}>
-          <ArticleContent article={article} />
+          <div className={styles.title}>
+            {article.title}
+          </div>
+          <div className={styles.content}>
+            <ArticleContent article={article} />
+          </div>
         </div>
       </div>
     );
