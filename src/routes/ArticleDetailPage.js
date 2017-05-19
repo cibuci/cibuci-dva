@@ -3,16 +3,7 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'dva';
 import ArticleContent from '../components/ArticleContent';
 
-const styles = {
-  wrapper: {
-    overflow: 'auto',
-    height: '100%',
-  },
-  container: {
-    maxWidth: 750,
-    margin: '0 auto',
-  },
-};
+import styles from './ArticleDetailPage.less';
 
 class ArticleDetailPage extends React.Component {
 
@@ -25,11 +16,11 @@ class ArticleDetailPage extends React.Component {
     if (!article) return null;
 
     return (
-      <div style={styles.wrapper}>
+      <div>
         <Helmet>
           <title>{`${article.title} - 辞不辞`}</title>
         </Helmet>
-        <div style={styles.container}>
+        <div className={styles.container}>
           <ArticleContent article={article} />
         </div>
       </div>

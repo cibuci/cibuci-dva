@@ -14,7 +14,6 @@ const TopicContent = ({ topic, tabs }) => {
     title,
     tab,
     createdAt,
-    mark,
     readCount,
   } = topic;
 

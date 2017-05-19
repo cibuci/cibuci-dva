@@ -1,9 +1,25 @@
-.wrapper {
-  background-color: white;
-  padding: 1.2rem;
-  font-size: 1rem;
+.article {
+
+  span, p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: @gray-darker !important;
+  }
 
   img {
     max-width: 100%;
+    display: block;
+    height: auto;
+    padding: 0.6em 0;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+  a {
+    color: @primary-color !important;
+    border-bottom: 2px dotted @primary-color;
   }
 }
