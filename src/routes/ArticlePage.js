@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet';
 import Base from '../components/Layout/Base';
 import Container from '../components/Layout/Container';
 import ArticleList from '../components/List/ArticleList';
+import AdminPanel from '../components/AdminPanel';
+
 import styles from './ArticlePage.less';
 
 function ArticlePage(props) {
@@ -14,8 +16,11 @@ function ArticlePage(props) {
     content = children;
   } else {
     content = (
-      <div className={styles.container}>
-        <ArticleList />
+      <div>
+        <AdminPanel />
+        <div className={styles.container}>
+          <ArticleList />
+        </div>
       </div>
     );
   }

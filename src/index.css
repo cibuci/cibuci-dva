@@ -6,6 +6,10 @@ html, body, :global(#root) {
   letter-spacing: .03em;
 }
 
+button:focus {
+  outline: none;
+}
+
 p {
   font-size: 14px;
   line-height: 1.5;

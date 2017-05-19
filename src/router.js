@@ -4,6 +4,7 @@ import TopicPage from './routes/TopicPage';
 import TopicDetailPage from './routes/TopicDetailPage';
 import TopicAddPage from './routes/TopicAddPage';
 import ArticlePage from './routes/ArticlePage';
+import ArticleAddPage from './routes/ArticleAddPage';
 import ArticleDetailPage from './routes/ArticleDetailPage';
 import AboutPage from './routes/AboutPage';
 import SigninPage from './routes/SigninPage';
@@ -21,6 +22,7 @@ function RouterConfig({ history }) {
         <Route path=":id" component={TopicDetailPage} />
       </Route>
       <Route path="/article" component={ArticlePage}>
+        <Route path="add" component={ArticleAddPage} />
         <Route path=":id" component={ArticleDetailPage} />
       </Route>
       <Route path="/about" component={AboutPage} />

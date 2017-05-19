@@ -1,5 +1,10 @@
 import pathToRegexp from 'path-to-regexp';
-import { fetchArticles, fetchArticle } from '../../services/cibuci';
+import { routerRedux } from 'dva/router';
+import {
+  fetchArticles,
+  fetchArticle,
+  addArticle,
+} from '../../services/cibuci';
 
 export default {
 
@@ -37,7 +42,9 @@ export default {
         const match = pathToRegexp('/article/:itemId').exec(pathname);
         if (match) {
           const id = match[1];
-          dispatch({ type: 'fetchItem', payload: { id } });
+          if (id !== 'add') {
+            dispatch({ type: 'fetchItem', payload: { id } });
+          }
         }
       });
     },
@@ -64,6 +71,11 @@ export default {
       const { id } = payload;
       const item = yield call(fetchArticle, id);
       yield put({ type: 'saveItem', payload: item.data });
+    },
+
+    * addItem({ payload }, { put, call }) {  // eslint-disable-line
+      yield call(addArticle, payload);
+      yield put(routerRedux.push('/article'));
     },
   },
 

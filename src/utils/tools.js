@@ -11,3 +11,7 @@ export function qiniuUrl(key) {
 export function generateKey(userId) {
   return `community/avatar/${userId}/${Date.now()}`;
 }
+
+export function generateArticleKey() {
+  return `community/article/content/${Date.now()}`;
+}

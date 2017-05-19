@@ -214,6 +214,10 @@ export function fetchArticle(id) {
   return restClient('GET_ONE', 'articles', params);
 }
 
+export function addArticle(item) {
+  return restClient('CREATE', 'articles', { data: item });
+}
+
 export function fetchUsers(ids) {
   return restClient('GET_MANY', 'users', { ids });
 }
