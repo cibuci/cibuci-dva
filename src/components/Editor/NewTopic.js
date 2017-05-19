@@ -71,36 +71,34 @@ class NewTopic extends React.Component {
       >
         <Option value="share">分享</Option>
         <Option value="ask">问答</Option>
-        <Option value="job">招聘</Option>
       </Select>
     );
 
     return (
-      <Spacer>
-        <div className={styles.wrapper}>
-          <div style={{ padding: '1rem' }}>
-            <Input
-              size="large"
-              addonBefore={selectBefore}
-              placeholder="请输入标题"
-              onChange={this.handleTitleChange}
-              value={this.state.title}
-            />
-          </div>
-          <div style={{ padding: '0 1rem 1rem 1rem' }}>
-            <ReactQuill
-              ref={(el) => { this.reactQuillRef = el; }}
-              theme={'snow'}
-              onChange={this.handleChange}
-              modules={NewTopic.modules}
-              formats={NewTopic.formats}
-            />
-          </div>
-          <div style={{ padding: '0 1rem 1rem 1rem', textAlign: 'right' }}>
-            <Button onClick={this.handleClick} type="primary" size="large">提交</Button>
-          </div>
+      <div className={styles.wrapper}>
+        <div style={{ padding: '1rem' }}>
+          <Input
+            size="large"
+            style={{ padding: '1.2rem' }}
+            addonBefore={selectBefore}
+            placeholder="请输入标题"
+            onChange={this.handleTitleChange}
+            value={this.state.title}
+          />
         </div>
-      </Spacer>
+        <div style={{ padding: '0 1rem 1rem 1rem' }}>
+          <ReactQuill
+            ref={(el) => { this.reactQuillRef = el; }}
+            theme={'snow'}
+            onChange={this.handleChange}
+            modules={NewTopic.modules}
+            formats={NewTopic.formats}
+          />
+        </div>
+        <div style={{ padding: '0 1rem 1rem 1rem', textAlign: 'right' }}>
+          <Button onClick={this.handleClick} type="primary" size="large">发布</Button>
+        </div>
+      </div>
     );
   }
 }
@@ -109,33 +107,22 @@ class NewTopic extends React.Component {
  * Quill modules to attach to editor
  * See http://quilljs.com/docs/modules/ for complete options
  */
-NewTopic.modules = {}
+NewTopic.modules = {};
 NewTopic.modules.toolbar = [
-  ['bold', 'italic', 'underline', 'strike'],       // toggled buttons
-  ['blockquote', 'code-block'],                    // blocks
-  [{ 'header': 1 }, { 'header': 2 }],              // custom button values
-  [{ 'list': 'ordered'}, { 'list': 'bullet' }],    // lists
-  [{ 'script': 'sub'}, { 'script': 'super' }],     // superscript/subscript
-  [{ 'indent': '-1'}, { 'indent': '+1' }],         // outdent/indent
-  [{ 'direction': 'rtl' }],                        // text direction
-  [{ 'size': ['small', false, 'large', 'huge'] }], // custom dropdown
-  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],       // header dropdown
-  [{ 'color': [] }, { 'background': [] }],         // dropdown with defaults
-  [{ 'font': [] }],                                // font family
-  [{ 'align': [] }],                               // text align
-  ['clean'],                                       // remove formatting
-]
+  ['bold', 'italic'],
+  [{ list: 'ordered' }, { list: 'bullet' }, 'blockquote'],
+  [{ header: [1, 2, false] }],
+  ['link', 'image'],
+];
 
 /*
  * Quill editor formats
  * See http://quilljs.com/docs/formats/
  */
 NewTopic.formats = [
-  'header', 'font', 'background', 'color', 'code', 'size',
-  'bold', 'italic', 'underline', 'strike', 'blockquote',
-  'list', 'bullet', 'indent', 'script', 'align', 'direction',
-  'link', 'image', 'code-block', 'formula', 'video'
-]
+  'bold', 'italic', 'blockquote', 'header',
+  'list', 'direction', 'link', 'image',
+];
 
 NewTopic.propTypes = {
 };

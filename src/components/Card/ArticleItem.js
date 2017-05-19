@@ -5,7 +5,15 @@ import styles from './ArticleItem.less';
 
 const ArticleItem = ({ article }) => {
   if (!article) return null;
-  const { id, createdAt, title, summary, cover, readCount } = article;
+  const {
+    id,
+    createdAt,
+    title,
+    summary,
+    cover,
+    readCount,
+    sourceUrl,
+  } = article;
 
   return (
     <div className={styles.wrapper}>
@@ -23,7 +31,7 @@ const ArticleItem = ({ article }) => {
           <p>{summary}</p>
         </div>
         <div className={styles.meta}>
-          <Link to="/article?params=jh">精华</Link>
+          { sourceUrl ? (<a href={sourceUrl} rel="noopener noreferrer" target="_blank">原文链接</a>) : null }
           {moment(createdAt).fromNow()}
           <span className={styles.counts}>阅读：{readCount}</span>
         </div>

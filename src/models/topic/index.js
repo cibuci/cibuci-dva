@@ -9,6 +9,7 @@ import {
   addTopic,
   fetchTopicComments,
   addTopicComment,
+  fetchUser,
 } from '../../services/cibuci';
 
 export default {
@@ -88,7 +89,9 @@ export default {
     * fetchItem({ payload }, { put, call }) {
       const { id } = payload;
       const item = yield call(fetchTopic, id);
-      yield put({ type: 'saveItem', payload: item.data });
+      const author = yield call(fetchUser, item.data.authorId);
+      const topic = { ...item.data, author: author.data };
+      yield put({ type: 'saveItem', payload: topic });
     },
 
     * addItem({ payload }, { put, call }) {  // eslint-disable-line

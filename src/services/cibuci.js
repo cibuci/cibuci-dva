@@ -14,6 +14,18 @@ export function fetchTopics(tab, page) {
       perPage: 20,
     },
     sort: {},
+    fields: {
+      title: true,
+      tab: true,
+      authorId: true,
+      lastReplyerId: true,
+      mark: true,
+      rank: true,
+      id: true,
+      createdAt: true,
+      lastReplyAt: true,
+      commentsCount: true,
+    },
     order: ['rank DESC', 'lastReplyAt DESC'],
     include: [
       'author',
@@ -38,6 +50,10 @@ export function fetchHotTopics() {
       page: 1,
       perPage: 10,
     },
+    fields: {
+      title: true,
+      id: true,
+    },
     sort: {
       field: 'commentsCount',
       order: 'DESC',
@@ -53,6 +69,10 @@ export function fetchNoReplyTopics() {
       page: 1,
       perPage: 5,
     },
+    fields: {
+      title: true,
+      id: true,
+    },
     sort: {
       field: 'createdAt',
       order: 'DESC',
@@ -66,12 +86,7 @@ export function fetchNoReplyTopics() {
 }
 
 export function fetchTopic(id) {
-  const params = {
-    id,
-    include: [
-      'author',
-    ],
-  };
+  const params = { id };
   return restClient('GET_ONE', 'topics', params);
 }
 
@@ -175,10 +190,15 @@ export function fetchArticles(page) {
       cover: true,
       authorId: true,
       readCount: true,
+      sourceName: true,
+      sourceUrl: true,
     },
     include: [
       'author',
     ],
+    filter: {
+      status: 'published',
+    },
   };
 
   return restClient('GET_LIST', 'articles', params);
