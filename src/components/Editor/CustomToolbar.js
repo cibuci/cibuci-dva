@@ -6,6 +6,17 @@ import { qiniuUrl, generateArticleKey } from '../../utils/tools';
 
 const Dragger = Upload.Dragger;
 
+const styles = {
+  split: {
+    display: 'inline-block',
+    margin: '5px 10px',
+    float: 'left',
+    height: '14px',
+    width: '1px',
+    backgroundColor: '#ccc',
+  },
+};
+
 class CustomToolbar extends React.Component {
 
   state = { visible: false }
@@ -62,7 +73,7 @@ class CustomToolbar extends React.Component {
       onChange(info) {
         const status = info.file.status;
         if (status !== 'uploading') {
-          console.log(info.file, info.fileList);
+
         }
         if (status === 'done') {
           message.success(`${info.file.name} file uploaded successfully.`);
@@ -76,10 +87,19 @@ class CustomToolbar extends React.Component {
 
     return (
       <div id="toolbar">
+        <button className="ql-header" value="1" />
+        <button className="ql-header" value="2" />
+        <div style={styles.split} />
         <button className="ql-bold" />
         <button className="ql-italic" />
+        <div style={styles.split} />
+        <button className="ql-blockquote" />
+        <button className="ql-list" value="ordered" />
+        <button className="ql-list" value="bullet" />
+        <div style={styles.split} />
+        <button className="ql-link" />
         <button onClick={this.showModal}>
-          <Icon type="picture" />
+          <Icon type="picture" style={{ fontWeight: 'bold', fontSize: 16, lineHeight: 1.2 }} />
         </button>
         <Modal
           title="上传图片"
