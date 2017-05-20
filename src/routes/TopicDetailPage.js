@@ -7,7 +7,6 @@ import { Container } from '../components/Layout/';
 import Panel from '../components/Common/Panel';
 import TopicContent from '../components/TopicContent';
 import TopicCommentList from '../components/List/TopicCommentList';
-import TopicAuthor from '../components/TopicAuthor';
 import NewTopicComment from '../components/Editor/NewTopicComment';
 
 import styles from './TopicDetailPage.less';

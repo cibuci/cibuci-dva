@@ -7,6 +7,7 @@ import {
   fetchHotTopics,
   fetchNoReplyTopics,
   addTopic,
+  updateTopic,
   fetchTopicComments,
   addTopicComment,
   fetchUser,
@@ -96,6 +97,11 @@ export default {
 
     * addItem({ payload }, { put, call }) {  // eslint-disable-line
       yield call(addTopic, payload);
+      yield put(routerRedux.push('/topic'));
+    },
+
+    * editItem({ payload }, { put, call }) {  // eslint-disable-line
+      yield call(updateTopic, payload);
       yield put(routerRedux.push('/topic'));
     },
 

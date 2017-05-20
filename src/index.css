@@ -52,8 +52,13 @@ ul :global {
 }
 
 :global .ql-toolbar {
-  background: #fdfdfd;
+  background-color: #fdfdfd !important;
   border-left: none !important;
   border-right: none !important;
   border-color: #f7f8fa !important;
+}
+
+:global .ant-input-group-addon {
+  border: none !important;
+  background-color: #fdfdfd !important;
 }

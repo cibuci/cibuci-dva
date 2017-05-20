@@ -62,10 +62,6 @@ class ArticleEditor extends React.Component {
     this.setState({ content: html });
   }
 
-  handleTabChange(value) {
-    this.setState({ tab: value });
-  }
-
   handleTitleChange(e) {
     this.setState({ title: e.target.value });
   }

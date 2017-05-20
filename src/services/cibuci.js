@@ -114,6 +114,10 @@ export function addTopic(item) {
   return restClient('CREATE', 'topics', { data: item });
 }
 
+export function updateTopic(params) {
+  return restClient('UPDATE', 'topics', params);
+}
+
 export function addTopicComment({ content, current }) {
   const params = {
     data: {

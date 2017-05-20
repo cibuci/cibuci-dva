@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'dva';
+import { Button, Icon } from 'antd';
 import { Link } from 'dva/router';
+import { isAuthor } from '../utils/tools';
 import moment from 'moment';
 import Avatar from './Avatar';
 
 import styles from './TopicContent.less';
 
-const TopicContent = ({ topic, tabs }) => {
+const TopicContent = ({ topic, tabs, user }) => {
   if (!topic) return null;
 
   const {
@@ -48,6 +50,13 @@ const TopicContent = ({ topic, tabs }) => {
       <article className={styles.article}>
         <div dangerouslySetInnerHTML={{ __html: topic.content }} />
       </article>
+      { isAuthor(user, author) ? (
+        <div className={styles.footer}>
+          <Link to={`/topic/edit/${topic.id}`}>
+            <Button><Icon type="edit" />重新编辑</Button>
+          </Link>
+        </div>
+      ) : null }
     </div>
   );
 };
@@ -58,6 +67,7 @@ TopicContent.propTypes = {
 function mapStateToProps(state) {
   return {
     tabs: state.topic.tabs,
+    user: state.app.user,
   };
 }
 

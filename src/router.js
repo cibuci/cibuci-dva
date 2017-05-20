@@ -3,6 +3,7 @@ import { Router, Route, Redirect } from 'dva/router';
 import TopicPage from './routes/TopicPage';
 import TopicDetailPage from './routes/TopicDetailPage';
 import TopicAddPage from './routes/TopicAddPage';
+import TopicEditPage from './routes/TopicEditPage';
 import ArticlePage from './routes/ArticlePage';
 import ArticleAddPage from './routes/ArticleAddPage';
 import ArticleEditPage from './routes/ArticleEditPage';
@@ -20,6 +21,7 @@ function RouterConfig({ history }) {
       <Redirect from="/" to="/article" />
       <Route path="/topic" component={TopicPage}>
         <Route path="add" component={TopicAddPage} />
+        <Route path="edit/:id" component={TopicEditPage} />
         <Route path=":id" component={TopicDetailPage} />
       </Route>
       <Route path="/article" component={ArticlePage}>
