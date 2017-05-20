@@ -118,6 +118,10 @@ export function updateTopic(params) {
   return restClient('UPDATE', 'topics', params);
 }
 
+export function deleteTopic(params) {
+  return restClient('DELETE', 'topics', params);
+}
+
 export function addTopicComment({ content, current }) {
   const params = {
     data: {
@@ -130,6 +134,10 @@ export function addTopicComment({ content, current }) {
 
 export function updateTopicComment(params) {
   return restClient('UPDATE', 'topiccomments', params);
+}
+
+export function deleteTopicComment(params) {
+  return restClient('DELETE', 'topiccomments', params);
 }
 
 export function fetchPks() {

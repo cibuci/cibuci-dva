@@ -1,12 +1,14 @@
 import React from 'react';
 import moment from 'moment';
 import { connect } from 'dva';
-import { Button, Icon } from 'antd';
+import { Button, Icon, Modal } from 'antd';
 import Avatar from '../Avatar';
 import CommentEditor from '../Editor/CommentEditor';
 import { isAuthor } from '../../utils/tools';
 
 import styles from './TopicComment.less';
+
+const confirm = Modal.confirm;
 
 class TopicComment extends React.Component {
   constructor(props) {
@@ -18,6 +20,7 @@ class TopicComment extends React.Component {
 
     this.handleEdit = this.handleEdit.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleEdit(e) {
@@ -25,6 +28,20 @@ class TopicComment extends React.Component {
 
     this.setState({
       showEditor: true,
+    });
+  }
+
+  handleDelete() {
+    const params = {
+      id: this.props.comment.id,
+      topicId: this.props.comment.topicId,
+    };
+    const props = this.props;
+    confirm({
+      title: '您确定要删除该条评论吗？',
+      onOk() {
+        props.dispatch({ type: 'topic/removeComment', payload: params });
+      },
     });
   }
 
@@ -83,6 +100,9 @@ class TopicComment extends React.Component {
               <div className={styles.footer}>
                 <Button onClick={this.handleEdit}>
                   <Icon type="edit" />编辑
+                </Button>
+                <Button onClick={this.handleDelete}>
+                  <Icon type="delete" />删除
                 </Button>
               </div>
             ) : null }

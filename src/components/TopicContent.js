@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Button, Icon } from 'antd';
+import { Button, Icon, Modal } from 'antd';
 import { Link } from 'dva/router';
 import moment from 'moment';
 import { isAuthor } from '../utils/tools';
@@ -8,7 +8,10 @@ import Avatar from './Avatar';
 
 import styles from './TopicContent.less';
 
-const TopicContent = ({ topic, tabs, user }) => {
+const confirm = Modal.confirm;
+
+const TopicContent = (props) => {
+  const { topic, tabs, user } = props;
   if (!topic) return null;
 
   const {
@@ -17,6 +20,7 @@ const TopicContent = ({ topic, tabs, user }) => {
     tab,
     createdAt,
     readCount,
+    id,
   } = topic;
 
   function tabName() {
@@ -25,6 +29,15 @@ const TopicContent = ({ topic, tabs, user }) => {
         return tabs[i].name;
       }
     }
+  }
+
+  function showConfirm() {
+    confirm({
+      title: '您确定要删除该话题吗？',
+      onOk() {
+        props.dispatch({ type: 'topic/removeItem', payload: { id } });
+      },
+    });
   }
 
   return (
@@ -55,6 +68,7 @@ const TopicContent = ({ topic, tabs, user }) => {
           <Link to={`/topic/edit/${topic.id}`}>
             <Button><Icon type="edit" />重新编辑</Button>
           </Link>
+          <Button onClick={showConfirm}><Icon type="delete" />删除话题</Button>
         </div>
       ) : null }
     </div>

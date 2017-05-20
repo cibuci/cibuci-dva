@@ -8,10 +8,12 @@ import {
   fetchNoReplyTopics,
   addTopic,
   updateTopic,
+  deleteTopic,
   fetchTopicComments,
   addTopicComment,
-  fetchUser,
   updateTopicComment,
+  deleteTopicComment,
+  fetchUser,
 } from '../../services/cibuci';
 
 export default {
@@ -106,6 +108,11 @@ export default {
       yield put(routerRedux.push('/topic'));
     },
 
+    * removeItem({ payload }, { put, call }) {  // eslint-disable-line
+      yield call(deleteTopic, payload);
+      yield put(routerRedux.push('/topic'));
+    },
+
     * fetchComments({ payload }, { put, call }) {  // eslint-disable-line
       const { id } = payload;
       const result = yield call(fetchTopicComments, id);
@@ -120,6 +127,12 @@ export default {
     * editComment({ payload }, { put, call }) {
       const { id, data } = payload;
       yield call(updateTopicComment, { id, data });
+      yield put({ type: 'fetchComments', payload: { id: payload.topicId } });
+    },
+
+    * removeComment({ payload }, { put, call }) {  // eslint-disable-line
+      const { id } = payload;
+      yield call(deleteTopicComment, { id });
       yield put({ type: 'fetchComments', payload: { id: payload.topicId } });
     },
   },
