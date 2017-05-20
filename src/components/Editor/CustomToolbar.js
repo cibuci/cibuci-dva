@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Modal, Upload, message } from 'antd';
 import { fetchUptoken } from '../../services/cibuci';
-import { qiniuUrl, generateArticleKey } from '../../utils/tools';
+import { qiniuUrl, generateContentKey } from '../../utils/tools';
 
 const Dragger = Upload.Dragger;
 
@@ -46,6 +46,7 @@ class CustomToolbar extends React.Component {
 
   render() {
     const _this = this;
+    const { resource } = this.props;
     const props = {
       name: 'file',
       showUploadList: false,
@@ -57,7 +58,7 @@ class CustomToolbar extends React.Component {
         }
 
         if (isLt2M) {
-          const key = generateArticleKey();
+          const key = generateContentKey(resource);
 
           const uploaderData = this.data;
           uploaderData.key = key;
@@ -72,9 +73,9 @@ class CustomToolbar extends React.Component {
       },
       onChange(info) {
         const status = info.file.status;
-        if (status !== 'uploading') {
-
-        }
+        // if (status !== 'uploading') {
+        //
+        // }
         if (status === 'done') {
           message.success(`${info.file.name} file uploaded successfully.`);
           const avatarUrl = qiniuUrl(info.file.response.key);
@@ -129,6 +130,7 @@ class CustomToolbar extends React.Component {
 
 CustomToolbar.propTypes = {
   onImageUploaded: PropTypes.func,
+  resource: PropTypes.string.isRequired,
 };
 
 export default CustomToolbar;

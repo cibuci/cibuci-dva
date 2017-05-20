@@ -21,7 +21,8 @@
     "react-blocks": "^1.1.4",
     "react-dom": "^15.4.0",
     "react-helmet": "^5.0.3",
-    "react-quill": "^1.0.0-rc.2"
+    "react-quill": "^1.0.0-rc.2",
+    "uuid": "^3.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

@@ -4,6 +4,7 @@ import {
   fetchArticles,
   fetchArticle,
   addArticle,
+  updateArticle,
 } from '../../services/cibuci';
 
 export default {
@@ -75,6 +76,11 @@ export default {
 
     * addItem({ payload }, { put, call }) {  // eslint-disable-line
       yield call(addArticle, payload);
+      yield put(routerRedux.push('/article'));
+    },
+
+    * editItem({ payload }, { put, call }) {  // eslint-disable-line
+      yield call(updateArticle, payload);
       yield put(routerRedux.push('/article'));
     },
   },

@@ -218,6 +218,10 @@ export function addArticle(item) {
   return restClient('CREATE', 'articles', { data: item });
 }
 
+export function updateArticle(params) {
+  return restClient('UPDATE', 'articles', params);
+}
+
 export function fetchUsers(ids) {
   return restClient('GET_MANY', 'users', { ids });
 }

@@ -2,12 +2,13 @@ import React from 'react';
 import { Button } from 'antd';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
+import { isAdmin } from '../utils/tools';
 import Panel from './Common/Panel';
 
 function AdminPanel(props) {
   const { user } = props;
   if (!user) return null;
-  if (user.id !== '5902067be8b73a6cb192e0d6') return null;
+  if (!isAdmin(user)) return null;
 
   return (
     <div style={{ backgroundColor: 'white', marginTop: '1.2rem' }}>

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'dva';
+import { Link } from 'dva/router';
+import { Icon, Button } from 'antd';
+import { isAdmin } from '../utils/tools';
 import ArticleContent from '../components/ArticleContent';
 
 import styles from './ArticleDetailPage.less';
@@ -12,7 +15,7 @@ class ArticleDetailPage extends React.Component {
   }
 
   render() {
-    const { article } = this.props;
+    const { article, user } = this.props;
     if (!article) return null;
 
     return (
@@ -24,6 +27,13 @@ class ArticleDetailPage extends React.Component {
           <div className={styles.title}>
             {article.title}
           </div>
+          { isAdmin(user) ? (
+            <div className={styles.panel}>
+              <Link to={`/article/edit/${article.id}`}>
+                <Button size="large" type="primary"><Icon type="exception" />编辑文章</Button>
+              </Link>
+            </div>
+          ) : null }
           <div className={styles.content}>
             <ArticleContent article={article} />
           </div>
@@ -39,6 +49,7 @@ ArticleDetailPage.propTypes = {
 function mapStateToProps(state) {
   return {
     article: state.article.current,
+    user: state.app.user,
   };
 }
 

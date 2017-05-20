@@ -6,15 +6,25 @@ import { isAdmin } from '../utils/tools';
 import Panel from '../components/Common/Panel';
 import ArticleEditor from '../components/Editor/ArticleEditor';
 
-import styles from './ArticleAddPage.less';
+import styles from './ArticleEditPage.less';
 
-class ArticleAddPage extends React.Component {
+class ArticleEditPage extends React.Component {
+
+  componentDidMount() {
+    const id = this.props.params.id;
+    this.props.dispatch({ type: 'article/fetchItem', payload: { id } });
+  }
+
   handleSave(item) {
-    this.props.dispatch({ type: 'article/addItem', payload: item });
+    const params = {
+      id: this.props.params.id,
+      data: item,
+    };
+    this.props.dispatch({ type: 'article/editItem', payload: params });
   }
 
   render() {
-    const { user } = this.props;
+    const { user, current } = this.props;
 
     if (!user) return null;
     if (!isAdmin(user)) return null;
@@ -22,13 +32,17 @@ class ArticleAddPage extends React.Component {
     return (
       <div className={styles.container}>
         <Helmet>
-          <title>发布新文章 - 辞不辞</title>
+          <title>编辑文章 - 辞不辞</title>
         </Helmet>
         <Row gutter={24}>
           <Col xs={24} sm={24} md={17} lg={17} xl={17}>
             <div className={styles.left}>
-              <Panel title="发布新文章" icon="coffee">
-                <ArticleEditor onSave={this.handleSave.bind(this)} />
+              <Panel title="编辑文章" icon="coffee">
+                <ArticleEditor
+                  edit={current}
+                  onSave={this.handleSave.bind(this)}
+                  saveButtonName="保存"
+                />
               </Panel>
             </div>
           </Col>
@@ -48,13 +62,14 @@ class ArticleAddPage extends React.Component {
   }
 }
 
-ArticleAddPage.propTypes = {
+ArticleEditPage.propTypes = {
 };
 
 function mapStateToProps(state) {
   return {
     user: state.app.user,
+    current: state.article.current,
   };
 }
 
-export default connect(mapStateToProps)(ArticleAddPage);
+export default connect(mapStateToProps)(ArticleEditPage);

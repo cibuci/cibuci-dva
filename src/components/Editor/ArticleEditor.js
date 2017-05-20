@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { Button, Input } from 'antd';
 import ReactQuill from 'react-quill';
 import CustomToolbar from './CustomToolbar';
 
-class NewArticle extends React.Component {
+class ArticleEditor extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,6 +24,16 @@ class NewArticle extends React.Component {
 
   componentDidMount() {
     this.attachQuillRefs();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { edit } = nextProps;
+    if (edit) {
+      this.setState({
+        title: edit.title,
+        content: edit.content,
+      });
+    }
   }
 
   componentDidUpdate() {
@@ -44,7 +55,7 @@ class NewArticle extends React.Component {
 
     // TODO: add some validate.
     const { content, title } = this.state;
-    this.props.dispatch({ type: 'article/addItem', payload: { content, title } });
+    this.props.onSave({ content, title });
   }
 
   handleChange(html) {
@@ -66,6 +77,7 @@ class NewArticle extends React.Component {
   }
 
   render() {
+    const saveButtonName = this.props.saveButtonName || '发布';
     return (
       <div>
         <div>
@@ -78,18 +90,19 @@ class NewArticle extends React.Component {
           />
         </div>
         <div>
-          <CustomToolbar onImageUploaded={this.handleImageUploaded} />
+          <CustomToolbar resource="article" onImageUploaded={this.handleImageUploaded} />
           <ReactQuill
             ref={(el) => { this.reactQuillRef = el; }}
             theme={'snow'}
             onChange={this.handleChange}
-            modules={NewArticle.modules}
-            formats={NewArticle.formats}
+            modules={ArticleEditor.modules}
+            formats={ArticleEditor.formats}
             style={{ height: 500 }}
+            value={this.state.content}
           />
         </div>
         <div style={{ padding: '1.5rem', textAlign: 'right' }}>
-          <Button onClick={this.handleClick} type="primary" size="large">发布</Button>
+          <Button onClick={this.handleClick} type="primary" size="large">{saveButtonName}</Button>
         </div>
       </div>
     );
@@ -100,8 +113,8 @@ class NewArticle extends React.Component {
  * Quill modules to attach to editor
  * See http://quilljs.com/docs/modules/ for complete options
  */
-NewArticle.modules = {};
-NewArticle.modules.toolbar = {
+ArticleEditor.modules = {};
+ArticleEditor.modules.toolbar = {
   container: '#toolbar',
 };
 
@@ -109,12 +122,13 @@ NewArticle.modules.toolbar = {
  * Quill editor formats
  * See http://quilljs.com/docs/formats/
  */
-NewArticle.formats = [
+ArticleEditor.formats = [
   'bold', 'italic', 'blockquote', 'header',
   'list', 'direction', 'link', 'image',
 ];
 
-NewArticle.propTypes = {
+ArticleEditor.propTypes = {
+  onSave: PropTypes.func.isRequired,
 };
 
-export default connect()(NewArticle);
+export default connect()(ArticleEditor);
