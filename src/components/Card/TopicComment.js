@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { connect } from 'dva';
-import { Button } from 'antd';
+import { Button, Icon } from 'antd';
 import Avatar from '../Avatar';
 import CommentEditor from '../Editor/CommentEditor';
 import { isAuthor } from '../../utils/tools';
@@ -81,7 +81,9 @@ class TopicComment extends React.Component {
             </div>
             { isAuthor(author, user) ? (
               <div className={styles.footer}>
-                <Button onClick={this.handleEdit}>编辑</Button>
+                <Button onClick={this.handleEdit}>
+                  <Icon type="edit" />编辑
+                </Button>
               </div>
             ) : null }
           </div>

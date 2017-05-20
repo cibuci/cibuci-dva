@@ -45,7 +45,6 @@ ul :global {
 }
 
 :global .ql-container {
-  min-height: 10em;
   border-left: none !important;
   border-right: none !important;
   border-color: #f7f8fa !important;

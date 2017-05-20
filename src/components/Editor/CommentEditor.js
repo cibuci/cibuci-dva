@@ -99,7 +99,7 @@ class CommentEditor extends React.Component {
             onChange={this.handleChange}
             modules={modules}
             formats={CommentEditor.formats}
-            style={{ height: 120 }}
+            style={{ height: 140 }}
             value={this.state.content}
           />
         </div>
