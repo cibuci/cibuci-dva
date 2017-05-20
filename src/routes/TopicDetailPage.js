@@ -7,7 +7,7 @@ import { Container } from '../components/Layout/';
 import Panel from '../components/Common/Panel';
 import TopicContent from '../components/TopicContent';
 import TopicCommentList from '../components/List/TopicCommentList';
-import NewTopicComment from '../components/Editor/NewTopicComment';
+import CommentEditor from '../components/Editor/CommentEditor';
 
 import styles from './TopicDetailPage.less';
 
@@ -15,6 +15,14 @@ class TopicDetailPage extends React.Component {
 
   componentWillUnmount() {
     this.props.dispatch({ type: 'topic/save', payload: { current: null } });
+  }
+
+  handleSave(item) {
+    const data = {
+      ...item,
+      current: this.props.topic,
+    };
+    this.props.dispatch({ type: 'topic/addComment', payload: data });
   }
 
   render() {
@@ -33,7 +41,7 @@ class TopicDetailPage extends React.Component {
                 <TopicContent topic={topic} />
                 <TopicCommentList list={comments} />
                 <Panel title="添加回复">
-                  <NewTopicComment />
+                  <CommentEditor onSave={this.handleSave.bind(this)} />
                 </Panel>
               </div>
             </Col>

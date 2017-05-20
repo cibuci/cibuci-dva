@@ -11,6 +11,7 @@ import {
   fetchTopicComments,
   addTopicComment,
   fetchUser,
+  updateTopicComment,
 } from '../../services/cibuci';
 
 export default {
@@ -114,6 +115,12 @@ export default {
     * addComment({ payload }, { put, call }) {  // eslint-disable-line
       yield call(addTopicComment, payload);
       yield put({ type: 'fetchComments', payload: { id: payload.current.id } });
+    },
+
+    * editComment({ payload }, { put, call }) {
+      const { id, data } = payload;
+      yield call(updateTopicComment, { id, data });
+      yield put({ type: 'fetchComments', payload: { id: payload.topicId } });
     },
   },
 

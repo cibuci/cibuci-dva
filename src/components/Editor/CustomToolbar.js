@@ -46,7 +46,8 @@ class CustomToolbar extends React.Component {
 
   render() {
     const _this = this;
-    const { resource } = this.props;
+    const { resource, id } = this.props;
+    const toolbarId = (id ? `toolbar-${id}` : 'toolbar');
     const props = {
       name: 'file',
       showUploadList: false,
@@ -87,7 +88,7 @@ class CustomToolbar extends React.Component {
     };
 
     return (
-      <div id="toolbar">
+      <div id={toolbarId}>
         <button className="ql-header" value="1" />
         <button className="ql-header" value="2" />
         <div style={styles.split} />
@@ -131,6 +132,7 @@ class CustomToolbar extends React.Component {
 CustomToolbar.propTypes = {
   onImageUploaded: PropTypes.func,
   resource: PropTypes.string.isRequired,
+  id: PropTypes.string,
 };
 
 export default CustomToolbar;

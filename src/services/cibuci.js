@@ -128,6 +128,10 @@ export function addTopicComment({ content, current }) {
   return restClient('CREATE', 'topiccomments', params);
 }
 
+export function updateTopicComment(params) {
+  return restClient('UPDATE', 'topiccomments', params);
+}
+
 export function fetchPks() {
   const params = {
     pagination: {

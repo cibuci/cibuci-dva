@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'dva';
 import { Button, Icon } from 'antd';
 import { Link } from 'dva/router';
-import { isAuthor } from '../utils/tools';
 import moment from 'moment';
+import { isAuthor } from '../utils/tools';
 import Avatar from './Avatar';
 
 import styles from './TopicContent.less';
