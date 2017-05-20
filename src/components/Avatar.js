@@ -34,7 +34,7 @@ const Avatar = (props) => {
   let src = 'https://secure.gravatar.com/avatar/';
   if (user) src += hash(user.email);
   if (user && user.avatarUrl) {
-    src = user.avatarUrl;
+    src = `${user.avatarUrl}?imageView2/1/w/200/h/200/q/75|imageslim`;
   }
 
   let style = styles.avatar;

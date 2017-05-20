@@ -1,9 +1,76 @@
 
+.mobilenav {
+  li {
+    width: 120px;
+    text-align: center;
+
+    a {
+      display: inline-block;
+      font-size: 1rem;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      color: @gray-darker;
+      text-decoration: none;
+      border-bottom: 1px solid @gray-light;
+      width: 100%;
+    }
+
+    .active {
+      color: @primary-color;
+    }
+  }
+}
+
+.mobile {
+  height: 3rem;
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+
+  .menu {
+    width: 100px;
+
+    .icon {
+      height: 1.6rem;
+      padding: 0 .4rem;
+      font-size: 1.1rem;
+      border: 1px solid @light-font-color;
+      border-radius: @border-radius-base;
+      display: inline-block;
+      margin-top: .7rem;
+    }
+  }
+
+  .center {
+    text-align: center;
+    line-height: 4rem;
+    height: 3rem;
+    zoom: 1;
+    overflow: hidden;
+    img {
+      height: 1.6rem;
+    }
+  }
+
+  .right {
+    font-size: 14px;
+    line-height: 3rem;
+    width: 100px;
+    text-align: right;
+  }
+}
+
 .wrapper {
   height: 4rem;
   position: relative;
   clear: both;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .logo {

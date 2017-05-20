@@ -27,9 +27,8 @@ const Footer = () => {
           <h2 className={styles.title}><Icon className={styles.icon} type="flag" />社区</h2>
           <Spacer onlytb>
             <ul className={styles.list}>
-              <li><a href="">目标</a></li>
               <li><Link to="/about">关于我们</Link></li>
-              <li><a href="">意见反馈</a></li>
+              <li><Link to="/topic/592011edba7de652b1924541">意见反馈</Link></li>
             </ul>
           </Spacer>
         </Col>
