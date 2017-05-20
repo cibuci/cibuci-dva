@@ -4,6 +4,7 @@ import { connect } from 'dva';
 import { Button, Icon, Modal } from 'antd';
 import Avatar from '../Avatar';
 import CommentEditor from '../Editor/CommentEditor';
+import InsertHtml from '../Common/InsertHtml';
 import { isAuthor } from '../../utils/tools';
 
 import styles from './TopicComment.less';
@@ -91,8 +92,8 @@ class TopicComment extends React.Component {
                   </div>
                   <span className={styles.time}>{moment(createdAt).fromNow()}</span>
                 </div>
-                <div className={styles.text}>
-                  <div dangerouslySetInnerHTML={{ __html: content }} />
+                <div>
+                  <InsertHtml content={content} />
                 </div>
               </div>
             </div>

@@ -5,6 +5,7 @@ import { Link } from 'dva/router';
 import moment from 'moment';
 import { isAuthor } from '../utils/tools';
 import Avatar from './Avatar';
+import InsertHtml from './Common/InsertHtml';
 
 import styles from './TopicContent.less';
 
@@ -60,9 +61,9 @@ const TopicContent = (props) => {
           </div>
         </div>
       </div>
-      <article className={styles.article}>
-        <div dangerouslySetInnerHTML={{ __html: topic.content }} />
-      </article>
+      <div className={styles.content}>
+        <InsertHtml content={topic.content} />
+      </div>
       { isAuthor(user, author) ? (
         <div className={styles.footer}>
           <Link to={`/topic/edit/${topic.id}`}>

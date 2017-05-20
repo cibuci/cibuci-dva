@@ -8,7 +8,7 @@ import styles from './Base.less';
 const Base = (props) => {
   return (
     <div className={styles.wrapper}>
-      <BackTop />
+      <BackTop style={{ bottom: 15, right: 20 }} />
       <div className={styles.header}>
         <Container>
           <Header />
