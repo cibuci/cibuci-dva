@@ -2,7 +2,11 @@ import pathToRegexp from 'path-to-regexp';
 import { routerRedux } from 'dva/router';
 import storage from '../utils/storage';
 import { login, register, changePassword } from '../utils/auth';
-import { fetchUser, updateUser } from '../services/cibuci';
+import {
+  fetchUser,
+  updateUser,
+  findOneUser,
+} from '../services/cibuci';
 
 const BoardTypes = {
   PK_HOME: 'PK_HOME',
@@ -28,6 +32,7 @@ export default {
       '享受，工作',
     ],
     saying: '',
+    current: null,
   },
 
   subscriptions: {
@@ -133,11 +138,16 @@ export default {
       yield put({ type: 'logout' });
       yield put(routerRedux.push('/signin'));
     },
+
+    * fetchUserByName({ payload }, { call, put }) {  // eslint-disable-line
+      const { data } = yield call(findOneUser, payload);
+      yield put({ type: 'save', payload: { current: data } });
+    },
   },
 
   reducers: {
-    save(state, { payload: { user, authorized } }) {
-      return { ...state, user, authorized };
+    save(state, action) {
+      return { ...state, ...action.payload };
     },
     saveUser(state, { payload }) {
       const user = { ...state.user, ...payload };

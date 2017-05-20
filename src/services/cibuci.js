@@ -85,6 +85,28 @@ export function fetchNoReplyTopics() {
   return restClient('GET_LIST', 'topics', params);
 }
 
+export function fetchAuthorTopics(userId) {
+  const params = {
+    pagination: {
+      page: 1,
+      perPage: 20,
+    },
+    fields: {
+      title: true,
+      id: true,
+    },
+    sort: {
+      field: 'createdAt',
+      order: 'DESC',
+    },
+    filter: {
+      authorId: userId,
+    },
+  };
+
+  return restClient('GET_LIST', 'topics', params);
+}
+
 export function fetchTopic(id) {
   const params = { id };
   return restClient('GET_ONE', 'topics', params);
@@ -240,6 +262,15 @@ export function updateArticle(params) {
 
 export function fetchUsers(ids) {
   return restClient('GET_MANY', 'users', { ids });
+}
+
+export function findOneUser({ username }) {
+  const params = {
+    filter: {
+      username,
+    },
+  };
+  return restClient('FIND_ONE', 'users', params);
 }
 
 export function updateUser(params) {

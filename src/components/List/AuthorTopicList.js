@@ -3,10 +3,17 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import styles from './SimpleTopicList.less';
 
-class HotTopicList extends React.Component {
+class AuthorTopicList extends React.Component {
 
   componentDidMount() {
-    this.props.dispatch({ type: 'topic/fetchHot' });
+    if (this.props.userId) {
+      const { userId } = this.props;
+      this.props.dispatch({ type: 'topic/fetchAuthor', payload: { userId } });
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch({ type: 'topic/save', payload: { author: [] } });
   }
 
   render() {
@@ -22,13 +29,13 @@ class HotTopicList extends React.Component {
   }
 }
 
-HotTopicList.propTypes = {
+AuthorTopicList.propTypes = {
 };
 
 function mapStateToProps(state) {
   return {
-    list: state.topic.hot,
+    list: state.topic.author,
   };
 }
 
-export default connect(mapStateToProps)(HotTopicList);
+export default connect(mapStateToProps)(AuthorTopicList);

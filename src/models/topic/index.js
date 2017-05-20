@@ -6,6 +6,7 @@ import {
   fetchTopic,
   fetchHotTopics,
   fetchNoReplyTopics,
+  fetchAuthorTopics,
   addTopic,
   updateTopic,
   deleteTopic,
@@ -29,6 +30,7 @@ export default {
     page: 1,
     hot: [],
     noreply: [],
+    author: [],
     currentTabId: 'all',
     tabs: [
       { id: 'all', name: '全部' },
@@ -88,6 +90,12 @@ export default {
     * fetchNoReply({ payload }, { put, call }) {
       const list = yield call(fetchNoReplyTopics);
       yield put({ type: 'save', payload: { noreply: list.data } });
+    },
+
+    * fetchAuthor({ payload }, { put, call }) {
+      const { userId } = payload;
+      const list = yield call(fetchAuthorTopics, userId);
+      yield put({ type: 'save', payload: { author: list.data } });
     },
 
     * fetchItem({ payload }, { put, call }) {

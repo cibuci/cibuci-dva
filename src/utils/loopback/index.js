@@ -2,6 +2,7 @@ import {queryParameters, fetchJson} from './fetch';
 import {
     GET_LIST,
     GET_ONE,
+    FIND_ONE,
     GET_MANY,
     GET_MANY_REFERENCE,
     CREATE,
@@ -55,6 +56,12 @@ export default (apiUrl, httpClient = fetchJson) => {
                 const query = {};
                 if (params.include) query['include'] = params.include;
                 url = `${apiUrl}/${resource}/${params.id}?${queryParameters({filter: JSON.stringify(query)})}`;
+                break;
+            }
+            case FIND_ONE: {
+                const query = {};
+                query['where'] = {...params.filter};
+                url = `${apiUrl}/${resource}/findone?${queryParameters({ filter: JSON.stringify(query)})}`;
                 break;
             }
             case GET_MANY: {

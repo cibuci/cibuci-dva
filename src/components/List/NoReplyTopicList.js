@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import styles from './NoReplyTopicList.less';
+import styles from './SimpleTopicList.less';
 
 class NoReplyTopicList extends React.Component {
 

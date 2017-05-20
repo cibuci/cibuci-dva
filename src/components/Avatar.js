@@ -11,20 +11,16 @@ const styles = {
     backgroundColor: '#eee',
   },
   middle: {
-    border: '1px solid #f5f5f5',
-    borderRadius: 4,
     width: '2.4rem',
     height: '2.4rem',
-    verticalAlign: 'middle',
-    backgroundColor: '#eee',
   },
   large: {
-    border: '1px solid #f5f5f5',
-    borderRadius: 4,
     width: '2.9rem',
     height: '2.9rem',
-    verticalAlign: 'middle',
-    backgroundColor: '#eee',
+  },
+  full: {
+    width: '100%',
+    height: 'auto',
   },
 };
 
@@ -38,8 +34,9 @@ const Avatar = (props) => {
   }
 
   let style = styles.avatar;
-  if (size === 'large') style = styles.large;
-  if (size === 'middle') style = styles.middle;
+  if (size === 'large') style = { ...style, ...styles.large };
+  if (size === 'middle') style = { ...style, ...styles.middle };
+  if (size === 'full') style = { ...style, ...styles.full };
 
   return (
     <img style={style} src={src} alt="avatar" />

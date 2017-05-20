@@ -7,6 +7,7 @@ import { Container } from '../components/Layout/';
 import Panel from '../components/Common/Panel';
 import TopicContent from '../components/TopicContent';
 import TopicCommentList from '../components/List/TopicCommentList';
+import AuthorTopicList from '../components/List/AuthorTopicList';
 import CommentEditor from '../components/Editor/CommentEditor';
 
 import styles from './TopicDetailPage.less';
@@ -51,6 +52,9 @@ class TopicDetailPage extends React.Component {
                   <div className={styles.add}>
                     <Link to="/topic/add"><Button type="primary" size="large">发布新话题</Button></Link>
                   </div>
+                </Panel>
+                <Panel title="作者的其他话题">
+                  <AuthorTopicList userId={topic.authorId} />
                 </Panel>
               </div>
             </Col>
