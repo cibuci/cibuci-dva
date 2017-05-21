@@ -27,12 +27,15 @@ function parseResponse(response) {
 }
 
 function checkStatus({ status, statusText, headers, body }) {
-  const json = JSON.parse(body);
+  let json = {};
+  if (body) {
+    json = JSON.parse(body);
+  }
   if (status >= 200 && status < 300) {
     return { status, headers, body, json };
   }
 
-  const error = new HttpError((json && json.message) || statusText, status);
+  const error = new HttpError((json && json.error && json.error.message) || statusText, status);
   throw error;
 }
 
