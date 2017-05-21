@@ -1,7 +1,12 @@
 import pathToRegexp from 'path-to-regexp';
 import { routerRedux } from 'dva/router';
-import storage from '../utils/storage';
-import { login, register, changePassword } from '../utils/auth';
+import storage from '../utils/loopback/storage';
+import {
+  login,
+  logout,
+  register,
+  changePassword,
+} from '../utils/loopback/auth';
 import {
   fetchUser,
   updateUser,
@@ -93,6 +98,15 @@ export default {
 
     * login({ payload }, { call, put }) { // eslint-disable-line
       const { params } = payload;
+
+      // try {
+        // const result = yield call(login, params);
+      //   console.log(result);
+      //   console.log('~~~~');
+      // } catch (e) {
+      //   console.log(e);
+      //   console.log('-----');
+      // }
       const result = yield call(login, params);
       const { id, ttl } = result;
       storage.save('lbtoken', id, ttl);
@@ -114,6 +128,7 @@ export default {
 
     * logout({ payload }, { call, put }) {  // eslint-disable-line
       yield put({ type: 'save', payload: { user: null, authorized: false } });
+      yield call(logout);
       storage.remove('lbtoken');
       storage.remove('lblogin');
       storage.remove('lbuser');

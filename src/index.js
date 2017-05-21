@@ -3,9 +3,8 @@ import { browserHistory } from 'dva/router';
 import createLoading from 'dva-loading';
 import { message } from 'antd';
 import moment from 'moment';
-import './index.css';
 import 'react-quill/dist/quill.snow.css';
-import 'react-quill/dist/quill.bubble.css';
+import './index.css';
 
 moment.locale('zh-cn');
 

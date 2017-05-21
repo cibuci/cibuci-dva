@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
 import { Form, Icon, Input, Button } from 'antd';
 
 const FormItem = Form.Item;
 
 const styles = {
   form: {
-    width: 300,
+    width: 280,
   },
   forgot: {
     float: 'right',
@@ -65,7 +64,6 @@ class SignupForm extends React.Component {
           <Button type="primary" htmlType="submit" style={styles.button}>
             注册
           </Button>
-          已经有账号？ <Link to="/signin">立即登录!</Link>
         </FormItem>
       </Form>
     );

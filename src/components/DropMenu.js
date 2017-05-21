@@ -1,38 +1,41 @@
-import { Menu, Dropdown, Icon } from 'antd';
+import { Icon, message, Popover } from 'antd';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import React from 'react';
 import Avatar from './Avatar';
 
+import styles from './DropMenu.less';
+
 class DropMenu extends React.Component {
   handleSignout = (e) => {
     e.preventDefault();
     this.props.dispatch({ type: 'app/logout' });
+    message.success('您已经成功登出。');
   }
 
   render() {
     const { user } = this.props;
 
     const menu = (
-      <Menu>
-        <Menu.Item>
+      <ul className={styles.menu}>
+        <li>
           <Link to={`/@/${user.username}`}>我的主页</Link>
-        </Menu.Item>
-        <Menu.Item>
+        </li>
+        <li>
           <Link to="/setting">设置</Link>
-        </Menu.Item>
-        <Menu.Item>
+        </li>
+        <li>
           <Link onClick={this.handleSignout}>登出</Link>
-        </Menu.Item>
-      </Menu>
+        </li>
+      </ul>
     );
 
     return (
-      <Dropdown overlay={menu} trigger={['click']}>
-        <span>
+      <Popover placement="bottomRight" content={menu} trigger="click">
+        <div>
           <Avatar size="middle" user={user} /> <Icon type="down" />
-        </span>
-      </Dropdown>
+        </div>
+      </Popover>
     );
   }
 }

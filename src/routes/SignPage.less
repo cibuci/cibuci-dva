@@ -4,11 +4,11 @@
 
 .logowrapper {
   text-align: center;
+  padding-bottom: 1.6rem;
 }
 
 .logo {
-  height: 5.5rem;
-  margin-bottom: 1.5rem;
+  height: 2.6rem;
 }
 
 .card {
@@ -16,4 +16,48 @@
   border: 1px solid #f2f2f2;
   background-color: white;
   border-radius: 5px;
+}
+
+.tab {
+  margin: 0 auto 1.8rem auto;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.menu {
+  display: inline-block;
+  border: none;
+  li {
+    margin: 0 .6rem;
+  }
+}
+
+.moresign {
+  text-align: center;
+  display: none;
+
+  h6 {
+    color: @light-font-color;
+    font-size: 12px;
+    font-weight: normal;
+    position: relative;
+
+    &:before,
+    &:after {
+      content: "";
+      border-top: 1px solid @light-font-color;
+      display: block;
+      position: absolute;
+      width: 60px;
+      top: 8px;
+    }
+
+    &:before {
+      left: 30px;
+    }
+
+    &:after {
+      right: 30px;
+    }
+  }
 }

@@ -7,7 +7,7 @@ const FormItem = Form.Item;
 
 const styles = {
   form: {
-    width: 300,
+    width: 280,
   },
   forgot: {
     float: 'right',
@@ -32,7 +32,7 @@ class SigninForm extends React.Component {
       <Form onSubmit={this.handleSubmit} style={styles.form} className="login-form">
         <FormItem>
           {getFieldDecorator('username', {
-            rules: [{ required: true, message: '请输入你的用户名!' }],
+            rules: [{ required: true, message: '请输入用户名!' }],
           })(
             <Input
               prefix={<Icon type="user" style={{ fontSize: 13 }} />}
@@ -62,7 +62,6 @@ class SigninForm extends React.Component {
           <Button type="primary" htmlType="submit" style={styles.button}>
             登录
           </Button>
-          还有没账号？ <Link to="/signup">立即注册!</Link>
         </FormItem>
       </Form>
     );

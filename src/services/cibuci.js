@@ -1,10 +1,15 @@
-import loopbackRestClient from '../utils/loopback/';
+import LoopbackResource from '../utils/loopback/';
 import request from '../utils/request';
 
-const restClient = loopbackRestClient('https://api.cibuci.com/api');
+const users = new LoopbackResource('users');
+const topics = new LoopbackResource('topics');
+const topiccomments = new LoopbackResource('topiccomments');
+const argues = new LoopbackResource('argues');
+const arguecomments = new LoopbackResource('arguecomments');
+const articles = new LoopbackResource('articles');
 
 export function fetchUser(id) {
-  return restClient('GET_ONE', 'users', { id });
+  return users.getById({ id });
 }
 
 export function fetchTopics(tab, page) {
@@ -41,7 +46,7 @@ export function fetchTopics(tab, page) {
     }
   }
 
-  return restClient('GET_LIST', 'topics', params);
+  return topics.getList(params);
 }
 
 export function fetchHotTopics() {
@@ -60,7 +65,7 @@ export function fetchHotTopics() {
     },
   };
 
-  return restClient('GET_LIST', 'topics', params);
+  return topics.getList(params);
 }
 
 export function fetchNoReplyTopics() {
@@ -82,7 +87,7 @@ export function fetchNoReplyTopics() {
     },
   };
 
-  return restClient('GET_LIST', 'topics', params);
+  return topics.getList(params);
 }
 
 export function fetchAuthorTopics(userId) {
@@ -104,12 +109,12 @@ export function fetchAuthorTopics(userId) {
     },
   };
 
-  return restClient('GET_LIST', 'topics', params);
+  return topics.getList(params);
 }
 
 export function fetchTopic(id) {
   const params = { id };
-  return restClient('GET_ONE', 'topics', params);
+  return topics.getById(params);
 }
 
 export function fetchTopicComments(id) {
@@ -129,19 +134,19 @@ export function fetchTopicComments(id) {
       'author',
     ],
   };
-  return restClient('GET_LIST', 'topiccomments', params);
+  return topiccomments.getList(params);
 }
 
 export function addTopic(item) {
-  return restClient('CREATE', 'topics', { data: item });
+  return topics.create({ data: item });
 }
 
 export function updateTopic(params) {
-  return restClient('UPDATE', 'topics', params);
+  return topics.updateById(params);
 }
 
 export function deleteTopic(params) {
-  return restClient('DELETE', 'topics', params);
+  return topics.deleteById(params);
 }
 
 export function addTopicComment({ content, current }) {
@@ -151,15 +156,15 @@ export function addTopicComment({ content, current }) {
       topicId: current.id,
     },
   };
-  return restClient('CREATE', 'topiccomments', params);
+  return topiccomments.create(params);
 }
 
 export function updateTopicComment(params) {
-  return restClient('UPDATE', 'topiccomments', params);
+  return topiccomments.updateById(params);
 }
 
 export function deleteTopicComment(params) {
-  return restClient('DELETE', 'topiccomments', params);
+  return topiccomments.deleteById(params);
 }
 
 export function fetchPks() {
@@ -174,7 +179,7 @@ export function fetchPks() {
     },
   };
 
-  return restClient('GET_LIST', 'argues', params);
+  return argues.getList(params);
 }
 
 export function fetchPkComments(pkId, page = 1) {
@@ -194,7 +199,7 @@ export function fetchPkComments(pkId, page = 1) {
     ],
   };
 
-  return restClient('GET_MANY_REFERENCE', 'arguecomments', params);
+  return arguecomments.getManyReference(params);
 }
 
 export function addPkComment({ content, point, current }) {
@@ -207,7 +212,7 @@ export function addPkComment({ content, point, current }) {
     },
   };
 
-  return restClient('CREATE', 'arguecomments', params);
+  return arguecomments.create(params);
 }
 
 export function fetchArticles(page) {
@@ -239,7 +244,7 @@ export function fetchArticles(page) {
     },
   };
 
-  return restClient('GET_LIST', 'articles', params);
+  return articles.getList(params);
 }
 
 export function fetchArticle(id) {
@@ -249,19 +254,20 @@ export function fetchArticle(id) {
       'author',
     ],
   };
-  return restClient('GET_ONE', 'articles', params);
+
+  return articles.getById(params);
 }
 
 export function addArticle(item) {
-  return restClient('CREATE', 'articles', { data: item });
+  return articles.create({ data: item });
 }
 
 export function updateArticle(params) {
-  return restClient('UPDATE', 'articles', params);
+  return articles.updateById(params);
 }
 
 export function fetchUsers(ids) {
-  return restClient('GET_MANY', 'users', { ids });
+  return users.getMany({ ids });
 }
 
 export function findOneUser({ username }) {
@@ -270,11 +276,11 @@ export function findOneUser({ username }) {
       username,
     },
   };
-  return restClient('FIND_ONE', 'users', params);
+  return users.findOne(params);
 }
 
 export function updateUser(params) {
-  return restClient('UPDATE', 'users', params);
+  return users.updateById(params);
 }
 
 export function fetchUptoken(key) {
