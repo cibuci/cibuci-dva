@@ -11,7 +11,7 @@ class TopicEditor extends React.Component {
   constructor(props) {
     super(props);
 
-    const { edit } = props;
+    const { edit, defaultTab } = props;
     if (edit) {
       this.state = {
         content: edit.content,
@@ -21,7 +21,7 @@ class TopicEditor extends React.Component {
     } else {
       this.state = {
         content: '',
-        tab: 'share',
+        tab: defaultTab || 'share',
         title: '',
       };
     }
@@ -101,9 +101,9 @@ class TopicEditor extends React.Component {
         style={{ width: 100, fontSize: 16 }}
         onChange={this.handleTabChange}
       >
-        <Option value="share">分享</Option>
-        <Option value="ask">问答</Option>
-        <Option value="bb">吐槽</Option>
+        { this.props.createTabs.map(item => (
+          <Option key={item.id} value={item.id}>{item.name}</Option>
+        )) }
       </Select>
     );
 
@@ -159,6 +159,13 @@ TopicEditor.formats = [
 
 TopicEditor.propTypes = {
   onSave: PropTypes.func.isRequired,
+  defaultTab: PropTypes.string,
 };
 
-export default connect()(TopicEditor);
+function mapStateToProps(state) {
+  return {
+    createTabs: state.topic.createTabs,
+  };
+}
+
+export default connect(mapStateToProps)(TopicEditor);

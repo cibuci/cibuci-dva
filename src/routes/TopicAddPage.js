@@ -15,6 +15,12 @@ class TopicAddPage extends React.Component {
   }
 
   render() {
+    const { currentTabId } = this.props;
+    let defaultTab = '';
+    if (currentTabId !== 'all' && currentTabId !== 'good') {
+      defaultTab = currentTabId;
+    }
+
     return (
       <div className={styles.container}>
         <Helmet>
@@ -25,7 +31,7 @@ class TopicAddPage extends React.Component {
             <Col xs={24} sm={24} md={17} lg={17} xl={17}>
               <div className={styles.left}>
                 <Panel title="发布新话题" icon="plus-circle-o">
-                  <TopicEditor onSave={this.handleSave.bind(this)} />
+                  <TopicEditor defaultTab={defaultTab} onSave={this.handleSave.bind(this)} />
                 </Panel>
               </div>
             </Col>
@@ -46,7 +52,7 @@ TopicAddPage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    noreply: state.topic.noreply,
+    currentTabId: state.topic.currentTabId,
   };
 }
 

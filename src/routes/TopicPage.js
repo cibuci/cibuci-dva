@@ -53,7 +53,7 @@ function TopicPage(props, context) {
                 <div className={styles.right}>
                   <Panel>
                     <div className={styles.add}>
-                      <Link to="/topic/add"><Button type="primary" size="large">发布新话题</Button></Link>
+                      <Link to={`/topic/add?tab=${currentTabId}`}><Button type="primary" size="large">发布新话题</Button></Link>
                     </div>
                   </Panel>
 
