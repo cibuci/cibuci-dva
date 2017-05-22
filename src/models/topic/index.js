@@ -39,11 +39,6 @@ export default {
       { id: 'ask', name: '提问' },
       { id: 'bb', name: '吐槽' },
     ],
-    createTabs: [
-      { id: 'share', name: '分享' },
-      { id: 'ask', name: '提问' },
-      { id: 'bb', name: '吐槽' },
-    ],
   },
 
   subscriptions: {

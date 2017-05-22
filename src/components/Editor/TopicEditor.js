@@ -93,6 +93,7 @@ class TopicEditor extends React.Component {
 
   render() {
     const saveButtonName = this.props.saveButtonName || '发布';
+    const tabs = this.props.tabs.slice(2, this.props.tabs.length);
 
     const selectBefore = (
       <Select
@@ -101,7 +102,7 @@ class TopicEditor extends React.Component {
         style={{ width: 100, fontSize: 16 }}
         onChange={this.handleTabChange}
       >
-        { this.props.createTabs.map(item => (
+        { tabs.map(item => (
           <Option key={item.id} value={item.id}>{item.name}</Option>
         )) }
       </Select>
@@ -164,7 +165,7 @@ TopicEditor.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    createTabs: state.topic.createTabs,
+    tabs: state.topic.tabs,
   };
 }
 
