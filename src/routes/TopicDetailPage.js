@@ -14,6 +14,10 @@ import styles from './TopicDetailPage.less';
 
 class TopicDetailPage extends React.Component {
 
+  state = {
+    replyComment: null,
+  }
+
   componentWillUnmount() {
     this.props.dispatch({ type: 'topic/save', payload: { current: null } });
   }
@@ -24,6 +28,10 @@ class TopicDetailPage extends React.Component {
       current: this.props.topic,
     };
     this.props.dispatch({ type: 'topic/addComment', payload: data });
+  }
+
+  handleCommentReply(comment) {
+    this.setState({ replyComment: comment });
   }
 
   render() {
@@ -40,9 +48,12 @@ class TopicDetailPage extends React.Component {
             <Col xs={24} sm={24} md={17} lg={17} xl={17}>
               <div className={styles.left}>
                 <TopicContent topic={topic} />
-                <TopicCommentList list={comments} />
+                <TopicCommentList list={comments} onReply={this.handleCommentReply.bind(this)} />
                 <Panel title="添加回复">
-                  <CommentEditor onSave={this.handleSave.bind(this)} />
+                  <CommentEditor
+                    replyComment={this.state.replyComment}
+                    onSave={this.handleSave.bind(this)}
+                  />
                 </Panel>
               </div>
             </Col>

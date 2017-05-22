@@ -33,11 +33,15 @@ class CommentEditor extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { edit } = nextProps;
+    const { edit, replyComment } = nextProps;
     if (edit) {
       this.setState({
         content: edit.content,
       });
+    }
+
+    if (replyComment && replyComment.author) {
+      this.state.content = `<p><a href="/@/${replyComment.author.username}">@${replyComment.author.username}</a></p>`;
     }
   }
 
@@ -63,7 +67,7 @@ class CommentEditor extends React.Component {
     this.props.onSave({ content });
 
     // clean the textarea.
-    this.quillRef.setText('');
+    this.setState({ content: '' });
   }
 
   handleChange(html) {
@@ -122,6 +126,7 @@ CommentEditor.formats = [
 
 CommentEditor.propTypes = {
   onSave: PropTypes.func.isRequired,
+  replyComment: PropTypes.object,
 };
 
 export default connect()(CommentEditor);

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
@@ -23,6 +24,7 @@ class TopicComment extends React.Component {
     this.handleEdit = this.handleEdit.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleReply = this.handleReply.bind(this);
   }
 
   handleEdit(e) {
@@ -31,6 +33,12 @@ class TopicComment extends React.Component {
     this.setState({
       showEditor: true,
     });
+  }
+
+  handleReply() {
+    if (this.props.onReply) {
+      this.props.onReply(this.props.comment);
+    }
   }
 
   handleDelete() {
@@ -86,9 +94,13 @@ class TopicComment extends React.Component {
                   <div className={styles.from}>
                     <Link to={`/@/${author.username}`}>{ author.nickName || author.username }</Link>
                   </div>
-                  <div className={styles.username}>
-                    @{author.username}
-                  </div>
+                  { user && user.username === author.username ? (
+                    null
+                  ) : (
+                    <div className={styles.username} onClick={this.handleReply}>
+                      回复@{author.username}
+                    </div>
+                  ) }
                   <span className={styles.time}>{moment(createdAt).fromNow()}</span>
                 </div>
                 <div>
@@ -114,6 +126,7 @@ class TopicComment extends React.Component {
 }
 
 TopicComment.propTypes = {
+  onReply: PropTypes.func,
 };
 
 function mapStateToProps(state) {

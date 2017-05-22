@@ -2,10 +2,6 @@
 .container {
   border-bottom: 1px solid #f5f5f5;
 
-  .action {
-    display: none;
-  }
-
   // &:hover {
   //   .action {
   //     display: inherit;
@@ -37,6 +33,16 @@
     margin-left: 3rem;
     margin-right: 0;
 
+    .username {
+      display: none;
+    }
+
+    &:hover {
+      .username {
+        display: inline;
+      }
+    }
+
     .detail {
       line-height: 1.4;
       margin-bottom: .3rem;
@@ -47,12 +53,11 @@
         cursor: pointer;
         margin-top: 2px;
         opacity: .7;
-        margin-right: 2px;
+        margin-right: .5rem;
       }
 
       .username {
         vertical-align: middle;
-        display: inline;
         cursor: pointer;
         margin-top: 2px;
         opacity: .5;
