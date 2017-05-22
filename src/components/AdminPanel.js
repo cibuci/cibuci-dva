@@ -12,10 +12,10 @@ function AdminPanel(props) {
 
   return (
     <div style={{ backgroundColor: 'white', marginTop: '1.2rem' }}>
-      <Panel title="仅管理员可见" icon="rocket">
+      <Panel title="管理员面板" icon="rocket">
         <div style={{ padding: '1.2rem' }}>
           <Link to="/article/add">
-            <Button type="primary" size="large">发布新话题</Button>
+            <Button type="primary" size="large">发布新文章</Button>
           </Link>
         </div>
       </Panel>
