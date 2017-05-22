@@ -248,14 +248,17 @@ export function fetchArticles(page) {
 }
 
 export function fetchArticle(id) {
+  return articles.getById({ id });
+}
+
+export function fetchArticleByTitle(title) {
   const params = {
-    id,
-    include: [
-      'author',
-    ],
+    filter: {
+      title,
+    },
   };
 
-  return articles.getById(params);
+  return articles.findOne(params);
 }
 
 export function addArticle(item) {

@@ -3,6 +3,7 @@ import { routerRedux } from 'dva/router';
 import {
   fetchArticles,
   fetchArticle,
+  fetchArticleByTitle,
   addArticle,
   updateArticle,
 } from '../../services/cibuci';
@@ -16,10 +17,20 @@ export default {
     list: [],
     total: 0,
     page: 1,
+    about: null,
   },
 
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
+    },
+
+    about({ dispatch, history }) {
+      return history.listen(({ pathname }) => {
+        const match = pathToRegexp('/about').exec(pathname);
+        if (match) {
+          dispatch({ type: 'fetchAbout' });
+        }
+      });
     },
 
     list({ dispatch, history }) {
@@ -72,6 +83,15 @@ export default {
       const { id } = payload;
       const item = yield call(fetchArticle, id);
       yield put({ type: 'saveItem', payload: item.data });
+    },
+
+    * fetchAbout({ payload }, { put, call }) {  // eslint-disable-line
+      const about = {};
+      const us = yield call(fetchArticleByTitle, '关于我们');
+      const cibuci = yield call(fetchArticleByTitle, '关于辞不辞');
+      about.us = us.data;
+      about.cibuci = cibuci.data;
+      yield put({ type: 'save', payload: { about } });
     },
 
     * addItem({ payload }, { put, call }) {  // eslint-disable-line
