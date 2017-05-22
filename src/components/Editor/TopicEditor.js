@@ -103,6 +103,7 @@ class TopicEditor extends React.Component {
       >
         <Option value="share">分享</Option>
         <Option value="ask">问答</Option>
+        <Option value="bb">吐槽</Option>
       </Select>
     );
 

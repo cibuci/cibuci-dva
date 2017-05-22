@@ -36,7 +36,8 @@ export default {
       { id: 'all', name: '全部' },
       { id: 'good', name: '优质话题' },
       { id: 'share', name: '分享' },
-      { id: 'ask', name: '问答' },
+      { id: 'ask', name: '提问' },
+      { id: 'bb', name: '吐槽' },
     ],
   },
 
