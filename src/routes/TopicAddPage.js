@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { Row, Col } from 'antd';
 import { Helmet } from 'react-helmet';
@@ -10,6 +11,13 @@ import EditorTips from '../components/EditorTips';
 import styles from './TopicAddPage.less';
 
 class TopicAddPage extends React.Component {
+
+  componentWillMount() {
+    if (!this.props.authorized) {
+      this.context.router.replace('/signin');
+    }
+  }
+
   handleSave(item) {
     this.props.dispatch({ type: 'topic/addItem', payload: item });
   }
@@ -50,9 +58,14 @@ class TopicAddPage extends React.Component {
 TopicAddPage.propTypes = {
 };
 
+TopicAddPage.contextTypes = {
+  router: PropTypes.object,
+};
+
 function mapStateToProps(state) {
   return {
     currentTabId: state.topic.currentTabId,
+    authorized: state.app.authorized,
   };
 }
 

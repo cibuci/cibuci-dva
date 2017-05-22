@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Helmet } from 'react-helmet';
@@ -31,11 +32,15 @@ class TopicDetailPage extends React.Component {
   }
 
   handleCommentReply(comment) {
-    this.setState({ replyComment: comment });
+    if (this.props.authorized) {
+      this.setState({ replyComment: comment });
+    } else {
+      this.context.router.push('/signin');
+    }
   }
 
   render() {
-    const { topic, comments } = this.props;
+    const { topic, comments, authorized } = this.props;
     if (!topic) return null;
 
     return (
@@ -49,12 +54,22 @@ class TopicDetailPage extends React.Component {
               <div className={styles.left}>
                 <TopicContent topic={topic} />
                 <TopicCommentList list={comments} onReply={this.handleCommentReply.bind(this)} />
-                <Panel title="添加回复">
-                  <CommentEditor
-                    replyComment={this.state.replyComment}
-                    onSave={this.handleSave.bind(this)}
-                  />
-                </Panel>
+                { authorized ? (
+                  <Panel title="添加回复">
+                    <CommentEditor
+                      replyComment={this.state.replyComment}
+                      onSave={this.handleSave.bind(this)}
+                    />
+                  </Panel>
+                ) : (
+                  <Panel>
+                    <div style={{ padding: '1rem', fontSize: '1rem' }}>
+                      <Link to="/signin"><Button size="large" type="primary">登录</Button></Link>&nbsp;&nbsp;
+                      <Link to="signup"><Button size="large" type="primary">注册</Button></Link>&nbsp;&nbsp;
+                      即可回复。
+                    </div>
+                  </Panel>
+                ) }
               </div>
             </Col>
             <Col xs={24} sm={24} md={7} lg={7} xl={7}>
@@ -79,10 +94,15 @@ class TopicDetailPage extends React.Component {
 TopicDetailPage.propTypes = {
 };
 
+TopicDetailPage.contextTypes = {
+  router: PropTypes.object,
+};
+
 function mapStateToProps(state) {
   return {
     topic: state.topic.current,
     comments: state.topic.comments,
+    authorized: state.app.authorized,
   };
 }
 
