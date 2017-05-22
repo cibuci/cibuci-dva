@@ -273,11 +273,9 @@ export function fetchUsers(ids) {
   return users.getMany({ ids });
 }
 
-export function findOneUser({ username }) {
+export function findOneUser(filter) {
   const params = {
-    filter: {
-      username,
-    },
+    filter,
   };
   return users.findOne(params);
 }

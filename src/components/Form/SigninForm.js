@@ -29,7 +29,7 @@ class SigninForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <Form onSubmit={this.handleSubmit} style={styles.form} className="login-form">
+      <Form id="cbc-signin" onSubmit={this.handleSubmit} style={styles.form} className="login-form">
         <FormItem>
           {getFieldDecorator('username', {
             rules: [{ required: true, message: '请输入用户名!' }],
