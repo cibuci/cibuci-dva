@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { connect } from 'dva';
+import { Link } from 'dva/router';
 import { Button, Icon, Modal } from 'antd';
 import Avatar from '../Avatar';
 import CommentEditor from '../Editor/CommentEditor';
@@ -79,13 +80,11 @@ class TopicComment extends React.Component {
               <div className={styles.aside}>
                 <Avatar user={author} />
               </div>
-              <div className={styles.action}>
-                action
-              </div>
+              <div className={styles.action} />
               <div className={styles.content}>
                 <div className={styles.detail}>
                   <div className={styles.from}>
-                    {author.username}
+                    <Link to={`/@/${author.username}`}>{ author.nickName || author.username }</Link>
                   </div>
                   <div className={styles.username}>
                     @{author.username}
