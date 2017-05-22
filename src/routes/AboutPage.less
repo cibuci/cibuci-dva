@@ -1,37 +1,27 @@
-.wrapper {
-  height: 100%;
-  overflow: hidden;
-}
 
-.header {
-  height: 64px;
-  border-bottom: 1px solid #f5f5f5;
-}
-
-.sidebar {
-  width: 300px;
-  overflow: auto;
-  border-left: 1px solid #f5f5f5;
+.left, .right {
+  margin: 1.5rem 0;
 }
 
 .content {
-  overflow: auto;
-    height: 0;
+  padding: 1rem;
+  font-size: 1rem;
 }
 
-.box {
-  min-height: -webkit-min-content;
+.board {
+  position: relative;
 }
 
-.list {
-  overflow: auto;
+.wrapper {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
 }
 
-.box {
-  min-height: -webkit-min-content;
-}
-
-.footer {
-  min-height: 70px;
-  border-top: 1px solid #f5f5f5;
+.article {
+  position: relative;
+  padding: 1rem;
+  overflow: hidden;
+  z-index: 2;
 }

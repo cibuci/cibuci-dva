@@ -16,8 +16,8 @@ class LogoGather extends Component {
   static defaultProps = {
     image: 'http://cdn-qn0.cibuci.com/static/community/logo.svg',
     className: 'logo-gather-demo',
-    w: 300,
-    h: 300,
+    w: 200,
+    h: 200,
     pixSize: 20,
     pointSizeMin: 10,
   };
@@ -69,7 +69,7 @@ class LogoGather extends Component {
     const children = [];
     this.pointArray.forEach((item, i) => {
       const r = Math.random() * this.props.pointSizeMin + this.props.pointSizeMin;
-      const b = Math.random() * 0.4 + 0.1;
+      const b = Math.random() * 0.2 + 0.1;
       children.push(
         <TweenOne className="point-wrapper" key={i} style={{ left: item.x, top: item.y }}>
           <TweenOne
@@ -78,7 +78,7 @@ class LogoGather extends Component {
               width: r,
               height: r,
               opacity: b,
-              backgroundColor: `rgb(${Math.round(Math.random() * 95 + 170)},103,8)`,
+              backgroundColor: `rgb(${Math.round(Math.random() * 95 + 180)},54,11)`,
             }}
             animation={{
               y: (Math.random() * 2 - 1) * 10 || 5,
