@@ -3,6 +3,7 @@ import Block from 'react-blocks';
 import { connect } from 'dva';
 import { Menu } from 'antd';
 import { Link } from 'dva/router';
+import Helmet from 'react-helmet';
 import SimpleLayout from '../components/Layout/Simple';
 import SigninForm from '../components/Form/SigninForm';
 import styles from './SignPage.less';
@@ -10,6 +11,9 @@ import styles from './SignPage.less';
 function SigninPage() {
   return (
     <SimpleLayout>
+      <Helmet>
+        <title>登录 - 辞不辞</title>
+      </Helmet>
       <Block className={styles.container} layout horizontal centered>
         <div>
           <div className={styles.logowrapper}>

@@ -13,11 +13,10 @@ import styles from './AboutPage.less';
 
 function AboutPage(props) {
   const { about, user } = props;
-
   return (
     <Base>
       <Helmet>
-        <title>关于我们 - 辞不辞</title>
+        <title>辞不辞 - 自由职业者的实验室 (๑•̀ㅂ•́)و✧</title>
       </Helmet>
       <Container>
         <Row gutter={24}>

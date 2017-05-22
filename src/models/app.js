@@ -67,6 +67,8 @@ export default {
       // push to home page.
       yield put({ type: 'save', payload: { user: data, authorized: true } });
       yield put(routerRedux.push('/'));
+
+      message.success(`${data.nickName || data.username}，欢迎回来。`);
     },
 
     * register({ payload }, { call, put }) { // eslint-disable-line

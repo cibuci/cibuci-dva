@@ -38,7 +38,7 @@ class TopicAddPage extends React.Component {
           <Row gutter={24}>
             <Col xs={24} sm={24} md={17} lg={17} xl={17}>
               <div className={styles.left}>
-                <Panel title="发布新话题" icon="plus-circle-o">
+                <Panel title="发布新话题" icon="edit">
                   <TopicEditor defaultTab={defaultTab} onSave={this.handleSave.bind(this)} />
                 </Panel>
               </div>

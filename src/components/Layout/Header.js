@@ -14,6 +14,7 @@ const Header = (props) => {
       <ul className={styles.mobilenav}>
         <li><Link to="/article" activeClassName={styles.active} >精选</Link></li>
         <li><Link to="/topic" activeClassName={styles.active} >话题</Link></li>
+        <li><Link to="/about" activeClassName={styles.active} >关于</Link></li>
       </ul>
     </nav>
   );
@@ -27,6 +28,7 @@ const Header = (props) => {
         <ul className={styles.nav}>
           <li className={styles.item}><Link to="/article" activeClassName={styles.active} >精选</Link></li>
           <li className={styles.item}><Link to="/topic" activeClassName={styles.active} >话题</Link></li>
+          <li className={styles.item}><Link to="/about" activeClassName={styles.active} >关于</Link></li>
           { authorized ? (
             <li className={styles.user}>
               <span>
