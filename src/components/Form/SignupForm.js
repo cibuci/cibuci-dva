@@ -85,6 +85,20 @@ class SignupForm extends React.Component {
     return (
       <Form id="cbc-signup" onSubmit={this.handleSubmit} style={styles.form} className="login-form">
         <FormItem hasFeedback>
+          {getFieldDecorator('email', {
+            rules: [
+              { required: true, message: '请输入你的邮箱!' },
+              { type: 'email', message: '请输入合法的邮箱地址' },
+              { validator: this.emailValidator.bind(this), message: '邮箱已经存在' },
+            ],
+          })(
+            <Input
+              prefix={<Icon type="mail" style={{ fontSize: 13 }} />}
+              placeholder="邮箱"
+            />,
+          )}
+        </FormItem>
+        <FormItem hasFeedback>
           {getFieldDecorator('username', {
             rules: [
               { required: true, message: '请输入你的用户名!' },
@@ -97,20 +111,6 @@ class SignupForm extends React.Component {
             <Input
               prefix={<Icon type="user" style={{ fontSize: 13 }} />}
               placeholder="用户名"
-            />,
-          )}
-        </FormItem>
-        <FormItem hasFeedback>
-          {getFieldDecorator('email', {
-            rules: [
-              { required: true, message: '请输入你的邮箱!' },
-              { type: 'email', message: '请输入合法的邮箱地址' },
-              { validator: this.emailValidator.bind(this), message: '邮箱已经存在' },
-            ],
-          })(
-            <Input
-              prefix={<Icon type="mail" style={{ fontSize: 13 }} />}
-              placeholder="邮箱"
             />,
           )}
         </FormItem>
