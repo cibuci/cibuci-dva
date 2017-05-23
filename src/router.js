@@ -35,6 +35,7 @@ function RouterConfig({ history }) {
       <Route path="/signin" component={SigninPage} />
       <Route path="/signup" component={SignupPage} />
       <Route path="/verify/:userid" component={VerifyPage} />
+      <Route path="/verified" component={VerifyPage} />
       <Route path="/reset-password" component={ResetPasswordPage} />
       <Route path="/reset-password/:token" component={ResetPasswordPage} />
       <Route path="/@/:username" component={ProfilePage} />

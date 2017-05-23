@@ -49,6 +49,8 @@ class SigninPage extends React.Component {
   }
 
   render() {
+    const { userid } = this.props.params;
+
     return (
       <SimpleLayout>
         <Helmet>
@@ -62,16 +64,25 @@ class SigninPage extends React.Component {
               </Link>
             </div>
             <div className={styles.card}>
-              <h2 style={{ fontWeight: 'normal' }}>请立即登录邮箱，激活账号！</h2>
-              <br />
-              <p>没有收到邮件？<small>请检查“垃圾邮件”。</small></p>
-              <div style={{ marginTop: 8 }}>
-                { this.state.remaining ? (
-                  <p>已发送，{this.state.remaining}s 后重新发送。</p>
-                ) : (
-                  <Button loading={this.state.loading} onClick={this.handleClick}>或重新发送邮件</Button>
-                ) }
-              </div>
+              { userid ? (
+                <div>
+                  <h2 style={{ fontWeight: 'normal' }}>请立即登录邮箱，激活账号！</h2>
+                  <br />
+                  <p>没有收到邮件？<small>请检查“垃圾邮件”。</small></p>
+                  <div style={{ marginTop: 8 }}>
+                    { this.state.remaining ? (
+                      <p>已发送，{this.state.remaining}s 后重新发送。</p>
+                    ) : (
+                      <Button loading={this.state.loading} onClick={this.handleClick}>或重新发送邮件</Button>
+                    ) }
+                  </div>
+                </div>
+              ) : (
+                <div style={{ textAlign: 'center' }}>
+                  <h2 style={{ fontWeight: 'normal', marginBottom: '1rem' }}>您已经成功验证邮箱！</h2>
+                  <Link to="signin"><Button size="large" type="primary">立即登录</Button></Link>
+                </div>
+              ) }
             </div>
           </div>
         </Block>
