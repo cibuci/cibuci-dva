@@ -120,7 +120,7 @@ ArticleEditor.modules.toolbar = {
  */
 ArticleEditor.formats = [
   'bold', 'italic', 'blockquote', 'header',
-  'list', 'direction', 'link', 'image',
+  'list', 'direction', 'link', 'image', 'indent',
 ];
 
 ArticleEditor.propTypes = {
