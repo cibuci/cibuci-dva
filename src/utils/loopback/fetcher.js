@@ -3,10 +3,11 @@ import fetch from 'dva/fetch';
 import storage from './storage';
 
 class HttpError extends Error {
-  constructor(message, status) {
+  constructor(message, status, body) {
     super(message);
     this.message = message;
     this.status = status;
+    this.body = body;
     this.name = this.constructor.name;
     if (typeof Error.captureStackTrace === 'function') {
       Error.captureStackTrace(this, this.constructor);
@@ -35,19 +36,25 @@ function checkStatus({ status, statusText, headers, body }) {
     return { status, headers, body, json };
   }
 
-  const error = new HttpError((json && json.error && json.error.message) || statusText, status);
+  const error = new HttpError((json && json.error && json.error.message) || statusText,
+    status,
+    json);
   throw error;
 }
 
-const host = 'https://api.cibuci.com/api';
+const host = 'http://localhost:4000/api'; // 'https://api.cibuci.com/api';
 
 export default function (api, params = {}, method = 'GET', withoutToken = false) {
-  const { query, body } = params;
+  const { query, body, selfToken } = params;
 
   const finalQuery = { filter: JSON.stringify(query) };
   if (!withoutToken) {
     const token = storage.load('lbtoken');
     if (token) finalQuery.access_token = token;
+  }
+
+  if (selfToken) {
+    finalQuery.access_token = selfToken;
   }
 
   const url = `${host}${api}?${qs.stringify(finalQuery)}`;

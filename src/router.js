@@ -11,6 +11,7 @@ import ArticleDetailPage from './routes/ArticleDetailPage';
 import AboutPage from './routes/AboutPage';
 import SigninPage from './routes/SigninPage';
 import SignupPage from './routes/SignupPage';
+import VerifyPage from './routes/VerifyPage';
 import ResetPasswordPage from './routes/ResetPasswordPage';
 import ProfilePage from './routes/ProfilePage';
 import SettingPage from './routes/SettingPage';
@@ -33,7 +34,9 @@ function RouterConfig({ history }) {
       <Route path="/about" component={AboutPage} />
       <Route path="/signin" component={SigninPage} />
       <Route path="/signup" component={SignupPage} />
+      <Route path="/verify/:userid" component={VerifyPage} />
       <Route path="/reset-password" component={ResetPasswordPage} />
+      <Route path="/reset-password/:token" component={ResetPasswordPage} />
       <Route path="/@/:username" component={ProfilePage} />
       <Route path="/setting" component={SettingPage}>
         <Route path="password" component={SettingPasswordPage} />

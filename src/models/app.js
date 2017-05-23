@@ -52,7 +52,12 @@ export default {
         }
       } catch (e) {
         if (e.status === 401) {
-          message.error('用户名或密码错误。');
+          if (e.body.error && e.body.error.details && e.body.error.details.userId) {
+            message.warning('用户账号未激活，请登录邮箱验证。');
+            yield put(routerRedux.push(`/verify/${e.body.error.details.userId}`));
+          } else {
+            message.error('用户名或密码错误。');
+          }
         } else {
           message.error(e.message);
         }

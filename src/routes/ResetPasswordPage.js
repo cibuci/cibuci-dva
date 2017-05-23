@@ -3,35 +3,46 @@ import Block from 'react-blocks';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import SimpleLayout from '../components/Layout/Simple';
+import ResetPasswordForm from '../components/Form/ResetPasswordForm';
+import NewPasswordForm from '../components/Form/NewPasswordForm';
 
-import styles from './ResetPasswordPage.less';
+import styles from './SignPage.less';
 
-function ResetPasswordPage() {
-  return (
-    <SimpleLayout>
-      <Block className={styles.container} layout horizontal centered>
-        <div>
-          <div className={styles.logowrapper}>
-            <Link to="/">
-              <img role="presentation" alt="logo" className={styles.logo} src="http://cdn-qn0.cibuci.com/static/community/logo-horizontal.png" />
-            </Link>
+class ResetPasswordPage extends React.Component {
+
+  render() {
+    const { token } = this.props.params;
+
+    return (
+      <SimpleLayout>
+        <Block className={styles.container} layout horizontal centered>
+          <div>
+            <div className={styles.logowrapper}>
+              <Link to="/">
+                <img role="presentation" alt="logo" className={styles.logo} src="http://cdn-qn0.cibuci.com/static/community/logo-horizontal.png" />
+              </Link>
+            </div>
+            <div className={styles.card}>
+              { token ? (
+                <div>
+                  <p style={{ marginBottom: '1rem' }}>设置新密码</p>
+                  <NewPasswordForm token={token} />
+                </div>
+              ) : (
+                <div>
+                  <p style={{ marginBottom: '1rem' }}>输入邮箱，重置密码。</p>
+                  <ResetPasswordForm />
+                </div>
+              ) }
+            </div>
           </div>
-          <div className={styles.card}>
-            123
-          </div>
-        </div>
-      </Block>
-    </SimpleLayout>
-  );
+        </Block>
+      </SimpleLayout>
+    );
+  }
 }
 
 ResetPasswordPage.propTypes = {
 };
 
-function mapStateToProps(state) {
-  return {
-    app: state.app,
-  };
-}
-
-export default connect(mapStateToProps)(ResetPasswordPage);
+export default connect()(ResetPasswordPage);

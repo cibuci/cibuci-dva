@@ -27,4 +27,18 @@ export default {
       .then(parseJSON);
   },
 
+  verify(params) {
+    return fetcher(`/users/${params.userId}/verify`, {}, 'POST')
+      .then(parseJSON);
+  },
+
+  reset(params) {
+    return fetcher('/users/reset', { body: params }, 'POST')
+      .then(parseJSON);
+  },
+
+  resetPassword(params, token) {
+    return fetcher('/users/reset-password', { body: params, selfToken: token }, 'POST', true);
+  },
+
 };
