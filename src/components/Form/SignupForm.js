@@ -130,7 +130,12 @@ class SignupForm extends React.Component {
           )}
         </FormItem>
         <FormItem>
-          <Button type="primary" htmlType="submit" style={styles.button}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            style={styles.button}
+            loading={this.props.loading}
+          >
             注册
           </Button>
         </FormItem>
@@ -139,6 +144,12 @@ class SignupForm extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    loading: state.loading.models.app,
+  };
+}
+
 const WrappedSignupForm = Form.create()(SignupForm);
 
-export default connect()(WrappedSignupForm);
+export default connect(mapStateToProps)(WrappedSignupForm);

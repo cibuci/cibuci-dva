@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button } from 'antd';
 
 const FormItem = Form.Item;
 
@@ -38,6 +38,16 @@ const tailFormItemLayout = {
 
 
 class PasswordForm extends React.Component {
+
+  passwordRepeatValidator(rule, value, callback) {
+    const newPasswordValue = this.props.form.getFieldValue('newPassword');
+    if (newPasswordValue === value) {
+      callback();
+    } else {
+      callback(new Error('password not same.'));
+    }
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -58,7 +68,7 @@ class PasswordForm extends React.Component {
           label="旧密码"
         >
           {getFieldDecorator('oldPassword', {
-            rules: [{ required: false, message: '请输入你的旧密码!' }],
+            rules: [{ required: true, message: '请输入你的旧密码!' }],
           })(
             <Input type="password" />,
           )}
@@ -68,7 +78,11 @@ class PasswordForm extends React.Component {
           label="密码"
         >
           {getFieldDecorator('newPassword', {
-            rules: [{ required: false, message: '请输入新密码!' }],
+            rules: [
+              { required: true, message: '请输入新密码!' },
+              { min: 6, message: '密码不少于6个字符' },
+              { pattern: /^(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/, message: '必须包含大小写字母' },
+            ],
           })(
             <Input type="password" />,
           )}
@@ -78,13 +92,16 @@ class PasswordForm extends React.Component {
           label="确认密码"
         >
           {getFieldDecorator('newPasswordRepeat', {
-            rules: [{ required: false, message: '请重复输入新密码!' }],
+            rules: [
+              { required: true, message: '请重复输入新密码!' },
+              { validator: this.passwordRepeatValidator.bind(this), message: '两次输入的密码不一致!' },
+            ],
           })(
             <Input type="password" />,
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
+          <Button loading={this.props.loading} type="primary" htmlType="submit">
             修改密码
           </Button>
         </FormItem>
@@ -97,7 +114,7 @@ const WrappedPasswordForm = Form.create()(PasswordForm);
 
 function mapStateToProps(state) {
   return {
-    user: state.app.user,
+    loading: state.loading.models.app,
   };
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Form, Icon, Input, Button, Upload, message } from 'antd';
+import { Form, Icon, Input, Button, Upload, message, Progress } from 'antd';
 import { fetchUptoken } from '../../services/cibuci';
 import { qiniuUrl, generateKey } from '../../utils/tools';
 
@@ -45,7 +45,10 @@ class UserInfoForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      uploading: false,
+      uploadPercent: 0,
+    };
 
     this.uploaderRef = null;
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -73,12 +76,17 @@ class UserInfoForm extends React.Component {
   }
 
   normFile = (info) => {
-    // console.log('Upload event:', e);
+    this.setState({ uploading: true });
     // TODO: add progress.
+    if (info.file.status === 'uploading') {
+      this.setState({ uploading: true, uploadPercent: info.file.percent });
+    }
+
     if (info.file.status === 'done') {
       // Get this url from response in real world.
       const avatarUrl = qiniuUrl(info.file.response.key);
       this.props.user.avatarUrl = avatarUrl;
+      this.setState({ uploading: false });
     }
   }
 
@@ -150,8 +158,20 @@ class UserInfoForm extends React.Component {
             </Upload>,
           )}
         </FormItem>
+        { this.state.uploading ? (
+          <FormItem {...tailFormItemLayout}>
+            <div style={{ width: 100 }}>
+              <Progress percent={this.state.uploadPercent} strokeWidth={5} />
+            </div>
+          </FormItem>
+        ) : null }
         <FormItem {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
+          <Button
+            loading={this.props.loading}
+            type="primary"
+            htmlType="submit"
+            disabled={this.state.uploading}
+          >
             更新资料
           </Button>
         </FormItem>
@@ -165,6 +185,7 @@ const WrappedUserInfoForm = Form.create()(UserInfoForm);
 function mapStateToProps(state) {
   return {
     user: state.app.user,
+    loading: state.loading.models.app,
   };
 }
 

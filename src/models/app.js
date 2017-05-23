@@ -78,42 +78,85 @@ export default {
 
     * register({ payload }, { call, put }) { // eslint-disable-line
       const { params } = payload;
-      yield call(register, params);
-      yield put(routerRedux.push('/signin'));
+
+      let user;
+      try {
+        user = yield call(register, params);
+      } catch (e) {
+        message.error(e);
+        return;
+      }
+
+      yield put(routerRedux.push(`/verify/${user.id}`));
+      message.success('注册成功，请登录邮箱激活账号。');
     },
 
     * logout({ payload }, { call, put }) {  // eslint-disable-line
-      yield put({ type: 'save', payload: { user: null, authorized: false } });
+      yield put({ type: 'clean' });
       yield call(logout);
-      storage.remove('lbtoken');
-      storage.remove('lblogin');
-      storage.remove('lbuser');
+      yield put({ type: 'cleanToken' });
     },
 
     * usermodify({ payload }, { call, put, select }) {  // eslint-disable-line
       const { params } = payload;
-      yield call(updateUser, params);
-      yield put({ type: 'save', payload: { user: params.data } });
+
+      try {
+        yield call(updateUser, params);
+      } catch (e) {
+        message.error(e.message);
+        return;
+      }
+
+      yield put({ type: 'saveUserField', payload: { ...params.data } });
       const user = yield select(state => state.app.user);
       storage.saveRecordValue('lbuser', user);
     },
 
     * passwordchange({ payload }, { call, put, select }) {  // eslint-disable-line
       const { params } = payload;
-      yield call(changePassword, params);
-      yield put({ type: 'logout' });
+
+      try {
+        yield call(changePassword, params);
+      } catch (e) {
+        if (e.status === 400) {
+          message.error('当前密码不正确。');
+        } else {
+          message.error(e.message);
+        }
+        return;
+      }
+
+      yield put({ type: 'clean' });
+      yield put({ type: 'cleanToken' });
       yield put(routerRedux.push('/signin'));
+      message.success('密码修改成功，请重新登录。');
     },
 
     * fetchUserByName({ payload }, { call, put }) {  // eslint-disable-line
       const { data } = yield call(findOneUser, payload);
       yield put({ type: 'save', payload: { current: data } });
     },
+
+    * clean({ payload }, { call, put }) {  // eslint-disable-line
+      storage.remove('lblogin');
+      storage.remove('lbuser');
+      yield put({ type: 'save', payload: { user: null, authorized: false } });
+    },
+
+    * cleanToken({ payload }, { call, put }) {  // eslint-disable-line
+      storage.remove('lbtoken');
+    },
+
   },
 
   reducers: {
     save(state, action) {
       return { ...state, ...action.payload };
+    },
+
+    saveUserField(state, action) {
+      const user = { ...state.user, ...action.payload };
+      return { ...state, user };
     },
   },
 

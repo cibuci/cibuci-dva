@@ -59,7 +59,12 @@ class SigninForm extends React.Component {
             <Checkbox>记住我</Checkbox>,
           )}
           <Link style={styles.forgot} to="/reset-password">忘记密码</Link>
-          <Button type="primary" htmlType="submit" style={styles.button}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            style={styles.button}
+            loading={this.props.loading}
+          >
             登录
           </Button>
         </FormItem>
@@ -68,6 +73,12 @@ class SigninForm extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    loading: state.loading.models.app,
+  };
+}
+
 const WrappedSigninForm = Form.create()(SigninForm);
 
-export default connect()(WrappedSigninForm);
+export default connect(mapStateToProps)(WrappedSigninForm);
