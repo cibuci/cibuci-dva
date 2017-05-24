@@ -86,7 +86,7 @@ class TopicComment extends React.Component {
           <div>
             <div className={styles.item}>
               <div className={styles.aside}>
-                <Avatar user={author} />
+                <Link to={`/@/${author.username}`}><Avatar user={author} /></Link>
               </div>
               <div className={styles.action} />
               <div className={styles.content}>

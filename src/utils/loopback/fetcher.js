@@ -42,7 +42,7 @@ function checkStatus({ status, statusText, headers, body }) {
   throw error;
 }
 
-const host = 'http://localhost:4000/api'; // 'https://api.cibuci.com/api';
+const host = 'https://api.cibuci.com/api'; // 'http://localhost:4000/api';
 
 export default function (api, params = {}, method = 'GET', withoutToken = false) {
   const { query, body, selfToken } = params;

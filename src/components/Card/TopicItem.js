@@ -37,7 +37,7 @@ const TopicItem = ({ topic, tabs }) => {
     <div className={styles.normal}>
       <div className={styles.media}>
         <div className={`${styles.left} ${styles.middle}`}>
-          <Avatar size="large" user={author} />
+          <Link to={`/@/${author.username}`}><Avatar size="large" user={author} /></Link>
         </div>
         <div className={styles.body}>
           <div className={styles.heading}>

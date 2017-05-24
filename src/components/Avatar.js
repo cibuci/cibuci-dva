@@ -27,10 +27,22 @@ const styles = {
 const Avatar = (props) => {
   const { user, size } = props;
 
-  let src = 'https://secure.gravatar.com/avatar/';
-  if (user) src += hash(user.email);
+  let src;
   if (user && user.avatarUrl) {
-    src = `${user.avatarUrl}?imageView2/1/w/200/h/200/q/75|imageslim`;
+    if (size === 'full') {
+      src = `${user.avatarUrl}?imageView2/1/w/400/h/400/q/75|imageslim`;
+    } else {
+      src = `${user.avatarUrl}?imageView2/1/w/200/h/200/q/75|imageslim`;
+    }
+  } else {
+    src = 'https://secure.gravatar.com/avatar/';
+    if (user) {
+      if (size === 'full') {
+        src = `${src}${hash(user.email)}?s=400`;
+      } else {
+        src = `${src}${hash(user.email)}?s=200`;
+      }
+    }
   }
 
   let style = styles.avatar;

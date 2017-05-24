@@ -132,9 +132,16 @@ export default {
       message.success('密码修改成功，请重新登录。');
     },
 
-    * fetchUserByName({ payload }, { call, put }) {  // eslint-disable-line
+    * fetchUserByName({ payload }, { call, put, select }) {  // eslint-disable-line
       const { data } = yield call(findOneUser, payload);
       yield put({ type: 'save', payload: { current: data } });
+      const currentUser = yield select(state => state.app.user);
+
+      // update user info.
+      if (currentUser && data && data.id === currentUser.id) {
+        yield put({ type: 'save', payload: { user: data } });
+        storage.saveRecordValue('lbuser', data);
+      }
     },
 
     * clean({ payload }, { call, put }) {  // eslint-disable-line

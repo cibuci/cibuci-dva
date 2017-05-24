@@ -24,11 +24,8 @@ app.use(createLoading());
 
 // 3. Model
 app.model(require('./models/app'));
-app.model(require('./models/comment'));
 app.model(require('./models/topic/'));
 app.model(require('./models/article/'));
-// app.model(require('./models/pk'));
-// app.model(require('./models/pk-comment/'));
 
 // 4. Router
 app.router(require('./router'));

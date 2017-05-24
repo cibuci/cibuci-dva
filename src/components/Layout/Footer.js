@@ -19,7 +19,6 @@ const Footer = () => {
           <Spacer onlytb>
             <ul className={styles.list}>
               <li><a href="https://github.com/cibuci/cibuci-dva">源码仓库</a></li>
-              <li><a href="https://github.com/cibuci/cibuci-api">开放接口</a></li>
             </ul>
           </Spacer>
         </Col>
@@ -36,7 +35,7 @@ const Footer = () => {
           <h2 className={styles.title}><Icon className={styles.icon} type="copyright" />2017 辞不辞</h2>
           <Spacer onlytb>
             <p>自由职业，来不来嘛<strong className={styles.mark}>～</strong></p>
-            <div className={styles.buttons}>
+            <div className={styles.buttons} style={{ display: 'none' }}>
               <a href="mailto://support@cibuci.com">
                 <span className={styles.icon} style={{ marginLeft: 0 }}>
                   <svg className={styles.iconinner}>
