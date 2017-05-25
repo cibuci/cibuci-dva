@@ -114,7 +114,7 @@ export default {
 
     * editItem({ payload }, { put, call }) {  // eslint-disable-line
       yield call(updateTopic, payload);
-      yield put(routerRedux.push('/topic'));
+      yield put(routerRedux.push(`/topic/${payload.id}`));
     },
 
     * removeItem({ payload }, { put, call }) {  // eslint-disable-line

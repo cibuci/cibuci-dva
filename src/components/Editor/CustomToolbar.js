@@ -103,6 +103,8 @@ class CustomToolbar extends React.Component {
         <button onClick={this.showModal}>
           <Icon type="picture" style={{ fontWeight: 'bold', fontSize: 16, lineHeight: 1.2 }} />
         </button>
+        <div style={styles.split} />
+        <button className="ql-clean" />
         <Modal
           title="上传图片"
           visible={this.state.visible}
