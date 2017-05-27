@@ -19,7 +19,7 @@ class ResetPasswordPage extends React.Component {
           <div>
             <div className={styles.logowrapper}>
               <Link to="/">
-                <img role="presentation" alt="logo" className={styles.logo} src="http://cdn-qn0.cibuci.com/static/community/logo-horizontal.png" />
+                <img role="presentation" alt="logo" className={styles.logo} src="https://cdn-up0.cibuci.com/static/community/logo-horizontal.png" />
               </Link>
             </div>
             <div className={styles.card}>
