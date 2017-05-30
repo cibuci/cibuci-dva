@@ -60,7 +60,7 @@ class SigninPage extends React.Component {
           <div>
             <div className={styles.logowrapper}>
               <Link to="/">
-                <img role="presentation" alt="logo" className={styles.logo} src="https://cdn-up0.cibuci.com/static/community/logo-horizontal.png" />
+                <img role="presentation" alt="logo" className={styles.logo} src="https://cdn-up0.cibuci.com/static/community/gecko/logo-vertical.png" />
               </Link>
             </div>
             <div className={styles.card}>

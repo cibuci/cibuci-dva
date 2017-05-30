@@ -22,13 +22,13 @@ function AboutPage(props) {
         <Row gutter={24}>
           <Col xs={24} sm={24} md={17} lg={17} xl={17}>
             <div className={styles.left}>
-              <Panel title="关于我们">
+              <Panel title="关于辞不辞">
                 <div className={styles.board}>
                   <div className={styles.wrapper}>
                     <LogoGather pixSize={16} pointSizeMin={8} />
                   </div>
                   <div className={styles.article}>
-                    <InsertHtml content={about && about.us && about.us.content} />
+                    <InsertHtml content={about && about.cibuci && about.cibuci.content} />
                   </div>
                 </div>
                 { about && about.us && isAdmin(user) ? (
@@ -39,9 +39,9 @@ function AboutPage(props) {
                   </div>
                 ) : null }
               </Panel>
-              <Panel title="关于辞不辞">
+              <Panel title="关于我们">
                 <div className={styles.article}>
-                  <InsertHtml content={about && about.cibuci && about.cibuci.content} />
+                  <InsertHtml content={about && about.us && about.us.content} />
                 </div>
                 { about && about.cibuci && isAdmin(user) ? (
                   <div className={styles.panel}>

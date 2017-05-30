@@ -59,7 +59,7 @@ const Header = (props) => {
           <Block flex>
             <div className={styles.center}>
               <Link to="/">
-                <img alt="logo" src="https://cdn-up0.cibuci.com/static/community/logo-horizontal.png" />
+                <img alt="logo" src="https://cdn-up0.cibuci.com/static/community/gecko/logo-horizontal.png" />
               </Link>
             </div>
           </Block>
