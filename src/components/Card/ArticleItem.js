@@ -12,14 +12,15 @@ const ArticleItem = ({ article }) => {
     summary,
     cover,
     readCount,
-    sourceUrl,
   } = article;
 
   return (
     <div className={styles.wrapper}>
 
       <div className={styles.cover}>
-        <img src={`${cover}?imageView2/1/w/700/h/400/format/jpg/q/75|imageslim`} alt="cover" />
+        <Link to={`/article/${id}`}>
+          <img src={`${cover}?imageView2/1/w/700/h/400/format/jpg/q/75|imageslim`} alt="cover" />
+        </Link>
       </div>
 
       <div className={styles.heading}>
@@ -27,11 +28,12 @@ const ArticleItem = ({ article }) => {
       </div>
 
       <div className={styles.body}>
-        <div className={styles.summary}>
-          <p>{summary}</p>
-        </div>
+        <Link to={`/article/${id}`}>
+          <div className={styles.summary}>
+            <p>{summary}</p>
+          </div>
+        </Link>
         <div className={styles.meta}>
-          { sourceUrl ? (<a href={sourceUrl} rel="noopener noreferrer" target="_blank">原文链接</a>) : null }
           {moment(createdAt).fromNow()}
           <span className={styles.counts}>阅读：{readCount}</span>
         </div>

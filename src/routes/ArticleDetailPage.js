@@ -18,6 +18,8 @@ class ArticleDetailPage extends React.Component {
     const { article, user } = this.props;
     if (!article) return null;
 
+    const { sourceUrl } = article;
+
     return (
       <div>
         <Helmet>
@@ -36,6 +38,9 @@ class ArticleDetailPage extends React.Component {
           ) : null }
           <div className={styles.content}>
             <ArticleContent article={article} />
+          </div>
+          <div className={styles.footer}>
+            { sourceUrl ? (<a href={sourceUrl} rel="noopener noreferrer" target="_blank">原文链接</a>) : null }
           </div>
         </div>
       </div>
