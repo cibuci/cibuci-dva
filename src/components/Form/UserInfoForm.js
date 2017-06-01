@@ -132,7 +132,7 @@ class UserInfoForm extends React.Component {
             rules: [{ required: false, message: '请输入你的用户名!' }],
             initialValue: user.nickName,
           })(
-            <Input />,
+            <Input type="text" style={{ padding: '1.4rem 1rem' }} />,
           )}
         </FormItem>
         <FormItem

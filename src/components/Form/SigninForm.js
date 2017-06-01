@@ -48,6 +48,7 @@ class SigninForm extends React.Component {
               prefix={<Icon type="lock" style={{ fontSize: 13 }} />}
               type="password"
               placeholder="密码"
+              size="large"
             />,
           )}
         </FormItem>

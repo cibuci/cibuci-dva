@@ -92,11 +92,13 @@ class CommentEditor extends React.Component {
     return (
       <div>
         <div>
-          <CustomToolbar
-            id={this.props.id}
-            resource="article"
-            onImageUploaded={this.handleImageUploaded}
-          />
+          <div className="hidden-sm">
+            <CustomToolbar
+              id={this.props.id}
+              resource="article"
+              onImageUploaded={this.handleImageUploaded}
+            />
+          </div>
           <ReactQuill
             ref={(el) => { this.reactQuillRef = el; }}
             theme={'snow'}

@@ -61,3 +61,15 @@ ul :global {
   border: none !important;
   background-color: #fdfdfd !important;
 }
+
+:global .ant-input-affix-wrapper > input {
+  padding-top: 1.4rem !important;
+  padding-bottom: 1.4rem !important;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  :global .hidden-sm {
+    display: none;
+  }
+}

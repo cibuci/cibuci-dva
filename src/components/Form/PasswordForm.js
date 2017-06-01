@@ -70,7 +70,7 @@ class PasswordForm extends React.Component {
           {getFieldDecorator('oldPassword', {
             rules: [{ required: true, message: '请输入你的旧密码!' }],
           })(
-            <Input type="password" />,
+            <Input type="password" style={{ padding: '1.4rem 1rem' }} />,
           )}
         </FormItem>
         <FormItem
@@ -84,7 +84,7 @@ class PasswordForm extends React.Component {
               { pattern: /^(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/, message: '必须包含大小写字母' },
             ],
           })(
-            <Input type="password" />,
+            <Input type="password" style={{ padding: '1.4rem 1rem' }} />,
           )}
         </FormItem>
         <FormItem
@@ -97,7 +97,7 @@ class PasswordForm extends React.Component {
               { validator: this.passwordRepeatValidator.bind(this), message: '两次输入的密码不一致!' },
             ],
           })(
-            <Input type="password" />,
+            <Input type="password" style={{ padding: '1.4rem 1rem' }} />,
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>
